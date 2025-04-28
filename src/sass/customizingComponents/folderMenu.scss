@@ -1,0 +1,42 @@
+@use '@/sass/variables.scss' as *;
+
+.folderMenu {
+  .v-list-item__content {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: flex-end;
+    .v-list-item-title {
+      line-height: 1.5em;
+      font-size: 1em;
+    }
+    .v-list-item--nav:not(:only-child) {
+      margin-bottom: 0;
+    }
+  }
+  &.v-list {
+    flex-grow: 1;
+    overflow-y: scroll;
+    .v-list-item--active {
+      .v-list-item__overlay {
+        background: $primary30;
+      }
+    }
+    .v-list-item--nav:not(:only-child) {
+      margin-bottom: 0;
+    }
+  }
+  .v-list-group__items {
+    margin-left: 1.2rem;
+    .v-list-item {
+      margin-left: 0.5rem;
+    }
+  }
+  .v-list-group--open {
+    > .v-list-item {
+      background: $neutral80;
+      box-shadow: $boxShadow;
+      margin-bottom: 0;
+    }
+  }
+}

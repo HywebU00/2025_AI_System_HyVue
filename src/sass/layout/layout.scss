@@ -1,0 +1,59 @@
+@use '@/sass/common/mixins/text.scss' as *;
+@use '@/sass/common/mixins/mediaquery.scss' as *;
+@use '@/sass/variables.scss' as *;
+* {
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  a {
+    text-decoration: none;
+  }
+  input,
+  select {
+    border-radius: 0.25rem !important;
+  }
+}
+
+// 手機版本開合設定
+main {
+  background: $neutral80;
+  @include screen('notebook') {
+    padding: 0 !important;
+    padding-top: rem(64) !important;
+    width: 100% !important;
+  }
+}
+header {
+  @include screen('notebook') {
+    left: 0 !important;
+    width: 100% !important;
+  }
+}
+//背景顏色設定
+.v-theme--dark {
+  main {
+    background: unset;
+  }
+  .navigationBar {
+    &.v-app-bar.v-toolbar {
+      background: $neutral0;
+    }
+  }
+  .sideBar > .v-navigation-drawer__content {
+    .sideBarBtn {
+      background: #212121;
+    }
+  }
+}
+.container {
+  &.v-container {
+    max-width: unset !important;
+  }
+}
+.navigationBar {
+  &.v-app-bar.v-toolbar {
+    background: $neutral80;
+    box-shadow: none !important;
+  }
+}

@@ -1,0 +1,32 @@
+// $color-pack: false;
+
+@use 'variables.scss';
+@use '@/sass/common/mixins/_mediaquery.scss';
+@use '@/sass/common/mixins/_text.scss';
+
+//customizingComponents
+@use '@/sass/customizingComponents/sideBar.scss';
+@use '@/sass/customizingComponents/folderMenu.scss';
+@use '@/sass/customizingComponents/generalControls.scss';
+
+@use '@/sass/customizingComponents/form.scss';
+@use '@/sass/customizingComponents/table.scss';
+@use '@/sass/customizingComponents/card.scss';
+@use '@/sass/customizingComponents/pagination.scss';
+@use '@/sass/customizingComponents/navigation.scss';
+
+@use '@/sass/customizingComponents/treeBlock.scss';
+@use '@/sass/customizingComponents/accordion.scss';
+@use '@/sass/customizingComponents/datePicker.scss';
+
+//material-icons-round
+// @use '@/sass/vendor/material-icons-round.scss';
+
+//layout
+@use '@/sass/layout/layout.scss';
+@use '@/sass/layout/customize_color.scss';
+@use '@/sass/layout/customize_font.scss';
+
+//vuetifyCSS
+@use '@/sass/components/VListItem.scss';
+@use '@/sass/components/VTable.scss';

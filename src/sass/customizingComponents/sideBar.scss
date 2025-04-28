@@ -1,0 +1,212 @@
+@use '@/sass/common/mixins/text.scss' as *;
+@use '@/sass/common/mixins/mediaquery.scss' as *;
+@use '@/sass/variables.scss' as *;
+//左側選單
+.sideBar {
+  border-radius: 0 1.5rem 1.5rem 0;
+  &.v-navigation-drawer {
+    box-shadow: rgba(0, 0, 0, 0.1) 2px 0px 3px;
+    border: 0;
+  }
+  > .v-navigation-drawer__content {
+    display: flex;
+    flex-direction: column;
+    .logoImg {
+      + .v-list {
+        margin-top: 1rem;
+      }
+    }
+    .v-list-group--open {
+      > .v-list-item {
+        background: $gradients;
+        color: $neutral100;
+        box-shadow: none;
+      }
+    }
+    .v-list-item--density-compact {
+      .v-list-item--one-line {
+        min-height: rem(48);
+      }
+    }
+    .v-list-item {
+      + .v-list-group__items {
+        border-left: 1px solid #ccc;
+        .v-list-item {
+          height: rem(35);
+          padding-inline-start: 12px !important;
+          padding: 4px 8px;
+          .v-list-item-title {
+            margin-left: rem(24);
+            font-weight: 400;
+          }
+        }
+
+        &:has(.v-list-item) {
+          margin-top: 0.5rem;
+        }
+      }
+    }
+    .v-list--nav {
+      padding-inline-start: 16px;
+      padding-inline-end: 16px;
+    }
+    //使用者登入資訊
+    button.loginInfo {
+      display: flex;
+      margin: 1rem;
+      overflow: hidden;
+      align-items: center;
+      justify-content: flex-start;
+      text-transform: unset;
+      padding: 0 0.5rem;
+      ul {
+        margin-left: 1.25rem;
+        li {
+          font-weight: 600;
+          font-size: 1em;
+          line-height: 1.25em !important;
+          letter-spacing: 0rem;
+        }
+      }
+      .icon {
+        width: rem(32);
+        height: rem(32);
+        border-radius: 50%;
+        color: $neutral30;
+        transition: 0.5s all;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        span {
+          font-size: 1.25em;
+          font-weight: 600;
+        }
+      }
+    }
+
+    .sideBarBtn {
+      position: absolute;
+      right: rem(-20);
+      top: rem(30);
+      width: rem(40) !important;
+      height: rem(40) !important;
+      background: $neutral100;
+      box-shadow: $boxShadow;
+      border-radius: 50% !important;
+      // left: rem(30);
+    }
+    @media screen and (max-width: 990px) {
+      .sideBarBtn {
+        top: rem(10);
+      }
+      .v-list {
+        margin-top: 3rem !important;
+      }
+    }
+  }
+
+  .drawerBtn {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    right: -30px;
+    top: calc(50vh - 60px);
+    width: rem(60);
+    height: rem(60);
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.15) 2px 0px 3px;
+    span {
+      transition: 0.5s all;
+      margin-left: 0.5rem;
+      font-size: 3rem;
+      transform: rotate(180deg);
+    }
+  }
+}
+//左側選單點擊收起
+.sideBar.hidden {
+  background: $gradients_v;
+  @include screen('notebook') {
+    width: 0 !important;
+  }
+  > .v-navigation-drawer__content {
+    .logoImg {
+      margin: rem(30) rem(10);
+      .logo {
+        + h1 {
+          display: none;
+        }
+      }
+      + .v-list {
+        width: unset;
+      }
+    }
+    .v-list-group {
+      .v-list-item {
+        .v-list-item__content {
+          justify-content: center;
+          .v-list-item-title {
+            display: none;
+          }
+          img {
+            width: rem(24);
+            height: rem(24);
+            margin-right: 0;
+          }
+        }
+        .v-list-item__append {
+          display: none;
+        }
+        // &.v-list-item--nav {
+        //   padding-inline-start: 0px;
+        // }
+        .v-icon {
+          color: $neutral100;
+
+          opacity: 1;
+          margin-left: 0.25rem;
+          margin-inline-end: 0;
+        }
+
+        + .v-list-group__items {
+          display: none;
+        }
+      }
+    }
+    .v-list-group--open {
+      .v-list-item {
+        background: rgba(255, 255, 255, 0.3);
+      }
+    }
+    .sideBarBtn {
+      // left: rem(60);
+      // top: rem(20);
+    }
+    @media screen and (max-width: 990px) {
+    }
+  }
+  button.loginInfo {
+    color: $neutral100;
+    background: $primary30;
+    box-shadow: rgba(255, 255, 255, 0.8) 0px 3px 15px 0px;
+    margin: 0 15px;
+    margin-bottom: rem(68);
+
+    border: 10px solid #fff;
+    padding: 0;
+    min-width: unset;
+    --v-btn-height: unset;
+    ul {
+      display: none;
+    }
+    .icon {
+      color: $neutral100;
+    }
+  }
+  .drawerBtn {
+    span {
+      transform: rotate(0deg);
+    }
+  }
+}

@@ -1,0 +1,75 @@
+// src/sass/variables.scss
+
+// ==== Style guides ====
+
+// --- Colors ---
+
+// primary
+$primary70: #f6fbff;
+$primary50: #e2f1fe;
+$primary30: #0156a2;
+
+//secondary
+$secondary100: #80cbd7;
+$secondary80: #37ccb3;
+$secondary60: #1c93d0;
+$secondary40: #3772bb;
+
+//gradients
+$gradients: linear-gradient(0deg, rgba(1, 86, 162, 1) 0%, rgba(28, 147, 208, 1) 50%, rgba(128, 203, 220, 1) 100%);
+$gradients_v: linear-gradient(90deg, rgba(1, 86, 162, 1) 0%, rgba(28, 147, 208, 1) 65%, rgba(128, 203, 220, 1) 100%);
+
+//neutral
+$neutral100: #ffffff;
+$neutral80: #f8f8f8;
+$neutral60: #e3e8ef;
+$neutral40: #97a3b6;
+$neutral30: #69707d;
+$neutral20: #555555;
+$neutral10: #333333;
+$neutral0: #111111;
+
+//additional color
+
+// success
+$success50: #42d0a1;
+// info
+$info50: #71a4f5;
+// warning
+$warning50: #ffbe4c;
+//danger
+$danger50: #f54b6b;
+
+// Globals
+$border-radius-root: 6px;
+$font-size-root: 16px;
+$remFontSize: 16;
+
+$gray: #e9ecef;
+$gray3: #828282;
+$gray2: #4b4b4b;
+
+$dark: rgba(0, 0, 0, 0.87);
+
+//背景色
+$backgroundColor: $gray;
+$boxShadow: rgba(51, 64, 76, 0.2) 0px 8px 24px;
+
+//mediaquery
+$screen-xxl: 2560; //1400px
+$screen-xl: 1920; //1400px
+$screen-lg: 1280; //電腦
+$screen-md-max: 960px; //992px !default; //平板
+$screen-sm-max: 600px; //768px !default; //手機
+$screen-xs-max: 576px !default; //極小尺寸 - hyui
+$screen-xs-mobile-max: 320px !default; //極小尺寸 - flex
+
+$boxShadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
+
+// 字型設定
+$fontFamily: 'Noto Sans', 'Noto Sans TC', Lato, 'PingFang TC', 'Helvetica Neue', Helvetica, 微軟正黑體, Arial, sans-serif;
+
+$fontSize: 1em;
+$text-shadow: #000000a1 0.1em 0.1em 0.2em;
+// rem基本尺寸
+$remFontSize: 16;
