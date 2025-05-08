@@ -1,0 +1,12 @@
+@use '@/sass/common/mixins/text.scss' as *;
+@use '@/sass/common/mixins/mediaquery.scss' as *;
+@use '@/sass/variables.scss' as *;
+
+.v-btn {
+  &.bg_gradient {
+    background: $gradients;
+  }
+  &.bg_gradient_V {
+    background: $gradients_v;
+  }
+}

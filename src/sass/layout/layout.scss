@@ -18,6 +18,7 @@
 // 手機版本開合設定
 main {
   background: $neutral80;
+
   @include screen('notebook') {
     padding: 0 !important;
     padding-top: rem(64) !important;
@@ -31,29 +32,74 @@ header {
   }
 }
 //背景顏色設定
-.v-theme--dark {
-  main {
-    background: unset;
-  }
-  .navigationBar {
-    &.v-app-bar.v-toolbar {
-      background: $neutral0;
-    }
-  }
-  .sideBar > .v-navigation-drawer__content {
-    .sideBarBtn {
-      background: #212121;
-    }
-  }
-}
+
 .container {
   &.v-container {
     max-width: unset !important;
+    padding-top: 0;
+  }
+
+  .title {
+    margin: 1rem 0 1rem 0;
+    display: flex;
+    h1 {
+      padding-left: rem(24);
+      position: relative;
+      line-height: 2rem;
+      &::after {
+        position: absolute;
+        content: '';
+        top: 0;
+        left: 0;
+        width: rem(12);
+        height: rem(32);
+        background: $primary30;
+        border-radius: rem(6);
+      }
+    }
+    .v-btn {
+      margin-left: auto;
+      .v-btn__content {
+        .icon {
+          margin-right: 0.25rem;
+        }
+      }
+    }
   }
 }
 .navigationBar {
   &.v-app-bar.v-toolbar {
     background: $neutral80;
     box-shadow: none !important;
+    .v-toolbar__content {
+      height: rem(74) !important;
+    }
+  }
+}
+.filterGrp {
+  display: flex;
+  margin: 1rem 0 1rem 0;
+  > div {
+    &:last-child {
+      margin-left: auto;
+    }
+  }
+  .searchSelect {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    font-weight: bold;
+    padding-right: 1rem;
+
+    label {
+      margin: 0 1rem;
+    }
+    .v-select {
+      background: #fff;
+      min-width: rem(200);
+      + .v-btn {
+        margin-left: 1rem;
+      }
+    }
   }
 }

@@ -1,8 +1,74 @@
+@use '@/sass/common/mixins/text.scss' as *;
+@use '@/sass/common/mixins/mediaquery.scss' as *;
+@use '@/sass/variables.scss' as *;
 table {
+  font-size: 1rem;
   thead {
     white-space: nowrap;
+    .v-data-table__td {
+      background: $secondary60;
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 700 !important;
+    }
+    .icon {
+      margin-left: rem(8);
+      cursor: pointer;
+    }
+    .v-selection-control--dirty .v-selection-control__input > .v-icon {
+      color: hwb(0 100% 0% / 0.6);
+    }
   }
-  .v-data-table__td {
-    background: #dadfe0;
+  .v-selection-control--dirty .v-selection-control__input > .v-icon {
+    color: $primary30;
+  }
+  .btnGroup {
+    .btn_icon {
+      height: 40px;
+      width: 40px;
+      min-width: 40px;
+      margin: 0 rem(5);
+      border-radius: 0.5rem;
+
+      // .v-btn__content {
+      //   span {
+      //     color: $neutral10;
+      //   }
+      // }
+    }
+  }
+}
+.infoBtnContainer {
+  border-radius: 0.5rem !important;
+  &.tableFiller {
+    padding: 0.6rem 1.3rem;
+    .v-checkbox .v-selection-control {
+      min-height: unset;
+    }
+    .v-input__control {
+      padding: 0.5rem 0.75rem;
+    }
+    .v-selection-control--density-default {
+      --v-selection-control-size: unset;
+    }
+    .v-label {
+      color: $neutral30;
+      font-size: 1rem;
+    }
+    .v-col {
+      &:has(.btnGroup) {
+        padding-top: 0px;
+      }
+      .btnGroup {
+        padding-top: 0.6rem;
+        border-top: 1px solid $neutral60;
+        justify-content: center;
+        .v-btn {
+          min-width: rem(90);
+          font-size: rem(16);
+          border-radius: 0.5rem !important;
+        }
+      }
+    }
   }
 }

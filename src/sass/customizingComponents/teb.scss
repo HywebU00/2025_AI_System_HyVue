@@ -1,0 +1,22 @@
+@use '@/sass/common/mixins/text.scss' as *;
+@use '@/sass/common/mixins/mediaquery.scss' as *;
+@use '@/sass/variables.scss' as *;
+
+.teb {
+  .v-tab {
+    margin-right: 1rem;
+    font-weight: 700;
+    border-radius: rem(24) !important;
+    color: $primary30;
+    text-transform: none;
+    background-color: $primary50;
+    &.v-tab--selected {
+      background-color: $primary30;
+      color: $neutral100 !important;
+      border-color: $primary30;
+    }
+    .v-tab__slider {
+      display: none;
+    }
+  }
+}

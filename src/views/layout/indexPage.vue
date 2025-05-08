@@ -8,7 +8,7 @@
             src="~@/assets/images/logo.png"
             alt=""
           />
-          <p class="text-h5">管理平台樣板</p>
+          <p class="text-h5">AI諮詢服務系統</p>
         </h3>
         <v-btn color="secondary"><a href="">檔案下載</a></v-btn>
       </div>
@@ -49,13 +49,13 @@ export default {
     return {
       desserts: [
         {
-          name: "首頁",
-          link: "",
+          name: "登入頁",
+          link: "https://hywebu00.github.io/2025_AI_System_HyVue/login",
           note: "",
         },
         {
-          name: "功能頁",
-          link: "",
+          name: "首頁",
+          link: "https://hywebu00.github.io/2025_AI_System_HyVue/",
           note: "",
         },
         {

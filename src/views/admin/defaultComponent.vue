@@ -1,151 +1,156 @@
 <template>
   <v-container class="container">
-    <v-breadcrumbs :items="['首頁', '節點', '節點']"></v-breadcrumbs>
-    <v-divider class="pt-1 mb-3"></v-divider>
-    <h2>系統首頁儀表板</h2>
-    <v-divider class="mt-3 mb-4"></v-divider>
+    <div class="title">
+      <h1>系統首頁儀表板</h1>
+      <v-btn variant="flat" class="bg_gradient_V">
+        <span class="icon material-symbols-outlined"> wand_stars </span>
+        生成更多問答</v-btn
+      >
+    </div>
+    <div class="filterGrp">
+      <div class="">
+        <!-- select start -->
+        <div class="searchSelect">
+          <label for="">主分類</label>
+          <v-select
+            label="所有分類"
+            density="compact"
+            single-line
+            variant="outlined"
+            hide-details="auto"
+            clear-icon
+            menu-icon="mdi-chevron-down"
+            :items="['選項ㄧ', '選項二', '選項三']"
+          ></v-select>
+          <label for="">子分類</label>
+          <v-select
+            label="所有分類"
+            density="compact"
+            single-line
+            variant="outlined"
+            menu-icon="mdi-chevron-down"
+            hide-details="auto"
+            :items="['選項ㄧ', '選項二', '選項三']"
+          ></v-select>
+          <v-btn variant="flat">重設</v-btn>
+        </div>
+        <!-- select end -->
+      </div>
+      <div class="">
+        <v-btn variant="flat" class="bg_gradient_V">
+          <span class="icon material-symbols-outlined"> wand_stars </span>
+          建立問答</v-btn
+        >
+      </div>
+    </div>
+    <div class="filterGrp">
+      <div class="">
+        <v-tabs class="teb" v-model="tab">
+          <v-tab>啟用中(0)</v-tab>
+          <v-tab value="two">停用中</v-tab>
+        </v-tabs>
+      </div>
+      <div class="">
+        <v-btn variant="flat" class="bg_gradient_V">
+          <span class="icon material-symbols-outlined"> wand_stars </span>
+          建立問答</v-btn
+        >
+      </div>
+    </div>
     <v-row>
-      <v-col sm="3" cols="12" v-for="item in countCards" :key="item.title">
-        <v-card class="pa-2">
-          <h4 class="text-h6 text-primary font-weight-bold">
-            {{ item.title }}
-          </h4>
-          <v-divider class="pt-2 mb-2"></v-divider>
-          <v-sheet rounded :color="item.bgColor" class="py-8">
-            <div
-              ref="countCard"
-              style="color: #fff"
-              class="text-h4 text-center font-weight-bold"
-            >
-              {{ item.num }}
+      <v-col>
+        <v-tabs-window v-model="tab">
+          <v-tabs-window-item value="one">
+            <div class="cardGrp">
+              <template v-for="i in 10" :key="i">
+                <!-- 卡片樣式start -->
+                <v-card class="card" variant="flat">
+                  <v-card-item>
+                    <div>
+                      <div class="cardTitle">
+                        知識庫名稱知識庫名稱知識庫名稱知識庫名稱知識庫名稱知識庫名稱
+                      </div>
+                      <div class="text">最後更新：2025/12/21</div>
+                    </div>
+                  </v-card-item>
+                  <v-card-actions>
+                    <div class="tag">啟用中</div>
+                    <div class="btnGrp">
+                      <v-btn color="primary">
+                        更多
+                        <v-menu activator="parent">
+                          <v-list>
+                            <v-list-item>
+                              <v-list-item-title>重新命名</v-list-item-title>
+                            </v-list-item>
+                            <v-list-item>
+                              <v-list-item-title>開啟前台</v-list-item-title>
+                            </v-list-item>
+                          </v-list>
+                        </v-menu>
+                      </v-btn>
+                      <v-btn color="danger"> 移除 </v-btn>
+                    </div>
+                  </v-card-actions>
+                </v-card>
+                <v-card class="card" variant="flat">
+                  <v-card-item>
+                    <div>
+                      <div class="cardTitle">
+                        知識庫名稱知識庫名稱知識庫名稱知識庫名稱知識庫名稱知識庫名稱
+                      </div>
+                      <div class="text">最後更新：2025/12/21</div>
+                    </div>
+                  </v-card-item>
+                  <v-card-actions>
+                    <div class="tag dangerTag">停用中</div>
+                    <div class="btnGrp">
+                      <v-btn color="primary">
+                        更多
+                        <v-menu activator="parent">
+                          <v-list>
+                            <v-list-item>
+                              <v-list-item-title>重新命名</v-list-item-title>
+                            </v-list-item>
+                            <v-list-item>
+                              <v-list-item-title>開啟前台</v-list-item-title>
+                            </v-list-item>
+                          </v-list>
+                        </v-menu>
+                      </v-btn>
+                      <v-btn color="danger"> 移除 </v-btn>
+                    </div>
+                  </v-card-actions>
+                </v-card>
+                <!-- 卡片樣式end -->
+              </template>
             </div>
-          </v-sheet>
-          <div class="text-caption mt-2 text-end">
-            <v-divider class=""></v-divider>
-            時間以...為計算準
-          </div>
-        </v-card>
-      </v-col>
-      <v-col md="8" cols="12">
-        <v-card class="pa-2 h-100">
-          <h4 class="text-h6 text-primary font-weight-bold">網站流量</h4>
-          <v-divider class="pt-2 mb-2"></v-divider>
-          <lineAndBarChart /> </v-card
-      ></v-col>
-      <v-col md="4" cols="12">
-        <v-card class="pa-2 h-100">
-          <h4 class="text-h6 text-primary font-weight-bold">數據分析</h4>
-          <v-divider class="pt-2 mb-2"></v-divider>
-          <div class="d-flex align-center pieCard">
-            <pieChart class="" />
-          </div>
-        </v-card>
-      </v-col>
-      <v-col md="6" cols="12">
-        <v-card class="h-100">
-          <div class="">
-            <v-container class="container">
-              <h4 class="text-h6 text-primary font-weight-bold">
-                今日熱門網頁
-              </h4>
-              <v-divider class="pt-2 mb-2"></v-divider>
-              <v-table density="compact">
-                <thead class="bg-thead">
-                  <tr>
-                    <th class="text-left">序列</th>
-                    <th class="text-left">標題</th>
-                    <th class="text-left">瀏覽量</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr v-for="i in 5" :key="i">
-                    <td>{{ i }}</td>
-                    <td>大更沒於正時節直只們來壓算有先，求化化看雨的</td>
-                    <td>1,523</td>
-                  </tr>
-                </tbody>
-              </v-table>
-            </v-container>
-          </div>
-        </v-card>
-      </v-col>
-      <v-col md="6" cols="12">
-        <v-card class="h-100">
-          <div class="">
-            <v-container class="container">
-              <h4 class="text-h6 text-primary font-weight-bold">公告資訊</h4>
-              <v-divider class="pt-2 mb-2"></v-divider>
-              <v-table density="compact">
-                <thead class="bg-thead">
-                  <tr>
-                    <th class="text-left">序列</th>
-                    <th class="text-left">標題</th>
-                    <th class="text-left">發佈時間</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr v-for="i in 5" :key="i">
-                    <td>{{ i }}</td>
-                    <td>過比你三觀不比想面發比望麼到發濟家飯年經產</td>
-                    <td>2020/01/01</td>
-                  </tr>
-                </tbody>
-              </v-table>
-            </v-container>
-          </div>
-        </v-card>
+          </v-tabs-window-item>
+
+          <v-tabs-window-item value="two">
+            <div class="tableGrp">
+              <tableServer />
+            </div>
+          </v-tabs-window-item>
+        </v-tabs-window>
       </v-col>
     </v-row>
   </v-container>
 </template>
 
 <script>
-import gsap from "gsap";
-
-import pieChart from "@/components/chart/pieChart.vue";
-import lineAndBarChart from "@/components/chart/lineAndBarChart.vue";
-
+import tableServer from "@/components/dataTableServer.vue";
 export default {
   data: () => ({
     functionGroupToggle: 0,
+    tab: null,
     page: 1,
     panel: 1,
     selection: 1,
-    countCards: [
-      { title: "今日訪客人數", bgColor: "#32a7fa", num: 500 },
-      { title: "待審資料", bgColor: "#3fd1b5", num: 320 },
-      { title: "今日新增資料", bgColor: "#0156a2", num: 1370 },
-      { title: "今日訪客人數", bgColor: "#1c93d0", num: 348 },
-    ],
   }),
-  methods: {
-    count(index, num = 200) {
-      let th = this.$refs.countCard[index];
-      let Numbs = { val: 0 },
-        NewVal = num;
-      gsap.to(Numbs, {
-        val: NewVal,
-        roundProps: "val",
-        duration: 2,
-        onUpdate: function () {
-          th.innerHTML = Numbs.val;
-        },
-      });
-    },
-  },
-  mounted() {
-    this.countCards.forEach((item, index) => {
-      this.count(index, item.num);
-    });
-  },
-  components: {
-    pieChart,
-    lineAndBarChart,
-  },
+  methods: {},
+  mounted() {},
+  components: { tableServer },
 };
 </script>
-<style scoped>
-.pieCard {
-  height: 90%;
-}
-</style>
+<style scoped></style>

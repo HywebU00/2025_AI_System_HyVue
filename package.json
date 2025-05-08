@@ -9,19 +9,20 @@
     "lint": "eslint . --fix --ignore-path .gitignore"
   },
   "dependencies": {
+    "@mdi/font": "^7.4.47",
     "@vuepic/vue-datepicker": "^7.4.1",
     "@vueup/vue-quill": "^1.2.0",
     "apexcharts": "^4.0.0",
     "core-js": "^3.8.3",
     "echarts": "^5.4.3",
     "gsap": "^3.12.2",
+    "material-symbols": "^0.31.2",
     "roboto-fontface": "*",
     "vue": "^3.2.13",
     "vue-router": "^4.0.0",
     "vue3-apexcharts": "^1.4.4",
     "vuetify": "^3.0.0",
-    "webfontloader": "^1.0.0",
-    "@mdi/font": "^7.4.47"
+    "webfontloader": "^1.0.0"
   },
   "devDependencies": {
     "@mdi/js": "^7.4.47",

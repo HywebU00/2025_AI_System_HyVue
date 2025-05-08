@@ -14,19 +14,24 @@
 @use '@/sass/customizingComponents/card.scss';
 @use '@/sass/customizingComponents/pagination.scss';
 @use '@/sass/customizingComponents/navigation.scss';
+@use '@/sass/customizingComponents/button.scss';
 
 @use '@/sass/customizingComponents/treeBlock.scss';
 @use '@/sass/customizingComponents/accordion.scss';
 @use '@/sass/customizingComponents/datePicker.scss';
 
+@use '@/sass/customizingComponents/teb.scss';
 //material-icons-round
 // @use '@/sass/vendor/material-icons-round.scss';
 
 //layout
 @use '@/sass/layout/layout.scss';
+@use '@/sass/layout/login.scss';
 @use '@/sass/layout/customize_color.scss';
 @use '@/sass/layout/customize_font.scss';
 
 //vuetifyCSS
 @use '@/sass/components/VListItem.scss';
 @use '@/sass/components/VTable.scss';
+@use '@/sass/components/VMain.scss';
+@use '@/sass/components/VInput.scss';

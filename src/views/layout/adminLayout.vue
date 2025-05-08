@@ -9,13 +9,6 @@
       :width="300"
       @click="rail = false"
     >
-      <!-- <v-app-bar-nav-icon
-        :icon="rail ? 'mdi-chevron-right' : 'mdi-chevron-left'"
-        width="64"
-        height="64"
-        class="rounded-0 navBtn d-md-none ml-auto"
-        @click.stop="rail = !rail"
-      ></v-app-bar-nav-icon> -->
       <!-- 平台logo start -->
       <div class="logoImg d-none d-md-flex mt-5 align-center justify-center">
         <v-img

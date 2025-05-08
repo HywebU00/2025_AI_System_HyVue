@@ -1,10 +1,29 @@
+@use '@/sass/common/mixins/text.scss' as *;
+@use '@/sass/common/mixins/mediaquery.scss' as *;
+@use '@/sass/variables.scss' as *;
+
 .v-list-item--density-default.v-list-item--one-line {
   min-height: unset;
 }
+.v-list-group {
+  .v-list-item {
+    border-radius: 0.25rem;
+  }
+}
+
 .v-list-item__prepend > .v-badge .v-icon,
 .v-list-item__prepend > .v-icon {
   margin-inline-end: 0.25rem;
 }
 .v-list-item--nav .v-list-item-title {
   line-height: 1.5em;
+}
+.v-overlay__content {
+  .v-list-item {
+    cursor: pointer;
+    transition: all 0.5s;
+    &:hover {
+      background: $primary50;
+    }
+  }
 }

@@ -6,6 +6,7 @@ import { createApp } from "vue";
 // Plugins
 import { registerPlugins } from "@/plugins";
 import "@/sass/settings.scss";
+import "material-symbols";
 //chart
 import VueApexCharts from "vue3-apexcharts";
 

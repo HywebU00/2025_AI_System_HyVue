@@ -9,6 +9,7 @@
         single-line
         variant="solo"
         hide-details="auto"
+        menu-icon="mdi-chevron-down"
         :items="['選項ㄧ', '選項二', '選項三']"
       ></v-select>
     </div>
@@ -20,7 +21,7 @@
       location="bottom"
     >
       <template v-slot:activator="{ props }">
-        <v-btn v-bind="props" class="btn elevation-2">
+        <v-btn v-bind="props" class="btn elevation-2 bellBtn">
           <v-badge dot>
             <v-icon icon="mdi-bell-outline" size="large"></v-icon>
           </v-badge>
@@ -30,12 +31,10 @@
         <ul class="">
           <li v-for="item in 5" :key="item">
             <a href="#">
-              <v-icon color="light" icon="mdi-circle-medium"></v-icon>
               <div>
-                <span class="title">本月薪資入帳，立即查看</span>
                 <span class="time">111/06/30</span>
+                <span class="title">本月薪資入帳，立即查看</span>
               </div>
-              <v-icon icon="mdi-chevron-right"></v-icon>
             </a>
           </li>
         </ul>

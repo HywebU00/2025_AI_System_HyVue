@@ -1,31 +1,37 @@
 <template>
-  <div style="background: #eee" class="h-screen w-100 d-flex justify-center">
-    <div ref="loginCard" class="mt-16">
-      <v-sheet elevation="5" rounded="lg" width="320px" class="pa-4 r mx-auto">
+  <div class="loginPage">
+    <div>
+      <div class="loginCard">
         <v-img
-          :width="50"
           aspect-ratio="1/1"
-          class="mr-auto ml-auto mt-5"
+          class="logo"
           cover
-          src="~@/assets/images/logo.png"
+          src="~@/assets/images/login_logo.svg"
         ></v-img>
-        <h2 class="my-3 mb-5 text-center">網站管理平台</h2>
-        <v-divider class="pt-2 mb-2"></v-divider>
-        <v-form fast-fail>
+        <h2 class="loginTitle">AI諮詢服務系統</h2>
+        <v-form>
+          <label class="title" for=""> 帳號 </label>
           <v-text-field
-            density="compact"
-            messages="說明文字"
             label="請輸入帳號"
+            density="compact"
+            single-line
+            variant="outlined"
+            hide-details="auto"
           ></v-text-field>
+          <label class="title" for=""> 帳號 </label>
           <v-text-field
             label="請輸入密碼"
-            :append-inner-icon="visible ? 'mdi-eye-off' : 'mdi-eye'"
+            :append-inner-icon="
+              visible ? 'mdi-eye-off-outline' : 'mdi-eye-outline'
+            "
             :type="visible ? 'text' : 'password'"
             density="compact"
-            :messages="['說明文字']"
+            variant="outlined"
+            single-line
+            hide-details="auto"
             @click:append-inner="visible = !visible"
           ></v-text-field>
-          <div class="d-flex align-center mb-8">
+          <div class="checkGrp">
             <v-checkbox
               v-model="checkbox"
               :rules="[(v) => !!v || '']"
@@ -33,21 +39,21 @@
               required
               hide-details=""
             ></v-checkbox>
-            <v-btn variant="text">忘記密碼</v-btn>
+            <a class="forgotlink">忘記密碼</a>
           </div>
-          <v-btn type="submit" block color="primary" class="mt-2">登入</v-btn>
+          <v-btn type="submit" block variant="flat" class="loginBtn"
+            >登入</v-btn
+          >
         </v-form>
-        <ul class="text-caption text-center mt-8">
-          <li>如有登入問題，請聯繫資訊科 王大明 分機123</li>
-          <li>電子郵件：abc@gmail.com</li>
+        <ul class="text-center infolist">
+          <li>Copyright © 2025 凌網科技股份有限公司</li>
         </ul>
-      </v-sheet>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import gsap from "gsap";
 export default {
   data: () => ({
     visible: false,

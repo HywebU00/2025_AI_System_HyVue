@@ -1,0 +1,108 @@
+@use '@/sass/common/mixins/text.scss' as *;
+@use '@/sass/common/mixins/mediaquery.scss' as *;
+@use '@/sass/variables.scss' as *;
+
+.loginPage {
+  height: 100vh;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  background: url('../../assets/images/login_bg.png') center;
+  background-size: cover;
+}
+.loginCard {
+  width: rem(554);
+  padding: rem(69) rem(105);
+  background: #fff;
+  border-radius: 0.5rem;
+  .logo {
+    margin: 0 auto;
+    margin-bottom: rem(20);
+    width: rem(190);
+  }
+  .loginTitle {
+    font-weight: 700;
+    color: $primary30;
+    text-align: center;
+    font-size: rem(32);
+    line-height: 2rem;
+    margin-top: rem(12);
+    margin-bottom: rem(28);
+  }
+  .v-form {
+    label.title {
+      font-weight: 700;
+      margin-bottom: rem(8);
+      color: $neutral10;
+      display: block;
+      + .v-input {
+        margin-bottom: 1rem;
+      }
+    }
+    .v-selection-control {
+      margin-left: -0.5rem;
+    }
+    .checkGrp {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      button {
+        color: $neutral10;
+      }
+    }
+    .v-input {
+      border: $neutral60;
+      &.v-input--density-compact {
+        --v-input-control-height: 56px;
+      }
+      .v-field__outline {
+        --v-field-border-color: #42a5f5;
+        --v-field-border-opacity: 0.15;
+        --v-field-border-width: 2px;
+        border-radius: 0.5rem;
+      }
+    }
+  }
+  .loginBtn {
+    padding: rem(12) rem(16);
+    line-height: rem(32);
+    font-weight: 700;
+    font-size: rem(18);
+    height: unset !important;
+    border-radius: 0.5rem;
+    margin: rem(20) 0 rem(28) 0;
+  }
+  .forgotlink {
+    cursor: pointer;
+    font-size: 1rem;
+    color: $neutral10;
+    font-weight: bold;
+  }
+  .infolist {
+    color: $neutral40;
+  }
+  @include screen('tablet') {
+    width: unset;
+    max-width: rem(554);
+    // font-size: rem(12);
+
+    padding: rem(35) rem(56);
+    .logo {
+      width: rem(130);
+      margin-bottom: 0.5rem;
+    }
+    .loginTitle {
+      font-size: rem(24);
+      margin-top: rem(10);
+      margin-bottom: rem(20);
+    }
+    .v-form {
+      .v-input {
+        &.v-input--density-compact {
+          --v-input-control-height: 40px;
+        }
+      }
+    }
+  }
+}

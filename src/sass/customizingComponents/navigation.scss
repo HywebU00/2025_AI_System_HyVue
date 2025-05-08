@@ -4,6 +4,7 @@
 
 .navigation {
   margin-right: rem(30);
+
   margin-left: auto;
   align-items: center;
   display: flex;
@@ -19,6 +20,25 @@
     min-width: unset;
     margin-right: 1rem;
     border-radius: 0.25rem !important;
+    &[aria-expanded='true'] {
+      border-radius: 0.5rem !important;
+      > .v-btn__overlay {
+        opacity: 1 !important;
+        background: $primary30;
+      }
+      .v-badge__badge {
+        border: $primary30 solid 2px;
+        background: #fff;
+      }
+      i {
+        color: #fff;
+      }
+    }
+    .v-badge__badge {
+      border: #fff solid 2px;
+      bottom: calc(100% - 10px) !important;
+      left: calc(100% - 10px) !important;
+    }
   }
   .knowledgeSelect {
     margin-right: 1rem;
@@ -46,7 +66,8 @@
     }
   }
 }
-
+.bellBtn {
+}
 .infoBtnContainer {
   .v-input__control {
     padding: 0.5rem;
@@ -84,15 +105,20 @@
       padding-right: rem(8);
     }
     .title {
-      margin-left: 1rem;
+      // margin-left: 1rem;
       position: relative;
       display: block;
       font-weight: 500;
-      @include textLine(2, 1.25em);
+      @include textLine(2, 1.5em);
     }
     .time {
-      margin-left: 1.25rem;
+      // margin-left: 1rem;
+      font-weight: 700;
+      color: $neutral30;
       font-size: 1em;
+      line-height: rem(28);
+      display: block;
+      margin-bottom: rem(4);
     }
     .arrow_icon {
       position: absolute;

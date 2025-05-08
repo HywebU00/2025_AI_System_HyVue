@@ -237,7 +237,7 @@
             <v-container>
               <v-row class="formGrp">
                 <v-col class="">
-                  <label class="text-primary" for="">複選核取表單</label>
+                  <label class="text-primary" for="">複選核取表單1</label>
                   <v-row>
                     <v-col v-for="i in 3" :key="i" class="py-0">
                       <v-checkbox
@@ -251,7 +251,7 @@
               </v-row>
               <v-row class="formGrp">
                 <v-col class="">
-                  <label class="text-primary" for="">複選核取表單</label>
+                  <label class="text-primary" for="">複選核取表單2</label>
                   <v-row class="d-block">
                     <v-col v-for="i in 3" :key="i" class="py-0">
                       <v-checkbox
