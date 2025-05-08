@@ -2,7 +2,7 @@
 <template>
   <div class="navigation">
     <!-- select start -->
-    <div class="knowledgeSelect">
+    <div class="knowledgeSelect" v-if="showKnowledgeSelect">
       <v-select
         label="知識庫名稱"
         density="compact"
@@ -42,20 +42,9 @@
     </v-menu>
     <!-- 訊息通知按鈕 end -->
     <!-- login鈕 start -->
-    <v-menu
-      v-model="loginMenu"
-      :close-on-content-click="false"
-      location="bottom"
-    >
-      <template v-slot:activator="{ props }">
-        <v-btn v-bind="props" class="btn elevation-2">
-          <v-icon icon="mdi-logout" size="large"></v-icon>
-        </v-btn>
-      </template>
-      <v-card min-width="100">
-        <p>123</p>
-      </v-card>
-    </v-menu>
+    <v-btn class="btn elevation-2">
+      <v-icon icon="mdi-logout" size="large"></v-icon>
+    </v-btn>
     <!--login按鈕 end -->
     <div class="loginName">
       <span>林曉華</span>
@@ -66,6 +55,13 @@
 
 <script>
 export default {
+  name: "functionNavigation",
+  props: {
+    showKnowledgeSelect: {
+      type: Boolean,
+      default: true,
+    },
+  },
   data: () => ({
     loginMenu: false,
     infoMenu: false,

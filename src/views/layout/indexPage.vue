@@ -3,12 +3,12 @@
     <div class="index_container">
       <div class="index_title">
         <h3 class="text-center">
-          <img style="width: 36px" src="~@/assets/images/logo.png" alt="" /><img
-            style="margin-left: 1rem"
+          <img
+            style="width: 60px; margin-right: 1rem"
             src="~@/assets/images/logo.png"
             alt=""
           />
-          <p class="text-h5">AI諮詢服務系統</p>
+          <p class="text-h5 font-weight-bold">AI諮詢服務系統</p>
         </h3>
         <v-btn color="secondary"><a href="">檔案下載</a></v-btn>
       </div>
@@ -17,12 +17,12 @@
         <div style="width: 75%" class="mt-1">
           <v-card>
             <v-table>
-              <thead class="bg-tHeader">
+              <thead class="bg-primary">
                 <tr>
-                  <th class="text-left">編號</th>
-                  <th class="text-left">頁面名稱</th>
-                  <th class="text-left">連結</th>
-                  <th class="text-left width">備註</th>
+                  <th class="text-left font-weight-bold">編號</th>
+                  <th class="text-left font-weight-bold">頁面名稱</th>
+                  <th class="text-left font-weight-bold">連結</th>
+                  <th class="text-left font-weight-bold width">備註</th>
                 </tr>
               </thead>
               <tbody>
@@ -32,7 +32,10 @@
                   <td>
                     <a :href="item.link">{{ item.link }}</a>
                   </td>
-                  <td>{{ item.note }}</td>
+                  <!-- <td>{{ item.note }}</td> -->
+                  <td>
+                    <p v-html="item.note"></p>
+                  </td>
                 </tr>
               </tbody>
             </v-table>
@@ -50,18 +53,28 @@ export default {
       desserts: [
         {
           name: "登入頁",
-          link: "https://hywebu00.github.io/2025_AI_System_HyVue/login",
+          link: "https://hywebu00.github.io/2025_AI_System_HyVue/#/login",
           note: "",
         },
         {
-          name: "首頁",
+          name: "2.1 知識庫列表_空值",
+          link: "https://hywebu00.github.io/2025_AI_System_HyVue/list/empty",
+          note: "📌 點擊 [開始新增] 按鈕，有視窗樣式",
+        },
+        {
+          name: "2.2 知識庫列表_預設",
+          link: "https://hywebu00.github.io/2025_AI_System_HyVue/list/card",
+          note: "",
+        },
+        {
+          name: "4.1 問答集空值",
+          link: "https://hywebu00.github.io/2025_AI_System_HyVue/empty",
+          note: "",
+        },
+        {
+          name: "4.1 問答集列表",
           link: "https://hywebu00.github.io/2025_AI_System_HyVue/",
-          note: "",
-        },
-        {
-          name: "新增頁",
-          link: "",
-          note: "",
+          note: " 📌 點擊 [編輯] 按鈕，側邊有區塊展開 <br> 📌 點擊【問題卡片元件】 可展開 / 切換編輯區塊",
         },
         {
           name: "fancyBox頁",

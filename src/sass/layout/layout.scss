@@ -40,12 +40,19 @@ header {
   }
 
   .title {
-    margin: 1rem 0 1rem 0;
+    margin: 1rem 0 1rem 0.5rem;
     display: flex;
-    h1 {
+    + .text {
+      color: $neutral10;
+      margin-top: 1.5rem;
+      margin-left: 0.5rem;
+      font-size: 1rem;
+    }
+    .h1 {
       padding-left: rem(24);
       position: relative;
       line-height: 2rem;
+      font-size: 2rem;
       &::after {
         position: absolute;
         content: '';
@@ -70,9 +77,12 @@ header {
 .navigationBar {
   &.v-app-bar.v-toolbar {
     background: $neutral80;
-    box-shadow: none !important;
+
     .v-toolbar__content {
       height: rem(74) !important;
+    }
+    &.hasShadow {
+      box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
     }
   }
 }

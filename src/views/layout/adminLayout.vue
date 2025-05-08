@@ -133,13 +133,7 @@
       <!--  navigation-drawer end-->
     </v-navigation-drawer>
 
-    <v-app-bar class="navigationBar">
-      <!-- <v-app-bar-nav-icon
-        :icon="rail ? 'mdi-chevron-right' : 'mdi-chevron-left'"
-        width="64"
-        class="rounded-0 h-100 ml-0"
-        @click.stop="rail = !rail"
-      ></v-app-bar-nav-icon> -->
+    <v-app-bar class="navigationBar elevation-0">
       <Navigation />
     </v-app-bar>
     <v-main>

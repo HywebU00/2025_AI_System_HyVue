@@ -18,7 +18,7 @@
             variant="outlined"
             hide-details="auto"
           ></v-text-field>
-          <label class="title" for=""> 帳號 </label>
+          <label class="title" for=""> 密碼 </label>
           <v-text-field
             label="請輸入密碼"
             :append-inner-icon="

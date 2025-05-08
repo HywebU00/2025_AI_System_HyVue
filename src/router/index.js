@@ -7,6 +7,10 @@ const routes = [
     component: () => import("@/views/layout/adminLayout.vue"),
     children: [
       {
+        path: "empty",
+        component: () => import("@/views/admin/emptyComponent.vue"),
+      },
+      {
         path: "system",
         component: () => import("@/views/admin/systemComponent.vue"),
       },
@@ -51,6 +55,20 @@ const routes = [
   {
     path: "/index",
     component: () => import("@/views/layout/indexPage.vue"),
+  },
+  {
+    path: "/list",
+    component: () => import("@/views/layout/knowledgePage.vue"),
+    children: [
+      {
+        path: "empty",
+        component: () => import("@/views/knowledge/emptyComponent.vue"),
+      },
+      {
+        path: "card",
+        component: () => import("@/views/knowledge/cardComponent.vue"),
+      },
+    ],
   },
   {
     path: "/login",

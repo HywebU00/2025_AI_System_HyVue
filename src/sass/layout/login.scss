@@ -3,13 +3,16 @@
 @use '@/sass/variables.scss' as *;
 
 .loginPage {
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   width: 100%;
   justify-content: center;
   align-items: center;
   background: url('../../assets/images/login_bg.png') center;
   background-size: cover;
+  > div {
+    margin: 1rem 0;
+  }
 }
 .loginCard {
   width: rem(554);
