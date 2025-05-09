@@ -10,6 +10,7 @@
     color: $primary30;
     text-transform: none;
     background-color: $primary50;
+    height: rem(48) !important;
     &.v-tab--selected {
       background-color: $primary30;
       color: $neutral100 !important;

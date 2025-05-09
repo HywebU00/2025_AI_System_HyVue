@@ -3,6 +3,7 @@
 @use '@/sass/variables.scss' as *;
 
 .v-btn {
+  border-radius: 0.5rem !important;
   &.bg_gradient {
     background: $gradients;
   }

@@ -1,47 +1,7 @@
 <template>
   <v-container class="container">
     <div class="title">
-      <h1 class="h1">系統首頁儀表板</h1>
-      <v-btn variant="flat" class="bg_gradient_V">
-        <span class="icon material-symbols-outlined"> wand_stars </span>
-        生成更多問答</v-btn
-      >
-    </div>
-    <div class="filterGrp">
-      <div class="">
-        <!-- select start -->
-        <div class="searchSelect">
-          <label for="">主分類</label>
-          <v-select
-            label="所有分類"
-            density="compact"
-            single-line
-            variant="outlined"
-            hide-details="auto"
-            clear-icon
-            menu-icon="mdi-chevron-down"
-            :items="['選項ㄧ', '選項二', '選項三']"
-          ></v-select>
-          <label for="">子分類</label>
-          <v-select
-            label="所有分類"
-            density="compact"
-            single-line
-            variant="outlined"
-            menu-icon="mdi-chevron-down"
-            hide-details="auto"
-            :items="['選項ㄧ', '選項二', '選項三']"
-          ></v-select>
-          <v-btn variant="flat">重設</v-btn>
-        </div>
-        <!-- select end -->
-      </div>
-      <div class="">
-        <v-btn variant="flat" class="bg_gradient_V">
-          <span class="icon material-symbols-outlined"> wand_stars </span>
-          建立問答</v-btn
-        >
-      </div>
+      <h1 class="h1">問答集</h1>
     </div>
     <div class="filterGrp">
       <div class="">
@@ -51,84 +11,91 @@
         </v-tabs>
       </div>
       <div class="">
+        <v-btn variant="text" class="">
+          <img
+            height="14"
+            class="mr-1"
+            src="~@/assets/images/icon_Vector.svg"
+            alt=""
+          />
+          類似問題</v-btn
+        >
+        <v-btn variant="text" class="mr-3">
+          <span class="material-symbols-outlined"> category </span>
+          類別設定</v-btn
+        >
+        <v-btn variant="flat" class="mr-3">
+          <span class="material-symbols-outlined"> bubble_chart </span>
+          對話測試</v-btn
+        >
         <v-btn variant="flat" class="bg_gradient_V">
           <span class="icon material-symbols-outlined"> wand_stars </span>
           建立問答</v-btn
         >
+        <!-- <v-menu
+          v-model="popBox"
+          :close-on-content-click="false"
+          location="bottom"
+        >
+          <template v-slot:activator="{ props }">
+            <v-btn v-bind="props" class="bg-primary">
+              <span class="icon material-symbols-outlined"> add </span>
+              新增文件</v-btn
+            >
+          </template>
+          <v-card>
+            <v-row class="formGrp d-block">
+              <v-col cols="12">
+                <span>上傳文件</span>
+              </v-col>
+              <v-col cols="12">
+                <span>爬取網址</span>
+              </v-col>
+              <v-col cols="12">
+                <span>上傳EXCEL檔案</span>
+              </v-col>
+            </v-row>
+          </v-card>
+        </v-menu> -->
       </div>
     </div>
     <v-row>
       <v-col>
         <v-tabs-window v-model="tab">
           <v-tabs-window-item value="one">
-            <div class="cardGrp">
-              <template v-for="i in 10" :key="i">
-                <!-- 卡片樣式start -->
-                <v-card class="card" variant="flat">
-                  <v-card-item>
-                    <div>
-                      <div class="cardTitle">
-                        知識庫名稱知識庫名稱知識庫名稱知識庫名稱知識庫名稱知識庫名稱
-                      </div>
-                      <div class="text">最後更新：2025/12/21</div>
-                    </div>
-                  </v-card-item>
-                  <v-card-actions>
-                    <div class="tag">啟用中</div>
-                    <div class="btnGrp">
-                      <v-btn color="primary">
-                        更多
-                        <v-menu activator="parent">
-                          <v-list>
-                            <v-list-item>
-                              <v-list-item-title>重新命名</v-list-item-title>
-                            </v-list-item>
-                            <v-list-item>
-                              <v-list-item-title>開啟前台</v-list-item-title>
-                            </v-list-item>
-                          </v-list>
-                        </v-menu>
-                      </v-btn>
-                      <v-btn color="danger"> 移除 </v-btn>
-                    </div>
-                  </v-card-actions>
-                </v-card>
-                <v-card class="card" variant="flat">
-                  <v-card-item>
-                    <div>
-                      <div class="cardTitle">
-                        知識庫名稱知識庫名稱知識庫名稱知識庫名稱知識庫名稱知識庫名稱
-                      </div>
-                      <div class="text">最後更新：2025/12/21</div>
-                    </div>
-                  </v-card-item>
-                  <v-card-actions>
-                    <div class="tag dangerTag">停用中</div>
-                    <div class="btnGrp">
-                      <v-btn color="primary">
-                        更多
-                        <v-menu activator="parent">
-                          <v-list>
-                            <v-list-item>
-                              <v-list-item-title>重新命名</v-list-item-title>
-                            </v-list-item>
-                            <v-list-item>
-                              <v-list-item-title>開啟前台</v-list-item-title>
-                            </v-list-item>
-                          </v-list>
-                        </v-menu>
-                      </v-btn>
-                      <v-btn color="danger"> 移除 </v-btn>
-                    </div>
-                  </v-card-actions>
-                </v-card>
-                <!-- 卡片樣式end -->
-              </template>
+            <div class="containerCard">
+              <div class="cardTitle">
+                <div class="">
+                  <h2>啟用中問答(30)</h2>
+                  <v-select
+                    label="知識庫名稱"
+                    density="compact"
+                    single-line
+                    variant="solo"
+                    hide-details="auto"
+                    menu-icon="mdi-chevron-down"
+                    :items="['選項ㄧ', '選項二', '選項三']"
+                  ></v-select>
+                </div>
+                <div class=""></div>
+              </div>
+              <div class="cardTitle">
+                <div class="">
+                  <h2>已選擇 : 3</h2>
+                  <v-btn variant="text"> 取消選取</v-btn>
+                </div>
+                <div class="">
+                  <v-btn variant="flat">刪除</v-btn>
+                  <v-btn variant="flat">停用</v-btn>
+                  <v-btn variant="flat"> 更新回答</v-btn>
+                  <v-btn variant="flat"> 匯出</v-btn>
+                </div>
+              </div>
+              <tableServer />
             </div>
           </v-tabs-window-item>
-
           <v-tabs-window-item value="two">
-            <div class="tableGrp">
+            <div class="containerCard">
               <tableServer />
             </div>
           </v-tabs-window-item>
@@ -146,6 +113,7 @@ export default {
     tab: null,
     page: 1,
     panel: 1,
+    popBox: false,
     selection: 1,
   }),
   methods: {},

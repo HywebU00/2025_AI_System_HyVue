@@ -1,7 +1,7 @@
 <template>
   <v-container class="container">
     <div class="title">
-      <h2 class="h1">知識庫列表</h2 class="h1">
+      <h2 class="h1">知識庫列表</h2>
     </div>
     <div class="text">查看、管理所有問答集</div>
 

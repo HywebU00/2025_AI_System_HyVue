@@ -67,6 +67,9 @@
             @click="pushLink('component')"
           >
           </v-list-item>
+          <v-list-item title="" value="From" @click="pushLink('from')">
+            <v-list-item-title> <div class="">From1</div></v-list-item-title>
+          </v-list-item>
           <v-list-item title="From" value="From" @click="pushLink('from')">
           </v-list-item>
           <v-list-item title="Table" value="Table" @click="pushLink('table')">

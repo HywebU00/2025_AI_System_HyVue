@@ -5,11 +5,13 @@ table {
   font-size: 1rem;
   thead {
     white-space: nowrap;
+
     .v-data-table__td {
       background: $secondary60;
       color: #fff;
       font-size: 1rem;
       font-weight: 700 !important;
+      height: rem(48) !important;
     }
     .icon {
       margin-left: rem(8);

@@ -14,7 +14,6 @@
     <template v-slot:header.status="{ item }">
       <div class="d-flex">
         <span> 子分類 </span>
-
         <v-menu
           v-model="tableFiller"
           :close-on-content-click="false"
@@ -48,9 +47,15 @@
                     color="primary"
                     variant="outlined"
                     class="mr-1"
+                    @click="tableFiller = false"
                     >重設</v-btn
                   >
-                  <v-btn elevation="0" color="primary">套用篩選</v-btn>
+                  <v-btn
+                    elevation="0"
+                    color="primary"
+                    @click="tableFiller = false"
+                    >套用篩選</v-btn
+                  >
                 </div>
               </v-col>
             </v-row>

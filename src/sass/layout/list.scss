@@ -24,5 +24,9 @@
     .title {
       margin-top: 2rem;
     }
+    .emptyCard {
+      background: #fff;
+      height: calc(100vh - 260px);
+    }
   }
 }
