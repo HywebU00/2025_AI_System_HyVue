@@ -62,17 +62,17 @@ export default {
         },
         {
           name: "2.1 知識庫列表_空值",
-          link: "https://hywebu00.github.io/2025_AI_System_HyVue/list/empty",
+          link: "https://hywebu00.github.io/2025_AI_System_HyVue/#/list/empty",
           note: "📌 點擊 【開始新增】 按鈕，有視窗樣式",
         },
         {
           name: "2.2 知識庫列表_預設",
-          link: "https://hywebu00.github.io/2025_AI_System_HyVue/list/card",
+          link: "https://hywebu00.github.io/2025_AI_System_HyVue/#/list/card",
           note: "",
         },
         {
           name: "4.1 問答集空值",
-          link: "https://hywebu00.github.io/2025_AI_System_HyVue/empty",
+          link: "https://hywebu00.github.io/2025_AI_System_HyVue/#/empty",
           note: "",
         },
         {
@@ -82,7 +82,7 @@ export default {
         },
         {
           name: "4.1 生成結果",
-          link: "https://hywebu00.github.io/2025_AI_System_HyVue/result",
+          link: "https://hywebu00.github.io/2025_AI_System_HyVue/#/result",
           note: " 📌 點擊【類別設定】按鈕，側邊有區塊展開，可以點擊展開【主分類】選項<br> 📌 點擊【問題卡片元件】 可展開 / 切換編輯區塊",
         },
         {
