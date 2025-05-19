@@ -23,7 +23,6 @@ export default {
   }),
   methods: {
     handleScroll() {
-      console.log("1");
       this.isElevated = window.scrollY > 0;
     },
   },

@@ -10,7 +10,8 @@
           <div class="title">
             <div class="">
               <span class="material-symbols-outlined icon"> comment </span>
-              <span class="text">問題</span>
+              <span v-if="textArea" class="text">問題</span>
+              <span v-else class="text">回答</span>
             </div>
             <div class="">
               <v-btn
@@ -46,12 +47,16 @@
         </p>
         <div :class="['textArea', { show: editStatus }]">
           <v-textarea
+            v-if="textArea"
             single-line
             label=""
             variant="outlined"
             hide-details="auto"
             :value="this.text"
           ></v-textarea>
+          <div v-if="textEditor" class="editorCard">
+            <QuillEditor />
+          </div>
           <div class="btnGrp">
             <v-btn variant="text" @click="editStatus = false">取消</v-btn>
             <v-btn class="elevation-0">儲存</v-btn>
@@ -63,7 +68,21 @@
 </template>
 
 <script>
+//載入 文字編輯器
+import { QuillEditor } from "@vueup/vue-quill";
+import "@vueup/vue-quill/dist/vue-quill.snow.css";
 export default {
+  name: "panelCard",
+  props: {
+    textArea: {
+      type: Boolean,
+      default: false,
+    },
+    textEditor: {
+      type: Boolean,
+      default: false,
+    },
+  },
   data: () => ({
     panel: null,
     text: " 這是一段很長很長的文字，希望收合時仍顯示一行，展開時顯示全部內容。內容必須是連續的不可斷行。 這是一段很長很長的文字，希望收合時仍顯示一行。",
@@ -81,6 +100,9 @@ export default {
         this.panel = 0;
       }
     },
+  },
+  components: {
+    QuillEditor,
   },
 };
 </script>

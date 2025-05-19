@@ -90,8 +90,12 @@
 }
 .expandCard {
   &.v-card {
+    .v-form {
+      display: contents;
+    }
+
     position: fixed;
-    z-index: 999999 !important;
+    z-index: 2001 !important;
     top: 0;
     height: 100vh;
     width: 50vw;
@@ -101,9 +105,35 @@
     display: flex;
     flex-direction: column;
     .v-card-title {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      .titleContent {
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: space-between;
+        + .btnGrp {
+          display: flex;
+          justify-content: flex-end;
+          align-items: center;
+          .text {
+            margin-right: rem(8);
+          }
+          .v-btn {
+            margin: 0 0.25rem;
+            &:last-child {
+              margin-right: 0;
+            }
+          }
+          + .v-tabs {
+            margin-top: 1rem;
+            .v-btn__content {
+              font-size: 1rem;
+            }
+          }
+        }
+      }
+      // display: flex;
+      // align-items: center;
+      // justify-content: space-between;
       .btn_icon {
         max-width: rem(40);
         min-width: unset;
@@ -111,6 +141,8 @@
     }
     .v-card-text {
       flex-grow: 1;
+      overflow-y: scroll;
+
       .v-btn {
         &.refresh {
           display: flex;
@@ -118,27 +150,58 @@
           margin-right: 0;
         }
       }
-      > .btnGrp {
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-        .text {
-          margin-right: rem(8);
+      .formContent {
+        padding: 1rem 0.5rem;
+        label {
+          display: flex;
+          align-items: center;
+          font-size: 1rem;
+          .icon {
+            margin-left: 0.25rem;
+            color: $primary30;
+          }
         }
-        .v-btn {
-          margin: 0 0.25rem;
-          &:last-child {
-            margin-right: 0;
+        .formGrp {
+          .v-input__control {
+            .v-selection-control {
+              .v-label {
+                font-weight: 400;
+              }
+            }
           }
         }
       }
     }
     .tabContent {
-      margin-top: 1rem;
+      .tagInfo {
+        margin-bottom: 1rem;
+        .link {
+          display: flex;
+          align-items: center;
+          color: $primary30;
+          font-size: 1rem;
+        }
+        .icon {
+          color: $neutral20;
+          + span {
+            text-decoration: underline;
+            font-weight: 700;
+          }
+        }
+        .tag {
+          background-color: $neutral60;
+          display: inline-block;
+          border-radius: 0.25rem;
+          padding: 0.5rem 1rem;
+          margin-bottom: 0.5rem;
+          font-size: 1rem;
+        }
+      }
     }
     .v-card-actions {
       display: flex;
       flex-wrap: wrap;
+
       .v-btn {
         height: rem(45);
         font-weight: 700;
@@ -149,6 +212,28 @@
 .content {
   &.v-container {
     padding: 1rem 0.2rem;
+    padding-top: 0;
+  }
+}
+.cardGrp {
+  &.result {
+    .item {
+      width: 100%;
+      display: flex;
+      align-items: flex-start;
+      .v-checkbox {
+        margin-right: 1rem;
+        .v-selection-control {
+          min-height: unset;
+        }
+      }
+
+      .resultCard,
+      .answerPanelCard {
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+        border-radius: 0.5rem;
+      }
+    }
   }
 }
 .containerCard {
@@ -222,10 +307,59 @@
           }
         }
       }
+      .tableFillerBtnGrp {
+        margin-top: 0.25rem;
+      }
     }
   }
 }
-.panelCard {
+.editorCard {
+  margin-bottom: 1rem;
+  .ql-toolbar.ql-snow {
+    border-radius: 0.5rem 0.5rem 0 0;
+    border-bottom: 0px;
+  }
+  .ql-container.ql-snow {
+    border-radius: 0 0 0.5rem 0.5rem;
+    min-height: 6rem;
+  }
+  .ql-blank {
+    min-height: 6rem;
+  }
+}
+.infoCard {
+  &.v-card {
+    padding: 1rem;
+    background: $neutral80;
+    border-radius: 0.5rem;
+    p {
+      margin-bottom: 1.5rem;
+      font-size: 1rem;
+      span {
+        display: block;
+      }
+    }
+    ul {
+      + p {
+        margin-top: 1rem;
+        margin-bottom: 0;
+      }
+    }
+    li {
+      line-height: rem(28);
+      font-size: 1rem;
+    }
+  }
+}
+.v-picker {
+  &.v-sheet {
+    box-shadow: none !important;
+  }
+}
+
+.panelCard,
+.answerPanelCard,
+.resultPanelCard {
   margin-bottom: 1rem;
   .v-expansion-panel__shadow {
     display: none;
@@ -307,20 +441,116 @@
       }
       .v-textarea {
         margin: 0 0 1rem 0;
-        + .btnGrp {
-          display: flex;
-          justify-content: end;
-          .v-btn {
-            margin-right: 0.5rem;
-            &:last-child {
-              margin-right: 0;
-            }
+      }
+      .btnGrp {
+        display: flex;
+        justify-content: end;
+        .v-btn {
+          margin-right: 0.5rem;
+          &:last-child {
+            margin-right: 0;
           }
         }
       }
     }
   }
 }
+.resultPanelCard {
+  .v-expansion-panel-title {
+    .title {
+      font-weight: 700;
+      color: $neutral10;
+      line-height: 1.25rem;
+      height: unset;
+    }
+    .titleInput {
+      margin: 0 0.5rem;
+      .v-input__control {
+        width: 100%;
+      }
+    }
+  }
+  .v-expansion-panel-text {
+    .formGrp {
+      align-items: center;
+      margin-top: 0.25rem;
+      label {
+        padding-top: 0;
+        text-align: center;
+        display: block;
+      }
+    }
+    ul {
+      margin-top: 0.5rem;
+      li {
+        color: $neutral30;
+        line-height: 1.5rem;
+        font-size: 1rem;
+      }
+    }
+  }
+}
+.answerPanelCard {
+  .title {
+    font-weight: 700;
+    color: $neutral10;
+    line-height: 1.25rem;
+  }
+  .v-expansion-panel-title {
+    .title {
+      height: unset;
+    }
+  }
+  .cardItem {
+    padding: 1rem;
+    border: 1px solid $neutral60;
+    border-radius: 0.5rem;
+    margin-bottom: 0.5rem;
+
+    .title {
+      display: flex;
+      justify-content: space-between;
+      font-weight: 700;
+      color: $neutral10;
+      line-height: 1.25rem;
+      min-height: 2rem;
+      margin-top: 0;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      font-size: 1rem;
+      .icon {
+        margin-right: 0.5rem;
+        &.v-btn {
+          min-height: unset !important;
+          padding: 0;
+          min-width: rem(40);
+          span {
+            color: $neutral10;
+          }
+        }
+        &.hide {
+          display: none;
+        }
+      }
+    }
+    .content {
+      margin-left: 0.5rem;
+      font-size: 1rem;
+      p {
+        margin-bottom: 1rem;
+      }
+    }
+    .info {
+      a {
+        color: $primary30;
+        font-weight: 700;
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
 .emptyCard {
   border-radius: 1rem;
   margin: 2rem 0.5rem 1rem 0.5rem;
@@ -574,6 +804,114 @@
     .v-card-item {
       padding: 0;
       margin: 0.5rem;
+    }
+  }
+}
+.selectTreeCard {
+  min-width: rem(260);
+  .v-row {
+    display: contents;
+  }
+  .v-treeview {
+    .v-list-item {
+      &:hover {
+        background-color: unset;
+        .v-list-item__overlay {
+          opacity: 0;
+        }
+      }
+    }
+    .v-list-item--density-default {
+      &:not(.v-list-item--nav).v-list-item--one-line {
+        padding-inline: 0.25rem;
+      }
+    }
+    .v-treeview-group {
+      .v-list-item__prepend {
+        .v-list-item-action {
+          .v-treeview-item__level {
+            width: 0.5rem;
+          }
+        }
+      }
+    }
+
+    .v-btn {
+      color: $neutral10 !important;
+    }
+  }
+
+  .btnGroup {
+    margin-bottom: 0.5rem;
+  }
+}
+.filePanelCard {
+  .v-expansion-panel__shadow {
+    box-shadow: none !important;
+  }
+  .title {
+    display: flex;
+    align-items: center;
+    color: $neutral30;
+    + .btnGrp {
+      display: flex;
+    }
+  }
+  .icon {
+    margin-right: 0.5rem;
+    color: $neutral20;
+  }
+  .v-btn {
+    min-height: unset !important;
+    height: unset !important;
+    color: $neutral10 !important;
+    &.more,
+    &.delete {
+      display: none;
+    }
+  }
+  .v-expansion-panel-title {
+    cursor: unset;
+    &.v-expansion-panel-title--active {
+      min-height: rem(48) !important;
+      max-height: rem(48) !important;
+      border-radius: 0.5rem;
+    }
+    min-height: rem(48);
+    max-height: rem(48);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    border-radius: 0.5rem;
+    &:hover {
+      .v-btn {
+        &.more,
+        &.delete {
+          display: flex;
+        }
+      }
+    }
+  }
+  .v-expansion-panel-text__wrapper {
+    padding: 1rem 0;
+  }
+  .v-expansion-panel-text {
+    .item {
+      min-height: rem(48);
+      display: flex;
+      align-items: center;
+      margin-left: 3rem;
+      justify-content: space-between;
+      border-radius: 0.5rem;
+      padding: 0.5rem;
+      margin-bottom: 0.25rem;
+      &:hover {
+        background: $neutral80;
+        .v-btn {
+          &.delete,
+          &.more {
+            display: flex;
+          }
+        }
+      }
     }
   }
 }

@@ -61,6 +61,14 @@
   justify-content: space-between;
 }
 
+.v-text-field {
+  &.tableSearch {
+    .v-field {
+      --v-input-control-height: 40px !important;
+    }
+  }
+}
+
 .v-input__details > .v-icon,
 .v-input__prepend > .v-icon,
 .v-input__append > .v-icon {

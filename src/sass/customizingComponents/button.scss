@@ -4,10 +4,27 @@
 
 .v-btn {
   border-radius: 0.5rem !important;
+  // min-height: rem(42) !important;
   &.bg_gradient {
     background: $gradients;
   }
   &.bg_gradient_V {
     background: $gradients_v;
+  }
+}
+.btnIcon {
+  &.v-btn {
+    min-width: rem(40);
+    height: rem(40);
+    padding: 0;
+  }
+}
+.btnContainer {
+  padding: rem(14) !important;
+  li {
+    a {
+      color: $neutral10;
+      line-height: 2rem;
+    }
   }
 }

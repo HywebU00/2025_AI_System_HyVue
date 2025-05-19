@@ -6,6 +6,7 @@ import "vuetify/styles";
 // Composables
 import { createVuetify } from "vuetify";
 import { aliases, mdi } from "vuetify/iconsets/mdi";
+import { VTreeview } from "vuetify/labs/VTreeview";
 // import { fa } from "vuetify/iconsets/fa4";
 
 import { md2 } from "vuetify/blueprints";
@@ -32,6 +33,7 @@ export default createVuetify({
     },
   },
   components: {
+    VTreeview,
     // VDataTableServer,
   },
   icons: {

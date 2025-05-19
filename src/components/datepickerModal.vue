@@ -2,7 +2,7 @@
   <v-menu v-model="menu" :close-on-content-click="false" location="center">
     <template v-slot:activator="{ props }">
       <v-text-field
-        variant="solo"
+        variant="outlined"
         label="日期選擇"
         v-bind="props"
         hide-details="auto"
@@ -15,11 +15,13 @@
     <v-card min-width="300">
       <v-divider></v-divider>
       <v-date-picker hide-header v-model="date"></v-date-picker>
-      <v-card-actions>
-        <v-btn variant="text" @click="menu = false"> 取消 </v-btn>
+      <v-card-actions class="d-flex justify-end">
+        <v-btn variant="text" class="elevation-0" @click="menu = false">
+          取消
+        </v-btn>
         <v-btn
-          color="primary"
-          variant="text"
+          class="bg-primary"
+          color="#fff"
           @click="
             {
               formatted(), (menu = false);

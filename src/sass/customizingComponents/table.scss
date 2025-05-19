@@ -40,6 +40,15 @@ table {
     }
   }
 }
+.tableFillerBtnGrp {
+  .v-btn {
+    &.btnIcon {
+      span {
+        color: $neutral30;
+      }
+    }
+  }
+}
 .infoBtnContainer {
   border-radius: 0.5rem !important;
   &.tableFiller {
@@ -72,5 +81,19 @@ table {
         }
       }
     }
+  }
+}
+.paginationGrp {
+  display: flex;
+  align-items: center;
+  .numInput {
+    padding: 0 0.5rem;
+    .v-field {
+      width: rem(60);
+      min-width: unset;
+    }
+  }
+  + .v-pagination {
+    margin-top: 0.5rem;
   }
 }

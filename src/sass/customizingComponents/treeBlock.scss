@@ -1,3 +1,7 @@
+@use '@/sass/common/mixins/text.scss' as *;
+@use '@/sass/common/mixins/mediaquery.scss' as *;
+@use '@/sass/variables.scss' as *;
+
 .treeviewBlock {
   ul {
     ul {
@@ -22,7 +26,7 @@
     width: 100%;
     > div {
       &:hover {
-        background: #f1eeee;
+        // background: #f1eeee;
         border-radius: 0.5rem;
       }
       padding: 0.2rem;
@@ -44,3 +48,21 @@
     }
   }
 }
+
+// .selectTreeviewBlock {
+//   @extend .treeviewBlock;
+//   .treeTitle {
+//     &:not(:has(button)) {
+//       margin-left: 1.75rem;
+//     }
+//   }
+//   .treeTitle {
+//     .v-btn {
+//       margin-left: 0;
+//     }
+//   }
+
+//   .v-checkbox .v-selection-control {
+//     min-height: rem(36);
+//   }
+// }
