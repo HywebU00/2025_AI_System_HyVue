@@ -31,7 +31,7 @@
               </thead>
               <tbody>
                 <tr v-for="(item, index) in desserts" :key="item.name">
-                  <td>{{ index + 1 }}</td>
+                  <td>{{ item.num }}</td>
                   <td>{{ item.name }}</td>
                   <td>
                     <a :href="item.link">{{ item.link }}</a>
@@ -56,32 +56,38 @@ export default {
     return {
       desserts: [
         {
+          num: "1",
           name: "登入頁",
           link: "https://hywebu00.github.io/2025_AI_System_HyVue/#/login",
           note: "",
         },
         {
-          name: "2.1 知識庫列表_空值",
+          num: "2.1",
+          name: " 知識庫列表_空值",
           link: "https://hywebu00.github.io/2025_AI_System_HyVue/#/list/empty",
           note: "📌 點擊 【開始新增】 按鈕，有視窗樣式",
         },
         {
-          name: "2.2 知識庫列表_預設",
+          num: "2.2",
+          name: "知識庫列表_預設",
           link: "https://hywebu00.github.io/2025_AI_System_HyVue/#/list/card",
           note: "",
         },
         {
-          name: "4.1 問答集空值",
+          num: "4.1 ",
+          name: "問答集空值",
           link: "https://hywebu00.github.io/2025_AI_System_HyVue/#/empty",
           note: "",
         },
         {
-          name: "4.1 問答集列表",
+          num: "4.1 ",
+          name: "問答集列表",
           link: "https://hywebu00.github.io/2025_AI_System_HyVue/",
           note: " 📌 點擊 【編輯】 按鈕，側邊有區塊展開 <br> 📌 點擊 【刪除】，【停用】，【更新】按鈕，有視窗展開 <br> 📌 點擊【問題卡片元件】 可展開 / 切換編輯區塊 <br>📌 點擊【搜尋】按鈕，則搜尋列展開 <br>📌 點擊【篩選】按鈕，則出現視窗，視窗中有樹狀元件可展開 <br> 📌 點擊【基本設定的頁籤】按鈕的自訂設定，則出現日期選取搜尋匡",
         },
         {
-          name: "4.1 生成結果",
+          num: "4.1 ",
+          name: "生成結果",
           link: "https://hywebu00.github.io/2025_AI_System_HyVue/#/result",
           note: " 📌 點擊【類別設定】按鈕，側邊有區塊展開，可以點擊展開【主分類】選項<br> 📌 點擊【問題卡片元件】 可展開 / 切換編輯區塊",
         },
@@ -109,7 +115,7 @@ export default {
 <style lang="scss" scope>
 .index_bg {
   background: #e9ecef;
-  height: 100vh;
+  min-height: 100vh;
 }
 .index_container {
   padding-top: 5rem;

@@ -76,7 +76,7 @@ const routes = [
   },
   {
     path: "/result",
-    component: () => import("@/views/knowledge/resultComponent.vue"),
+    component: () => import("@/views/layout/resultComponent.vue"),
   },
 ];
 
