@@ -4,15 +4,17 @@
       :class="['navigationBar', isElevated ? 'hasShadow' : 'elevation-0']"
     >
       <div class="px-3 ml-auto">
-        <v-btn class="mr-3" color="primary" variant="outlined">取消</v-btn>
-        <v-btn class="bg-primary">確認更新（已選擇：3）</v-btn>
+        <v-btn class="mr-3 default_btn" color="primary" variant="outlined"
+          >取消</v-btn
+        >
+        <v-btn class="bg-primary default_btn">確認更新（已選擇：3）</v-btn>
       </div>
     </v-app-bar>
     <v-main>
       <v-container class="container">
         <div class="title">
           <h1 class="h1">生成結果</h1>
-          <v-btn variant="flat" class="bg_gradient_V">
+          <v-btn variant="flat" class="bg_gradient_V default_btn">
             <span class="icon material-symbols-outlined"> wand_stars </span>
             建立問答</v-btn
           >
@@ -41,11 +43,11 @@
               hide-details="auto"
             ></v-text-field>
             <div class="my-1 ml-auto grp">
-              <v-btn class="mr-2">搜尋</v-btn>
-              <v-btn class="mr-3">重設</v-btn>
+              <v-btn class="mr-2 default_btn">搜尋</v-btn>
+              <v-btn class="mr-3 default_btn">重設</v-btn>
               <v-btn
                 variant="outlined"
-                class="bg-white"
+                class="bg-white default_btn"
                 @click="(overlay = !overlay), (expandCard = !expandCard)"
               >
                 <span class="material-symbols-outlined"> category </span>

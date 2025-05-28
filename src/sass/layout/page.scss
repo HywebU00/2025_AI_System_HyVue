@@ -2,7 +2,8 @@
 @use '@/sass/common/mixins/mediaquery.scss' as *;
 @use '@/sass/variables.scss' as *;
 .listPage,
-.resultPage {
+.resultPage,
+.explainPage {
   .navigationBar {
     h1 {
       margin-left: rem(30);
@@ -73,6 +74,409 @@
       .text {
         font-size: 1rem;
       }
+    }
+  }
+}
+
+.explainPage {
+  .container {
+    height: calc(100vh - 74px);
+    background: url('../../assets/images/explain_bg.svg');
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    .content {
+      height: calc(100% - 4rem);
+      overflow-y: scroll;
+      > div {
+        max-width: rem(940);
+        width: 100%;
+        margin: 0 auto;
+        margin-top: 2rem;
+        flex-grow: 1;
+      }
+    }
+    .inputBox {
+      max-width: rem(940);
+      padding: 1rem 0 2rem 0;
+      width: 100%;
+      margin: 0 auto;
+      display: flex;
+      .v-input {
+        background: #fff;
+        border-radius: 0.5rem !important;
+        .v-field {
+          border-radius: 0.5rem !important;
+        }
+      }
+      .v-btn {
+        margin-left: 1rem;
+
+        color: $neutral40 !important;
+        min-width: rem(80);
+        &.btn {
+          background: $neutral60 !important;
+        }
+        &.bg_gradient_V {
+          color: #fff !important;
+        }
+      }
+    }
+    .dialogCard {
+      display: flex;
+      margin-bottom: 1rem;
+      max-width: unset;
+      width: 100%;
+      .photo {
+        + .item {
+          margin-left: 0.5rem;
+        }
+      }
+      .item {
+        padding: 1rem;
+        background: #fff;
+        width: calc(100% - 50px);
+        box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
+        border-radius: 0.5rem;
+        p {
+          + .tagInfo {
+            margin-top: 1rem;
+          }
+          + .text {
+            margin-top: 1rem;
+            display: flex;
+          }
+        }
+        + .photo {
+          margin-left: 0.5rem;
+          width: rem(42);
+          height: rem(42);
+          border-radius: 50%;
+          overflow: hidden;
+        }
+        .text {
+          font-weight: 700;
+          color: $primary30;
+          + p {
+            margin-top: 1rem;
+          }
+        }
+      }
+    }
+    .tagInfo {
+      margin-bottom: 1rem;
+      .link {
+        display: flex;
+        align-items: center;
+        color: $primary30;
+        font-size: 1rem;
+      }
+      .icon {
+        color: $neutral20;
+        + span {
+          text-decoration: underline;
+          font-weight: 700;
+        }
+      }
+      .tag {
+        background-color: $neutral60;
+        display: inline-block;
+        border-radius: 0.25rem;
+        padding: 0.5rem 1rem;
+        margin-bottom: 1rem;
+        font-size: 1rem;
+        &.not {
+          background: $danger50;
+          color: #fff;
+        }
+      }
+    }
+  }
+}
+.analyzePage {
+  .sessionGrp {
+    .v-col > .item {
+      background: #fff;
+      padding: 1rem;
+      height: calc(100vh - 92px);
+      display: flex;
+      flex-direction: column;
+    }
+  }
+  .filterTitle {
+    .title {
+      margin-left: 0;
+      font-weight: 700;
+      font-size: rem(20);
+      color: $neutral10;
+    }
+    .btnList {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 1rem;
+      .helpGrp {
+        display: flex;
+        align-items: center;
+        .tag {
+          display: flex;
+          cursor: pointer;
+          padding: 0 0.5rem;
+          span {
+            &:first-child {
+              margin-right: 0.25rem;
+            }
+            &:last-child {
+              font-weight: 700;
+            }
+          }
+        }
+      }
+      .btnGrp {
+        .v-btn {
+          margin: 0 0.25rem;
+          height: rem(42);
+          &.text-white {
+            color: #fff !important;
+          }
+        }
+      }
+    }
+  }
+  .selectCard {
+    .v-input {
+      border: $neutral60;
+      margin-bottom: 1rem;
+      &.v-input--density-compact {
+        --v-input-control-height: 48px;
+      }
+      .v-field__outline {
+        --v-field-border-color: #42a5f5;
+        --v-field-border-opacity: 0.15;
+        --v-field-border-width: 2px;
+        border-radius: 0.5rem;
+      }
+    }
+    .selectBox {
+      .inputComponent {
+        position: relative;
+      }
+      .inputContent {
+        margin-top: -0.75rem;
+        width: 100%;
+      }
+    }
+    .searchBox {
+      display: flex;
+      .v-input {
+        margin-bottom: 0;
+      }
+      .btn {
+        margin: 0 0.5rem;
+        width: rem(50);
+        height: rem(48);
+        &.search {
+          margin-left: 0.5rem;
+          &:disabled {
+            background: $neutral100 !important;
+            opacity: 0.5;
+            color: $neutral40 !important;
+          }
+        }
+      }
+    }
+  }
+  .msgGrp {
+    height: 100%;
+    overflow-y: scroll;
+  }
+  .searchGrp {
+    display: flex;
+    &:has(.v-input) {
+      .iconBtn {
+        height: rem(56);
+        width: rem(56);
+      }
+    }
+    .iconBtn {
+      margin-left: 0.5rem;
+      span {
+        color: $neutral30;
+      }
+    }
+    .select {
+      width: 100%;
+      background: $neutral80;
+      border-radius: 0.5rem;
+      height: rem(40);
+      font-weight: 700;
+      color: $neutral30;
+      &:has(.v-input) {
+        height: rem(56);
+        padding: 0.5rem 1rem;
+        .v-input {
+          background: #fff;
+        }
+        .text {
+          margin-left: 1rem;
+        }
+      }
+      .text {
+        white-space: nowrap;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        span {
+          color: $primary30;
+        }
+      }
+      .grp {
+        margin-left: 0.5rem;
+        .v-btn {
+          margin: 0 0.25rem;
+          width: rem(36);
+        }
+      }
+    }
+  }
+  .iconBtn {
+    min-width: rem(36);
+    padding: unset;
+  }
+  .dialogCard {
+    display: flex;
+    margin-bottom: 1rem;
+    max-width: unset;
+    width: 100%;
+    .photo {
+      + .item {
+        margin-left: 0.5rem;
+      }
+    }
+    .item {
+      padding: 1rem;
+      background: #fff;
+      width: calc(100% - 50px);
+      box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
+      border-radius: 0.5rem;
+      p {
+        + .tagInfo {
+          margin-top: 1rem;
+        }
+        + .text {
+          margin-top: 1rem;
+          display: flex;
+        }
+      }
+      + .photo {
+        margin-left: 0.5rem;
+        width: rem(42);
+        height: rem(42);
+        border-radius: 50%;
+        overflow: hidden;
+      }
+      .text {
+        font-weight: 700;
+        color: $primary30;
+        + p {
+          margin-top: 1rem;
+        }
+      }
+    }
+    .tagInfo {
+      margin-bottom: 1rem;
+      .link {
+        display: flex;
+        align-items: center;
+        color: $primary30;
+        font-size: 1rem;
+      }
+      .icon {
+        color: $neutral20;
+        + span {
+          text-decoration: underline;
+          font-weight: 700;
+        }
+      }
+      .tag {
+        background-color: $neutral60;
+        display: inline-block;
+        border-radius: 0.25rem;
+        padding: 0.5rem 1rem;
+        margin-bottom: 1rem;
+        font-size: 1rem;
+        &.not {
+          background: $danger50;
+          color: #fff;
+        }
+      }
+    }
+    + .helpInfo {
+      font-weight: 700;
+      margin-bottom: 3rem;
+      margin-left: 3.5rem;
+      .tag {
+        display: flex;
+        // cursor: pointer;
+        align-items: center;
+        span {
+          line-height: 2rem;
+          &:first-child {
+            margin-right: 0.5rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+.inputComponent {
+  width: 100%;
+  .inputContent {
+    width: rem(300);
+    max-height: rem(300);
+    background: #fff;
+    position: absolute;
+    z-index: 9999;
+    margin-top: 0.5rem;
+    border-radius: 0.25rem;
+    overflow-y: scroll;
+    padding: 1rem;
+    li {
+      cursor: pointer;
+      // &:hover {
+      //   background: $primary50;
+      // }
+    }
+    .title {
+      margin: 0.5rem 0 0 0;
+      font-weight: 400;
+      font-size: 1rem;
+      @include textOverflow;
+    }
+    .subtitle {
+      color: $neutral40;
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: $neutral60 1px solid;
+      @include textOverflow;
+      span {
+        color: $neutral0;
+        font-weight: 500;
+      }
+    }
+  }
+}
+.selectStyle {
+  max-width: rem(100) !important;
+  max-height: rem(100) !important;
+  .subtitle {
+    color: $neutral40;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: $neutral60 1px solid;
+    span {
+      color: $neutral0;
+      font-weight: 500;
     }
   }
 }

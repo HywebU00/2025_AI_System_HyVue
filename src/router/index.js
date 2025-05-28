@@ -11,6 +11,14 @@ const routes = [
         component: () => import("@/views/admin/emptyComponent.vue"),
       },
       {
+        path: "create",
+        component: () => import("@/views/admin/createComponent.vue"),
+      },
+      {
+        path: "analyze",
+        component: () => import("@/views/admin/analyzeComponent.vue"),
+      },
+      {
         path: "system",
         component: () => import("@/views/admin/systemComponent.vue"),
       },
@@ -77,6 +85,10 @@ const routes = [
   {
     path: "/result",
     component: () => import("@/views/layout/resultComponent.vue"),
+  },
+  {
+    path: "/explain",
+    component: () => import("@/views/layout/explainComponent.vue"),
   },
 ];
 

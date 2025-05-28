@@ -5,6 +5,9 @@
 .v-btn {
   border-radius: 0.5rem !important;
   // min-height: rem(42) !important;
+  &.default_btn {
+    min-height: rem(42) !important;
+  }
   &.bg_gradient {
     background: $gradients;
   }

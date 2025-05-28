@@ -74,6 +74,12 @@ export default {
           note: "",
         },
         {
+          num: "3.1",
+          name: "建立問答集",
+          link: "https://hywebu00.github.io/2025_AI_System_HyVue/#/creat",
+          note: "",
+        },
+        {
           num: "4.1 ",
           name: "問答集空值",
           link: "https://hywebu00.github.io/2025_AI_System_HyVue/#/empty",
@@ -86,20 +92,21 @@ export default {
           note: " 📌 點擊 【編輯】 按鈕，側邊有區塊展開 <br> 📌 點擊 【刪除】，【停用】，【更新】按鈕，有視窗展開 <br> 📌 點擊【問題卡片元件】 可展開 / 切換編輯區塊 <br>📌 點擊【搜尋】按鈕，則搜尋列展開 <br>📌 點擊【篩選】按鈕，則出現視窗，視窗中有樹狀元件可展開 <br> 📌 點擊【基本設定的頁籤】按鈕的自訂設定，則出現日期選取搜尋匡",
         },
         {
-          num: "4.1 ",
+          num: "4.1",
           name: "生成結果",
           link: "https://hywebu00.github.io/2025_AI_System_HyVue/#/result",
           note: " 📌 點擊【類別設定】按鈕，側邊有區塊展開，可以點擊展開【主分類】選項<br> 📌 點擊【問題卡片元件】 可展開 / 切換編輯區塊",
         },
         {
-          name: "",
-          link: "",
+          num: "4.1",
+          name: "問答集",
+          link: "https://hywebu00.github.io/2025_AI_System_HyVue/#/explain",
           note: "",
         },
         {
-          name: "",
+          name: "5",
           link: "",
-          note: "",
+          note: "https://hywebu00.github.io/2025_AI_System_HyVue/#/analyze",
         },
         {
           name: "",

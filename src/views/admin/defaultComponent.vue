@@ -12,7 +12,7 @@
         </v-tabs>
       </div>
       <div class="">
-        <v-btn variant="text" class="">
+        <v-btn variant="text" class="default_btn">
           <img
             height="14"
             class="mr-1"
@@ -21,15 +21,15 @@
           />
           類似問題</v-btn
         >
-        <v-btn variant="text" class="mr-3">
+        <v-btn variant="text" class="mr-3 default_btn">
           <span class="material-symbols-outlined"> category </span>
           類別設定</v-btn
         >
-        <v-btn variant="flat" class="mr-3">
+        <v-btn variant="flat" class="mr-3 default_btn">
           <span class="material-symbols-outlined"> bubble_chart </span>
           對話測試</v-btn
         >
-        <v-btn variant="flat" class="bg_gradient_V">
+        <v-btn variant="flat" class="bg_gradient_V default_btn">
           <span class="icon material-symbols-outlined"> wand_stars </span>
           建立問答</v-btn
         >
@@ -168,7 +168,12 @@
                 <div class="">
                   <v-dialog class="dialogCard">
                     <template v-slot:activator="{ props: activatorProps }">
-                      <v-btn variant="flat" v-bind="activatorProps">刪除</v-btn>
+                      <v-btn
+                        class="default_btn"
+                        variant="flat"
+                        v-bind="activatorProps"
+                        >刪除</v-btn
+                      >
                     </template>
                     <template v-slot:default="{ isActive }">
                       <v-form>
@@ -202,7 +207,12 @@
                   </v-dialog>
                   <v-dialog class="dialogCard">
                     <template v-slot:activator="{ props: activatorProps }">
-                      <v-btn variant="flat" v-bind="activatorProps">停用</v-btn>
+                      <v-btn
+                        class="default_btn"
+                        variant="flat"
+                        v-bind="activatorProps"
+                        >停用</v-btn
+                      >
                     </template>
                     <template v-slot:default="{ isActive }">
                       <v-form>
@@ -236,7 +246,10 @@
                   </v-dialog>
                   <v-dialog class="dialogCard">
                     <template v-slot:activator="{ props: activatorProps }">
-                      <v-btn variant="flat" v-bind="activatorProps"
+                      <v-btn
+                        class="default_btn"
+                        variant="flat"
+                        v-bind="activatorProps"
                         >更新回答</v-btn
                       >
                     </template>
@@ -270,7 +283,7 @@
                       </v-form>
                     </template>
                   </v-dialog>
-                  <v-btn variant="flat"> 匯出</v-btn>
+                  <v-btn class="default_btn" variant="flat"> 匯出</v-btn>
                 </div>
               </div>
               <tableServer />

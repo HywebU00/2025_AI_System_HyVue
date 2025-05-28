@@ -131,9 +131,6 @@
           }
         }
       }
-      // display: flex;
-      // align-items: center;
-      // justify-content: space-between;
       .btn_icon {
         max-width: rem(40);
         min-width: unset;
@@ -584,6 +581,9 @@
 }
 .dialogCard {
   max-width: rem(500);
+  .v-card {
+    border-radius: 1rem !important;
+  }
   .v-card-title {
     padding: 1rem 1.5rem 0.5rem 1.5rem;
   }
@@ -631,6 +631,104 @@
       min-width: rem(117);
       height: rem(48);
       font-size: rem(18);
+    }
+  }
+}
+
+.selectSource {
+  &.dialogCard {
+    width: 90%;
+    max-width: rem(960);
+    .btnCardGrp {
+      .v-btn-group {
+        width: 100%;
+        display: flex;
+        flex-flow: wrap;
+        height: unset;
+        .v-btn {
+          box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
+          margin-right: 1rem;
+          margin-bottom: 1rem;
+          margin-top: 0.5rem;
+          width: calc((100% - 2rem) / 3);
+          min-height: rem(200);
+          &:hover {
+            > .v-btn__overlay {
+              background: #0157a2;
+            }
+          }
+          &:nth-child(3) {
+            margin-right: 0;
+          }
+          &.v-btn--active:not(.v-btn--disabled) {
+            border: $primary30 2px solid;
+            > .v-btn__overlay {
+              opacity: 0;
+            }
+          }
+          @include screen('tablet') {
+            width: calc((100% - 2rem) / 2);
+            &:nth-child(3) {
+              margin-right: 1rem;
+            }
+          }
+          @include screen('mobile') {
+            width: calc((100% - 2rem));
+            margin: 0.5rem 1rem;
+          }
+        }
+        .v-btn__content {
+          white-space: wrap;
+        }
+        .content {
+          > div {
+            font-weight: 700;
+            font-size: rem(18);
+            margin-bottom: 0.5rem;
+          }
+          p {
+            color: $neutral30;
+            margin: 0 0.5rem;
+          }
+        }
+      }
+    }
+    .fileCardGrp {
+      .fileCard {
+        border: 1px solid $neutral40;
+        margin-bottom: 1rem;
+        justify-content: left;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        &:hover {
+          > .v-btn__overlay {
+            background: #0157a2;
+          }
+        }
+        &.v-btn--active:not(.v-btn--disabled) {
+          border: $primary30 2px solid;
+          > .v-btn__overlay {
+            opacity: 0;
+          }
+        }
+      }
+
+      .content {
+        padding: 1rem;
+        display: flex;
+        justify-content: flex-start;
+        > div {
+          text-align: start;
+          font-weight: 500;
+          // font-weight: 700;
+          // font-size: rem(18);
+          // margin-bottom: 0.5rem;
+        }
+        p {
+          color: $neutral30;
+          font-weight: 500;
+        }
+      }
     }
   }
 }
@@ -910,6 +1008,86 @@
           &.more {
             display: flex;
           }
+        }
+      }
+    }
+  }
+}
+.msgGrp {
+  margin-top: 1rem;
+  .msgCard {
+    &.active {
+      background: #0156a21a;
+    }
+    &:hover {
+      background: #0156a20d;
+    }
+    width: 100%;
+    padding: rem(12);
+    border-radius: 1rem;
+    cursor: pointer;
+    margin-bottom: 0.75rem;
+    > .title {
+      margin: 0;
+      margin-left: 0.5rem;
+      display: flex;
+      justify-content: space-between;
+      font-weight: 700;
+      .date {
+        font-weight: 400;
+        color: $neutral40;
+        margin-right: 0.5rem;
+      }
+      + .text {
+        margin: 0.5rem 0 0.5rem 0.5rem;
+        color: $neutral30;
+      }
+    }
+    .tagGrp {
+      .v-chip {
+        margin: 0.1rem 0.2rem;
+        height: rem(28);
+        .v-chip__underlay {
+          background: #fff;
+        }
+        .v-chip__content {
+          font-weight: 700;
+        }
+        &.helpful {
+          border: 1px solid $primary30;
+          color: $primary30;
+        }
+        &.noteHelpful {
+          border: 1px solid $danger50;
+          color: $danger50;
+        }
+        &.satisfy {
+          background: $success50;
+          color: #fff;
+        }
+        &.exceed {
+          background: $danger50;
+          color: #fff;
+        }
+      }
+    }
+  }
+}
+.contentment {
+  &.dialogCard {
+    min-width: 50%;
+    min-height: 500px;
+    max-width: rem(600);
+
+    ul {
+      min-height: rem(300);
+      li {
+        line-height: 1.5rem;
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+        .text-success,
+        .text-danger {
+          font-weight: 700;
         }
       }
     }
