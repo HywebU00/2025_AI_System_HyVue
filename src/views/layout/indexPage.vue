@@ -104,9 +104,10 @@ export default {
           note: "",
         },
         {
-          name: "5",
-          link: "",
-          note: "https://hywebu00.github.io/2025_AI_System_HyVue/#/analyze",
+          num: "5",
+          name: "洞察分析",
+          link: "https://hywebu00.github.io/2025_AI_System_HyVue/#/analyze",
+          note: "📌 點擊【自訂時間】＞【自訂日期範圍】按鈕 > 出現自訂日期範圍視窗<br> 📌 點擊關鍵字輸入，出現【搜尋按鈕】及【回上一步】按鈕<br> 📌 點擊【新至舊】篩選可以改變篩選狀態，點擊【篩選圖樣】出現篩選視窗 <br> 📌 點擊 【有幫助/沒有幫助】標籤 出現向下展開 點擊關閉按鈕，可以關閉下拉選項 <br> 📌 點擊【滿意度調查】會出現視窗",
         },
         {
           name: "",

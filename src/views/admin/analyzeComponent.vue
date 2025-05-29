@@ -8,8 +8,8 @@
               <div class="inputComponent">
                 <div class="inputSelect" v-click-outside="onClickOutside2">
                   <v-text-field
-                    label="請輸入關鍵字"
                     density="compact"
+                    v-model="selectedOption"
                     append-inner-icon="mdi-chevron-down"
                     single-line
                     variant="outlined"
@@ -20,11 +20,78 @@
                 <v-expand-transition>
                   <div class="inputContent elevation-4" v-show="expand4">
                     <ul>
-                      <li v-for="i in 5" :key="i">
-                        <div class="title">系統</div>
-                        <div class="subtitle">
-                          對話 <span>滾球</span>對話對話對話對話對話對話對話
-                        </div>
+                      <li
+                        v-for="item in options"
+                        :key="item"
+                        @click="selectItem(item)"
+                      >
+                        <div class="title">{{ item }}</div>
+                      </li>
+                      <li>
+                        <v-dialog class="dialogCard">
+                          <template
+                            v-slot:activator="{ props: activatorProps }"
+                          >
+                            <div class="title" v-bind="activatorProps">
+                              自訂日期範圍
+                            </div>
+                          </template>
+                          <template v-slot:default="{ isActive }">
+                            <v-form>
+                              <v-card>
+                                <v-card-title>
+                                  <div class="title">
+                                    <span>自訂日期範圍</span>
+                                    <v-btn variant="text" class="btn_icon">
+                                      <span
+                                        class="material-symbols-outlined"
+                                        @click="isActive.value = false"
+                                      >
+                                        close
+                                      </span></v-btn
+                                    >
+                                  </div>
+                                </v-card-title>
+                                <v-card-text>
+                                  <div class="formContent">
+                                    <v-row class="formGrp">
+                                      <v-col class="pb-0" cols="12">
+                                        <label class="" for=""
+                                          ><span>開始日期</span>
+                                        </label>
+                                      </v-col>
+                                      <v-col cols="12">
+                                        <datepickerModalVue>
+                                        </datepickerModalVue>
+                                      </v-col>
+                                    </v-row>
+                                    <v-row class="formGrp">
+                                      <v-col class="pb-0" cols="12">
+                                        <label class="" for=""
+                                          ><span>結束日期</span>
+                                        </label>
+                                      </v-col>
+                                      <v-col cols="12">
+                                        <datepickerModalVue>
+                                        </datepickerModalVue>
+                                      </v-col>
+                                    </v-row>
+                                  </div>
+                                </v-card-text>
+                                <v-card-actions>
+                                  <v-btn> 取消 </v-btn>
+                                  <v-btn
+                                    class="btn_icon bg-primary"
+                                    color="#fff"
+                                    @click="isActive.value = false"
+                                  >
+                                    確認
+                                  </v-btn>
+                                </v-card-actions>
+                              </v-card>
+                            </v-form>
+                          </template>
+                        </v-dialog>
                       </li>
                     </ul>
                   </div>
@@ -44,7 +111,6 @@
                   >keyboard_arrow_left</span
                 >
               </v-btn>
-
               <v-text-field
                 v-model="keyword"
                 label="請輸入關鍵字"
@@ -65,6 +131,71 @@
               >
                 搜尋
               </v-btn>
+            </div>
+            <div class="filterBox">
+              <div class="dateBtn" @click="dateFilter = !dateFilter">
+                <div class="" v-if="dateFilter">
+                  <span class="text">新至舊</span>
+                  <span class="material-symbols-outlined">
+                    keyboard_arrow_down
+                  </span>
+                </div>
+                <div class="" v-else>
+                  <span class="text">舊至新</span>
+                  <span class="material-symbols-outlined">
+                    keyboard_control_key
+                  </span>
+                </div>
+              </div>
+              <div class="filterBtn">
+                <v-menu
+                  v-model="fillerContent"
+                  :close-on-content-click="false"
+                  location="bottom"
+                >
+                  <template v-slot:activator="{ props }">
+                    <span v-bind="props" class="material-symbols-outlined icon">
+                      filter_alt
+                    </span>
+                  </template>
+                  <v-card class="infoBtnContainer tableFiller">
+                    <v-row class="formGrp d-block">
+                      <v-col class="py-0" cols="12">
+                        <v-checkbox
+                          color="primary"
+                          label="全選"
+                          hide-details="auto"
+                        ></v-checkbox
+                      ></v-col>
+                      <v-col cols="12" v-for="i in 3" :key="i" class="py-0">
+                        <v-checkbox
+                          color="primary"
+                          label="主分類"
+                          hide-details="auto"
+                        ></v-checkbox>
+                      </v-col>
+                      <v-col>
+                        <div class="btnGroup d-flex">
+                          <v-btn
+                            elevation="0"
+                            color="primary"
+                            variant="outlined"
+                            class="mr-1"
+                            @click="tableFiller = false"
+                            >重設</v-btn
+                          >
+                          <v-btn
+                            elevation="0"
+                            color="primary"
+                            @click="tableFiller = false"
+                            >套用篩選</v-btn
+                          >
+                        </div>
+                      </v-col>
+                    </v-row>
+                  </v-card>
+                </v-menu>
+              </div>
             </div>
           </div>
           <div class="cardGrp msgGrp">
@@ -154,7 +285,6 @@
                     </v-card>
                   </template>
                 </v-dialog>
-
                 <v-dialog class="dialogCard contentment">
                   <template v-slot:activator="{ props: activatorProps }">
                     <v-btn color="danger" variant="flat" v-bind="activatorProps"
@@ -339,6 +469,9 @@
           </div>
           <div class="msgGrp">
             <div class="">
+              <div class="dateText">
+                <span>2025/01/10</span>
+              </div>
               <div class="dialogCard">
                 <div class="photo">
                   <img src="~@/assets/images/UserAvatar.svg" alt="" />
@@ -528,37 +661,47 @@
 </template>
 
 <script>
+//載入 Ｖuetify組合 日期選擇器
+import datepickerModalVue from "@/components/datepickerModal.vue";
 export default {
   data: () => ({
     selectedValue: "",
     activeIndex: 1,
     expand: null,
+    fillerContent: false,
+    dateFilter: false,
     // expand1: false,
     expand3: false,
     expand4: false,
+    selectedOption: "不限時間",
+    options: ["不限時間", "今日", "一週內", "一月內", "一年內"],
     isActive: false, // 是否點擊輸入框
     keyword: "", // 輸入關鍵字
-    items: [
-      {
-        title:
-          "讀者名稱讀者名稱讀者名稱讀者名讀者名稱讀者名稱讀者名稱讀者稱讀者名稱讀者名讀者名稱讀者名稱讀者名稱讀者名",
-        subtitle: "對話 <span>關鍵字</span> 對話對話對話對話對話對話對",
-      },
-      {
-        title: "系統2",
-        subtitle: "對話 <span>關鍵字</span>  對話對話對話對話對話對話對",
-      },
-      {
-        title: "系統3",
-        subtitle: "對話 <span>關鍵字 關鍵字</span>  對話對話對話對話對話對話對",
-      },
-    ],
+    // items: [
+    //   {
+    //     title:
+    //       "讀者名稱讀者名稱讀者名稱讀者名讀者名稱讀者名稱讀者名稱讀者稱讀者名稱讀者名讀者名稱讀者名稱讀者名稱讀者名",
+    //     subtitle: "對話 <span>關鍵字</span> 對話對話對話對話對話對話對",
+    //   },
+    //   {
+    //     title: "系統2",
+    //     subtitle: "對話 <span>關鍵字</span>  對話對話對話對話對話對話對",
+    //   },
+    //   {
+    //     title: "系統3",
+    //     subtitle: "對話 <span>關鍵字 關鍵字</span>  對話對話對話對話對話對話對",
+    //   },
+    // ],
   }),
   methods: {
     onClickOutside() {
       this.expand3 = false;
     },
     onClickOutside2() {
+      this.expand4 = false;
+    },
+    selectItem(item) {
+      this.selectedOption = item;
       this.expand4 = false;
     },
     onBack() {
@@ -572,6 +715,8 @@ export default {
     },
   },
   mounted() {},
-  components: {},
+  components: {
+    datepickerModalVue,
+  },
 };
 </script>

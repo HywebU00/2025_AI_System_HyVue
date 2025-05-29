@@ -263,6 +263,11 @@
       .inputContent {
         margin-top: -0.75rem;
         width: 100%;
+        max-height: unset;
+        .title {
+          padding: 0.5rem;
+          border-bottom: 1px solid $neutral60;
+        }
       }
     }
     .searchBox {
@@ -283,6 +288,36 @@
           }
         }
       }
+    }
+    .filterBox {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      margin: 0.5rem auto;
+
+      .icon {
+        width: rem(48);
+        height: rem(48);
+        line-height: 3rem;
+        text-align: center;
+        color: $neutral30;
+      }
+      .dateBtn {
+        cursor: pointer;
+        color: $neutral30;
+        font-weight: 700;
+        padding: 0 1rem;
+        > div {
+          display: flex;
+          align-items: center;
+          .text {
+            margin-right: 0.5rem;
+          }
+        }
+      }
+    }
+    + .msgGrp {
+      margin-top: 0;
     }
   }
   .msgGrp {
@@ -341,6 +376,12 @@
   .iconBtn {
     min-width: rem(36);
     padding: unset;
+  }
+  .dateText {
+    text-align: center;
+    font-weight: 700;
+    color: $neutral40;
+    margin: 1rem auto;
   }
   .dialogCard {
     display: flex;
@@ -436,7 +477,7 @@
     max-height: rem(300);
     background: #fff;
     position: absolute;
-    z-index: 9999;
+    z-index: 99;
     margin-top: 0.5rem;
     border-radius: 0.25rem;
     overflow-y: scroll;
