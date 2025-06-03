@@ -76,7 +76,7 @@ export default {
         {
           num: "3.1",
           name: "建立問答集",
-          link: "https://hywebu00.github.io/2025_AI_System_HyVue/#/creat",
+          link: "https://hywebu00.github.io/2025_AI_System_HyVue/#/create",
           note: "",
         },
         {
