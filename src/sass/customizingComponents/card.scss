@@ -313,11 +313,11 @@
 .editorCard {
   margin-bottom: 1rem;
   .ql-toolbar.ql-snow {
-    border-radius: 0.5rem 0.5rem 0 0;
-    border-bottom: 0px;
+    border-radius: 0.5rem 0.5rem 0 0 !important;
+    border-bottom: none;
   }
   .ql-container.ql-snow {
-    border-radius: 0 0 0.5rem 0.5rem;
+    border-radius: 0 0 0.5rem 0.5rem !important;
     min-height: 6rem;
   }
   .ql-blank {
@@ -547,7 +547,27 @@
     }
   }
 }
-
+.addPanelCard {
+  width: 80%;
+  max-width: rem(960);
+  .v-expansion-panel-title {
+    padding: 16px 24px;
+    .title {
+      font-size: 1rem;
+    }
+  }
+  .v-expansion-panel-text {
+    .itemTitle {
+      margin-bottom: 0.5rem;
+    }
+    .textArea {
+      display: block;
+      > div {
+        margin-bottom: 0.5rem;
+      }
+    }
+  }
+}
 .emptyCard {
   border-radius: 1rem;
   margin: 2rem 0.5rem 1rem 0.5rem;
@@ -581,6 +601,19 @@
 }
 .dialogCard {
   max-width: rem(500);
+
+  &.largeWidth {
+    width: 80%;
+    max-width: rem(960);
+
+    .v-card {
+      min-height: 50vh;
+    }
+  }
+  &.largeHeight {
+    max-height: 70vh;
+  }
+
   .v-card {
     border-radius: 1rem !important;
   }
@@ -604,7 +637,11 @@
     p {
       margin-bottom: 1rem;
     }
-
+    ul {
+      li {
+        height: 1.75rem;
+      }
+    }
     .inputGrp {
       label {
         font-size: rem(16);
@@ -1089,6 +1126,40 @@
         .text-danger {
           font-weight: 700;
         }
+      }
+    }
+  }
+}
+.overlay {
+  background: #ffffff;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .linearContent {
+    width: 60%;
+    img {
+      max-width: rem(400);
+      width: 80%;
+      margin: 0 auto;
+      display: block;
+    }
+    .linear {
+      margin: 0 auto;
+      margin-top: 1.5rem;
+      width: 100%;
+      max-width: rem(600);
+      .text {
+        margin-top: 1.25rem;
+        text-align: center;
+      }
+      .v-progress-linear__determinate {
+        border-radius: 0.5rem;
       }
     }
   }

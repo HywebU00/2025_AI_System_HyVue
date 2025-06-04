@@ -81,6 +81,20 @@
       </v-col>
     </v-row>
   </v-container>
+  <div class="overlay">
+    <div class="linearContent">
+      <img src="~@/assets/images/loading.svg" alt="" />
+      <div class="linear">
+        <v-progress-linear
+          bg-color="primary"
+          color="primary"
+          model-value="15"
+          :height="16"
+        ></v-progress-linear>
+        <div class="text">正在準備您的管理介面<span>15</span>%</div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>

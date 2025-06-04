@@ -76,6 +76,10 @@ const routes = [
         path: "card",
         component: () => import("@/views/knowledge/cardComponent.vue"),
       },
+      {
+        path: "loading",
+        component: () => import("@/views/knowledge/loadingComponent.vue"),
+      },
     ],
   },
   {

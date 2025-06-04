@@ -3,7 +3,34 @@
   <div class="navigation">
     <!-- select start -->
     <div class="knowledgeSelect" v-if="showKnowledgeSelect">
-      <v-select
+      <div class="inputComponent">
+        <div class="inputSelect" v-click-outside="onClickOutside2">
+          <v-text-field
+            density="compact"
+            v-model="selectedOption"
+            append-inner-icon="mdi-chevron-down"
+            single-line
+            variant="solo"
+            hide-details="auto"
+            @click="expand = true"
+          ></v-text-field>
+        </div>
+        <v-expand-transition>
+          <div class="inputContent elevation-4" v-show="expand">
+            <ul>
+              <li v-for="item in options" :key="item" @click="selectItem(item)">
+                <div class="title">{{ item }}</div>
+              </li>
+              <li>
+                <router-link to="" class="text-primary"
+                  >前往知識庫列表</router-link
+                >
+              </li>
+            </ul>
+          </div>
+        </v-expand-transition>
+      </div>
+      <!-- <v-select
         label="知識庫名稱"
         density="compact"
         single-line
@@ -11,7 +38,7 @@
         hide-details="auto"
         menu-icon="mdi-chevron-down"
         :items="['選項ㄧ', '選項二', '選項三']"
-      ></v-select>
+      ></v-select> -->
     </div>
     <!-- select end -->
     <!-- 訊息通知按鈕 start -->
@@ -65,6 +92,9 @@ export default {
   data: () => ({
     loginMenu: false,
     infoMenu: false,
+    selectedOption: "知識庫名稱",
+    options: ["知識庫名稱1", "知識庫名稱"],
+    expand: false,
   }),
   methods: {
     //桌機與手機版本header 切換
@@ -74,6 +104,13 @@ export default {
         ? (this.mobileHeader = true)
         : (this.mobileHeader = false);
       this.isSmallScreen = window.innerWidth < 991;
+    },
+    onClickOutside2() {
+      this.expand = false;
+    },
+    selectItem(item) {
+      this.selectedOption = item;
+      this.expand4 = false;
     },
   },
   mounted() {

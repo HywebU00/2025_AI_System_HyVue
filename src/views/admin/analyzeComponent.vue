@@ -1,7 +1,7 @@
 <template>
   <v-container class="container analyzePage">
     <v-row class="sessionGrp">
-      <v-col cols="4">
+      <v-col cols="12" md="4">
         <div class="item">
           <div class="selectCard">
             <div class="selectBox">
@@ -147,7 +147,8 @@
                   </span>
                 </div>
               </div>
-              <div class="filterBtn">
+              <!-- 有套用塞選時 則增加 classname "hasfilter" -->
+              <div class="filterBtn hasfilter">
                 <v-menu
                   v-model="fillerContent"
                   :close-on-content-click="false"
@@ -220,7 +221,7 @@
           </div>
         </div>
       </v-col>
-      <v-col cols="8">
+      <v-col cols="12" md="8">
         <div class="item">
           <div class="filterTitle">
             <div class="title">
@@ -553,7 +554,68 @@
                         原始文件未尋找到相對應的資料，您可以選擇手動新增此問答。
                       </p>
                       <div class="d-flex justify-end">
-                        <v-btn class="elevation-0">新增問答</v-btn>
+                        <v-dialog
+                          class="dialogCard largeWidth largeHeight hiddenScrollBar"
+                        >
+                          <template
+                            v-slot:activator="{ props: activatorProps }"
+                          >
+                            <v-btn
+                              class="default_btn"
+                              variant="flat"
+                              v-bind="activatorProps"
+                              >新增問答</v-btn
+                            >
+                          </template>
+                          <template v-slot:default="{ isActive }">
+                            <v-form>
+                              <v-card class="">
+                                <v-card-title>
+                                  <div class="title">
+                                    <span>新增問答</span>
+                                    <v-btn variant="text" class="btn_icon">
+                                      <span
+                                        class="material-symbols-outlined"
+                                        @click="isActive.value = false"
+                                      >
+                                        close
+                                      </span></v-btn
+                                    >
+                                  </div>
+                                </v-card-title>
+                                <v-card-text>
+                                  <addPanelCard />
+                                  <div class="d-flex justify-end">
+                                    <v-btn class="" variant="text">
+                                      <span class="material-symbols-outlined">
+                                        add
+                                      </span>
+                                      <span>新增問題</span>
+                                    </v-btn>
+                                  </div>
+                                </v-card-text>
+                                <v-card-actions>
+                                  <v-btn class="btn_icon elevation-0">
+                                    取消
+                                  </v-btn>
+                                  <!-- "disable" 切換樣式 -->
+                                  <v-btn
+                                    variant="flat"
+                                    color=" disable"
+                                    disabled
+                                    >新增
+                                  </v-btn>
+                                  <!-- <v-btn
+                                    class="btn_icon bg-primary disable"
+                                    color="#fff"
+                                  >
+                                    新增
+                                  </v-btn> -->
+                                </v-card-actions>
+                              </v-card>
+                            </v-form>
+                          </template>
+                        </v-dialog>
                       </div>
                     </v-card>
                   </div>
@@ -663,6 +725,7 @@
 <script>
 //載入 Ｖuetify組合 日期選擇器
 import datepickerModalVue from "@/components/datepickerModal.vue";
+import addPanelCard from "@/components/panelCard_add.vue";
 export default {
   data: () => ({
     selectedValue: "",
@@ -717,6 +780,7 @@ export default {
   mounted() {},
   components: {
     datepickerModalVue,
+    addPanelCard,
   },
 };
 </script>

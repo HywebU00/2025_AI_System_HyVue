@@ -28,31 +28,62 @@
         :opened="opened"
         @update:opened="menuTarget"
       >
-        <!-- Home1 start -->
-        <v-list-group value="Home1">
+        <!-- 問答集 start -->
+        <v-list-group value="QnA">
           <template v-slot:activator="{ props }">
-            <v-list-item
-              prepend-icon="mdi-home"
-              v-bind="props"
-              append-icon=""
-              title="Home"
-              @click="pushLink('/')"
-            >
+            <v-list-item prepend-icon="mdi-collage" v-bind="props">
+              <template v-slot:prepend>
+                <span class="material-symbols-outlined"> book_2 </span>
+              </template>
+              <v-list-item-title class="ml-3">問答集</v-list-item-title>
+            </v-list-item>
+          </template>
+          <v-list-item
+            title="問答列表"
+            value="Grid System"
+            @click="pushLink('system')"
+          >
+          </v-list-item>
+          <v-list-item
+            title="待審核問答"
+            value="Component"
+            @click="pushLink('component')"
+          >
+          </v-list-item>
+          <v-list-item title="" value="From1" @click="pushLink('from1')">
+            <v-list-item-title> <div class="">From1</div></v-list-item-title>
+          </v-list-item>
+          <v-list-item title="From" value="From" @click="pushLink('from')">
+          </v-list-item>
+          <v-list-item title="Table" value="Table" @click="pushLink('table')">
+          </v-list-item>
+          <v-list-item title="Card" value="Card" @click="pushLink('card')">
+          </v-list-item>
+          <v-list-item title="Chart" value="Chart" @click="pushLink('chart')">
+          </v-list-item>
+        </v-list-group>
+        <!-- 問答集 end -->
+
+        <!-- 文件集頁面 start -->
+        <v-list-group value="file">
+          <template v-slot:activator="{ props }">
+            <v-list-item v-bind="props" append-icon="" @click="pushLink('')">
+              <template v-slot:prepend>
+                <span class="material-symbols-outlined"> folder </span>
+              </template>
+              <v-list-item-title class="ml-3">文件集</v-list-item-title>
             </v-list-item>
           </template>
         </v-list-group>
-        <!-- Home1 end -->
-        <!-- 案件管理 end -->
-        <v-divider class="ma-1"></v-divider>
-
-        <!-- Element start -->
-        <v-list-group value="Element">
+        <!-- 文件集頁面 end -->
+        <!-- 洞察分析 start -->
+        <v-list-group value="board">
           <template v-slot:activator="{ props }">
-            <v-list-item
-              prepend-icon="mdi-collage"
-              v-bind="props"
-              title="Element"
-            >
+            <v-list-item prepend-icon="mdi-collage" v-bind="props">
+              <template v-slot:prepend>
+                <span class="material-symbols-outlined"> leaderboard </span>
+              </template>
+              <v-list-item-title class="ml-3">洞察分析</v-list-item-title>
             </v-list-item>
           </template>
           <v-list-item
@@ -79,15 +110,15 @@
           <v-list-item title="Chart" value="Chart" @click="pushLink('chart')">
           </v-list-item>
         </v-list-group>
-        <!-- Element end -->
-        <!-- Basic Layout start -->
-        <v-list-group value="Basic Layout">
+        <!-- 洞察分析 end -->
+        <!-- 管理設定 Layout start -->
+        <v-list-group value="setting">
           <template v-slot:activator="{ props }">
-            <v-list-item
-              prepend-icon="mdi-layers"
-              v-bind="props"
-              title="Basic Layout"
-            >
+            <v-list-item v-bind="props">
+              <template v-slot:prepend>
+                <span class="material-symbols-outlined"> settings </span>
+              </template>
+              <v-list-item-title class="ml-3">管理設定</v-list-item-title>
             </v-list-item>
           </template>
           <v-list-item
@@ -109,22 +140,7 @@
           >
           </v-list-item>
         </v-list-group>
-        <!-- Basic Layout end -->
-        <v-divider class="ma-1"></v-divider>
-        <!-- 登入頁面 start -->
-        <v-list-group value="login">
-          <template v-slot:activator="{ props }">
-            <v-list-item
-              prepend-icon="mdi-login"
-              v-bind="props"
-              append-icon=""
-              title="login"
-              @click="pushLink('login')"
-            >
-            </v-list-item>
-          </template>
-        </v-list-group>
-        <!-- 登入頁面 end -->
+        <!-- 管理設定 Layout end -->
       </v-list>
 
       <v-app-bar-nav-icon

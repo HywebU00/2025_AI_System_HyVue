@@ -21,6 +21,12 @@
         background: $gradients;
         color: $neutral100;
         box-shadow: none;
+
+        .v-list-item__prepend {
+          span {
+            color: #fff;
+          }
+        }
       }
     }
     .v-list-item--density-compact {
@@ -29,6 +35,17 @@
       }
     }
     .v-list-item {
+      height: rem(50);
+      color: $neutral20;
+      font-weight: 700;
+      border-radius: 0.5rem;
+      padding: 0.75rem;
+      .v-list-item__prepend {
+        span {
+          font-size: 1.4rem;
+          color: #000;
+        }
+      }
       + .v-list-group__items {
         border-left: 1px solid #ccc;
         .v-list-item {
@@ -37,7 +54,7 @@
           padding: 4px 8px;
           .v-list-item-title {
             margin-left: rem(24);
-            font-weight: 400;
+            font-weight: 500;
           }
         }
 
@@ -127,6 +144,13 @@
 //左側選單點擊收起
 .sideBar.hidden {
   background: $gradients_v;
+  .v-list-item {
+    .v-list-item__prepend {
+      span {
+        color: #fff;
+      }
+    }
+  }
   @include screen('notebook') {
     width: 0 !important;
   }

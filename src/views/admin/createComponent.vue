@@ -140,7 +140,7 @@
         </template>
       </v-dialog>
       <h3 class="mt-5 mb-2">上傳文件( Vuetify元件 )</h3>
-      <v-dialog class="dialogCard selectSource">
+      <v-dialog class="dialogCard">
         <template v-slot:activator="{ props: activatorProps }">
           <v-btn class="default_btn" variant="flat" v-bind="activatorProps"
             >上傳文件</v-btn
@@ -181,7 +181,7 @@
         </template>
       </v-dialog>
       <h3 class="mt-5 mb-2">上傳文件( 手刻UI )</h3>
-      <v-dialog class="dialogCard selectSource">
+      <v-dialog class="dialogCard">
         <template v-slot:activator="{ props: activatorProps }">
           <v-btn class="default_btn" variant="flat" v-bind="activatorProps"
             >上傳文件</v-btn
@@ -252,7 +252,7 @@
         </template>
       </v-dialog>
       <h3 class="mt-5 mb-2">文件集</h3>
-      <v-dialog class="dialogCard selectSource">
+      <v-dialog class="dialogCard">
         <template v-slot:activator="{ props: activatorProps }">
           <v-btn class="default_btn" variant="flat" v-bind="activatorProps"
             >文件集</v-btn
@@ -302,11 +302,73 @@
           </v-form>
         </template>
       </v-dialog>
+      <h3 class="mt-5 mb-2">手動建立</h3>
+      <v-dialog class="dialogCard largeWidth largeHeight hiddenScrollBar">
+        <template v-slot:activator="{ props: activatorProps }">
+          <v-btn class="default_btn" variant="flat" v-bind="activatorProps"
+            >手動建立</v-btn
+          >
+        </template>
+        <template v-slot:default="{ isActive }">
+          <v-form>
+            <v-card class="">
+              <v-card-title>
+                <div class="title">
+                  <span>手動建立</span>
+                  <v-btn variant="text" class="btn_icon">
+                    <span
+                      class="material-symbols-outlined"
+                      @click="isActive.value = false"
+                    >
+                      close
+                    </span></v-btn
+                  >
+                </div>
+              </v-card-title>
+              <v-card-text>
+                <ul class="mb-5">
+                  <li>直接在系統中逐筆建立 FAQ，適合少量新增。</li>
+                  <li>
+                    📌 若需要 AI 協助從原始資料中萃取
+                    FAQ，請使用「文件生成」或「網址爬取」功能
+                  </li>
+                  <li>
+                    📌 若你已經有完整的問答內容，可以使用「 Excel 匯入」功能
+                  </li>
+                </ul>
+                <addPanelCard />
+                <addPanelCard />
+
+                <div class="d-flex justify-end">
+                  <v-btn class="" variant="text">
+                    <span class="material-symbols-outlined"> add </span>
+                    <span>新增問題</span>
+                  </v-btn>
+                </div>
+              </v-card-text>
+              <v-card-actions>
+                <v-btn class="btn_icon elevation-0">上一步 </v-btn>
+                <!-- "disable" 切換樣式 -->
+                <v-btn variant="flat" color=" disable" disabled
+                  >開始生成
+                </v-btn>
+                <!-- <v-btn
+                                    class="btn_icon bg-primary disable"
+                                    color="#fff"
+                                  >
+                                    新增
+                                  </v-btn> -->
+              </v-card-actions>
+            </v-card>
+          </v-form>
+        </template>
+      </v-dialog>
     </div>
   </v-container>
 </template>
 
 <script>
+import addPanelCard from "@/components/panelCard_add.vue";
 export default {
   data: () => ({
     functionGroupToggle: 0,
@@ -319,7 +381,7 @@ export default {
   }),
   methods: {},
   mounted() {},
-  components: {},
+  components: { addPanelCard },
 };
 </script>
 
