@@ -131,14 +131,12 @@
       padding-right: rem(8);
     }
     .title {
-      // margin-left: 1rem;
       position: relative;
       display: block;
       font-weight: 500;
       @include textLine(2, 1.5em);
     }
     .time {
-      // margin-left: 1rem;
       font-weight: 700;
       color: $neutral30;
       font-size: 1em;

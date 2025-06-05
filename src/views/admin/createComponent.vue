@@ -140,7 +140,7 @@
         </template>
       </v-dialog>
       <h3 class="mt-5 mb-2">上傳文件( Vuetify元件 )</h3>
-      <v-dialog class="dialogCard">
+      <v-dialog class="dialogCard largeWidth hiddenScrollBar">
         <template v-slot:activator="{ props: activatorProps }">
           <v-btn class="default_btn" variant="flat" v-bind="activatorProps"
             >上傳文件</v-btn
@@ -181,7 +181,7 @@
         </template>
       </v-dialog>
       <h3 class="mt-5 mb-2">上傳文件( 手刻UI )</h3>
-      <v-dialog class="dialogCard">
+      <v-dialog class="dialogCard largeWidth hiddenScrollBar">
         <template v-slot:activator="{ props: activatorProps }">
           <v-btn class="default_btn" variant="flat" v-bind="activatorProps"
             >上傳文件</v-btn
@@ -302,6 +302,64 @@
           </v-form>
         </template>
       </v-dialog>
+      <h3 class="mt-5 mb-2">爬取網址</h3>
+      <v-dialog class="dialogCard largeWidth hiddenScrollBar">
+        <template v-slot:activator="{ props: activatorProps }">
+          <v-btn class="default_btn" variant="flat" v-bind="activatorProps"
+            >爬取網址</v-btn
+          >
+        </template>
+        <template v-slot:default="{ isActive }">
+          <v-form>
+            <v-card class="">
+              <v-card-title>
+                <div class="title">
+                  <span>爬取網址</span>
+                  <v-btn variant="text" class="btn_icon">
+                    <span
+                      class="material-symbols-outlined"
+                      @click="isActive.value = false"
+                    >
+                      close
+                    </span></v-btn
+                  >
+                </div>
+              </v-card-title>
+              <v-card-text>
+                <div class="">
+                  輸入網址後點擊爬取，將為您爬取該網域下所有頁面，不包含檔案及圖表。
+                </div>
+                <div class="d-flex mt-3 searchGrp">
+                  <v-text-field
+                    v-model="keyword"
+                    label="請輸入關鍵字"
+                    density="compact"
+                    single-line
+                    variant="outlined"
+                    hide-details="auto"
+                  ></v-text-field>
+                  <v-btn class="ml-2" color="primary" variant="flat">
+                    爬取
+                  </v-btn>
+                </div>
+                <div class="my-3">以下為爬取結果，請移除不需要使用的連結</div>
+                <findPanelCard />
+
+                <div class="d-flex justify-end">
+                  <v-btn class="" variant="text">
+                    <span class="material-symbols-outlined"> add </span>
+                    <span>新增問題</span>
+                  </v-btn>
+                </div>
+              </v-card-text>
+              <v-card-actions>
+                <v-btn class="btn_icon elevation-0">上一步 </v-btn>
+                <v-btn class="btn_icon bg-primary" color="#fff"> 下一步 </v-btn>
+              </v-card-actions>
+            </v-card>
+          </v-form>
+        </template>
+      </v-dialog>
       <h3 class="mt-5 mb-2">手動建立</h3>
       <v-dialog class="dialogCard largeWidth largeHeight hiddenScrollBar">
         <template v-slot:activator="{ props: activatorProps }">
@@ -363,12 +421,138 @@
           </v-form>
         </template>
       </v-dialog>
+      <h3 class="mt-5 mb-2">問答設定</h3>
+      <v-dialog class="dialogCard largeWidth largeHeight hiddenScrollBar">
+        <template v-slot:activator="{ props: activatorProps }">
+          <v-btn class="default_btn" variant="flat" v-bind="activatorProps"
+            >問答設定</v-btn
+          >
+        </template>
+        <template v-slot:default="{ isActive }">
+          <v-form>
+            <v-card class="">
+              <v-card-title>
+                <div class="title">
+                  <span>問答設定</span>
+                  <v-btn variant="text" class="btn_icon">
+                    <span
+                      class="material-symbols-outlined"
+                      @click="isActive.value = false"
+                    >
+                      close
+                    </span></v-btn
+                  >
+                </div>
+              </v-card-title>
+              <v-card-text>
+                <div class="">
+                  輸入網址後點擊爬取，將為您爬取該網域下所有頁面，不包含檔案及圖表。
+                </div>
+                <div class="formContent">
+                  <v-row class="formGrp">
+                    <v-col class="pb-0" cols="12">
+                      <label class="" for="">您想建立幾則問答?</label>
+                    </v-col>
+                    <v-col cols="12" lg="6">
+                      <v-select
+                        label="下拉式選單"
+                        density="compact"
+                        single-line
+                        variant="outlined"
+                        hide-details="auto"
+                        :items="['30', '60', '90']"
+                      ></v-select>
+                    </v-col>
+                  </v-row>
+
+                  <v-row class="formGrp">
+                    <v-col class="pb-0" cols="12">
+                      <label class="" for=""
+                        ><span>您想建立關於什麼類別的問答？</span>
+                      </label>
+                    </v-col>
+                    <v-col cols="12" lg="12">
+                      <v-radio-group
+                        label=""
+                        hide-details="auto"
+                        v-model="radioValue"
+                        color="primary"
+                      >
+                        <v-radio label="不指定類別" value="1"></v-radio>
+                        <v-radio label="指定類別" value="2"> </v-radio>
+
+                        <v-row class="" v-if="radioValue === '2'">
+                          <v-col cols="12">
+                            <div class="d-flex align-center tableFillerBtnGrp">
+                              <v-menu
+                                transition="slide-y-transition"
+                                v-model="menuPop"
+                                :close-on-content-click="false"
+                              >
+                                <template v-slot:activator="{ props }">
+                                  <v-text-field
+                                    v-model="keyword"
+                                    label="請輸入關鍵字"
+                                    chips
+                                    density="compact"
+                                    single-line
+                                    variant="outlined"
+                                    v-bind="{ ...props }"
+                                    hide-details="auto"
+                                  ></v-text-field>
+                                </template>
+                                <v-card class="selectTreeCard pa-1">
+                                  <treeView />
+                                  <div class="btnGroup d-flex justify-center">
+                                    <v-btn
+                                      elevation="0"
+                                      color="primary"
+                                      variant="outlined"
+                                      class="mr-1"
+                                      @click="this.menuPop = false"
+                                      >重設</v-btn
+                                    >
+                                    <v-btn
+                                      elevation="0"
+                                      color="primary"
+                                      @click="this.menuPop = false"
+                                      >套用篩選</v-btn
+                                    >
+                                  </div>
+                                </v-card>
+                              </v-menu>
+                            </div>
+                          </v-col>
+                        </v-row>
+                      </v-radio-group>
+                    </v-col>
+                  </v-row>
+                </div>
+                <!-- <div class="d-flex justify-end">
+                  <v-btn class="" variant="text">
+                    <span class="material-symbols-outlined"> add </span>
+                    <span>新增問題</span>
+                  </v-btn>
+                </div> -->
+              </v-card-text>
+              <v-card-actions>
+                <v-btn class="btn_icon elevation-0">上一步 </v-btn>
+                <v-btn class="btn_icon bg-primary" color="#fff">
+                  開始生成
+                </v-btn>
+              </v-card-actions>
+            </v-card>
+          </v-form>
+        </template>
+      </v-dialog>
     </div>
   </v-container>
 </template>
 
 <script>
+import findPanelCard from "@/components/panelCard_find.vue";
 import addPanelCard from "@/components/panelCard_add.vue";
+import treeView from "@/components/treeView.vue";
 export default {
   data: () => ({
     functionGroupToggle: 0,
@@ -378,10 +562,12 @@ export default {
     selection: 1,
     toggle_exclusive: 2,
     toggle_exclusive1: 2,
+    radioValue: 2,
+    menuPop: false,
   }),
   methods: {},
   mounted() {},
-  components: { addPanelCard },
+  components: { findPanelCard, addPanelCard, treeView },
 };
 </script>
 

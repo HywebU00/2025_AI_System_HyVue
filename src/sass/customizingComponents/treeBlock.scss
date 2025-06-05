@@ -26,7 +26,6 @@
     width: 100%;
     > div {
       &:hover {
-        // background: #f1eeee;
         border-radius: 0.5rem;
       }
       padding: 0.2rem;
@@ -48,21 +47,3 @@
     }
   }
 }
-
-// .selectTreeviewBlock {
-//   @extend .treeviewBlock;
-//   .treeTitle {
-//     &:not(:has(button)) {
-//       margin-left: 1.75rem;
-//     }
-//   }
-//   .treeTitle {
-//     .v-btn {
-//       margin-left: 0;
-//     }
-//   }
-
-//   .v-checkbox .v-selection-control {
-//     min-height: rem(36);
-//   }
-// }

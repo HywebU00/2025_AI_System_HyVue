@@ -28,7 +28,7 @@ export default createVuetify({
           disable: "#f8f8f8",
           neutral10: "#333333",
           neutral20: "#555555",
-          // loginColor: "#0156a2",
+          warning50: "#ffbe4c",
           light: "#8eebb1",
           navText: "#262626",
           thead: "#dadfe0",

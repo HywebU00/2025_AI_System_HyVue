@@ -11,9 +11,9 @@
     checkbox-color="primary"
     :items-per-page-text="customItemsPerPageText"
   >
-    <template v-slot:header.status="{ item }">
+    <template v-slot:header.main="{ item }">
       <div class="d-flex">
-        <span> 子分類 </span>
+        <span> 主分類 </span>
         <v-menu
           v-model="tableFiller"
           :close-on-content-click="false"
@@ -54,6 +54,111 @@
                     elevation="0"
                     color="primary"
                     @click="tableFiller = false"
+                    >套用篩選</v-btn
+                  >
+                </div>
+              </v-col>
+            </v-row>
+          </v-card>
+        </v-menu>
+      </div>
+    </template>
+
+    <template v-slot:header.child="{ item }">
+      <div class="d-flex">
+        <span> 子分類 </span>
+        <v-menu
+          v-model="tableFiller1"
+          :close-on-content-click="false"
+          location="bottom"
+        >
+          <template v-slot:activator="{ props }">
+            <span v-bind="props" class="material-symbols-outlined icon">
+              filter_alt
+            </span>
+          </template>
+          <v-card class="infoBtnContainer tableFiller">
+            <v-row class="formGrp d-block">
+              <v-col class="py-0" cols="12">
+                <v-checkbox
+                  color="primary"
+                  label="全選"
+                  hide-details="auto"
+                ></v-checkbox
+              ></v-col>
+              <v-col cols="12" v-for="i in 3" :key="i" class="py-0">
+                <v-checkbox
+                  color="primary"
+                  label="主分類"
+                  hide-details="auto"
+                ></v-checkbox>
+              </v-col>
+              <v-col>
+                <div class="btnGroup d-flex">
+                  <v-btn
+                    elevation="0"
+                    color="primary"
+                    variant="outlined"
+                    class="mr-1"
+                    @click="tableFiller1 = false"
+                    >重設</v-btn
+                  >
+                  <v-btn
+                    elevation="0"
+                    color="primary"
+                    @click="tableFiller1 = false"
+                    >套用篩選</v-btn
+                  >
+                </div>
+              </v-col>
+            </v-row>
+          </v-card>
+        </v-menu>
+      </div>
+    </template>
+    <template v-slot:header.status="{ item }">
+      <div class="d-flex">
+        <span>狀態 </span>
+        <v-menu
+          v-model="tableFiller2"
+          :close-on-content-click="false"
+          location="bottom"
+        >
+          <template v-slot:activator="{ props }">
+            <span v-bind="props" class="material-symbols-outlined icon">
+              filter_alt
+            </span>
+          </template>
+          <v-card class="infoBtnContainer tableFiller">
+            <v-row class="formGrp d-block">
+              <v-col class="py-0" cols="12">
+                <v-checkbox
+                  color="primary"
+                  label="全選"
+                  hide-details="auto"
+                ></v-checkbox
+              ></v-col>
+              <v-col cols="12" v-for="i in 3" :key="i" class="py-0">
+                <v-checkbox
+                  color="primary"
+                  label="主分類"
+                  hide-details="auto"
+                ></v-checkbox>
+              </v-col>
+              <v-col>
+                <div class="btnGroup d-flex">
+                  <v-btn
+                    elevation="0"
+                    color="primary"
+                    variant="outlined"
+                    class="mr-1"
+                    @click="tableFiller2 = false"
+                    >重設</v-btn
+                  >
+                  <v-btn
+                    elevation="0"
+                    color="primary"
+                    @click="tableFiller2 = false"
                     >套用篩選</v-btn
                   >
                 </div>
@@ -115,11 +220,17 @@
               size="small"
             >
               <span class="material-symbols-outlined text-neutral10">
-                download
+                delete
               </span>
             </v-btn>
           </div>
         </td>
+      </tr>
+    </template>
+    <template v-slot:item.status="{ item }">
+      <tr>
+        <template v-if="item.status"> <span>已使用</span> </template>
+        <template v-else> <span class="text-warning50">未使用</span> </template>
       </tr>
     </template>
   </v-data-table-server>
@@ -328,44 +439,39 @@ import panelCard from "@/components/panelCard.vue";
 import datepickerModalVue from "@/components/datepickerModal.vue";
 const desserts = [
   {
-    id: "001",
-    name: "陳小姐",
-    class: "事務科",
-    title: "事務員",
-    password: "2wsx@@(OL>",
-    status: "待審",
+    name: "無法親自前往，是否可委託他人借還書?",
+    date: "2025/02/22-2025/02/22",
+    main: "借閱規則",
+    status: true,
+    child: "借閱相關",
   },
   {
-    id: "002",
-    name: "王先生",
-    class: "事務科",
-    title: "事務員",
-    password: "2wsx@@(OL>",
-    status: "待審",
+    name: "問題名稱問題名稱問題名稱問題名稱問題名稱問題名稱",
+    date: "2025/02/22-2025/02/22",
+    main: "借閱規則",
+    status: true,
+    child: "借閱相關",
   },
   {
-    id: "003",
-    name: "陳小姐",
-    class: "事務科",
-    title: "事務員",
-    password: "2wsx@@(OL>",
-    status: "待審",
+    name: "問題名稱問題名稱問題名稱問題名稱問題名稱問題名稱",
+    date: "2025/02/22-2025/02/22",
+    main: "借閱規則",
+    status: true,
+    child: "借閱相關",
   },
   {
-    id: "004",
-    name: "林先生",
-    class: "事務科",
-    title: "事務員",
-    password: "2wsx@@(OL>",
-    status: "待審",
+    name: "問題名稱問題名稱問題名稱問題名稱問題名稱問題名稱",
+    date: "2025/02/22-2025/02/22",
+    main: "借閱規則",
+    status: false,
+    child: "借閱相關",
   },
   {
-    id: "005",
-    name: "賴先生",
-    class: "事務科",
-    title: "事務員",
-    password: "2wsx@@(OL>",
-    status: "待審",
+    name: "問題名稱問題名稱問題名稱問題名稱問題名稱問題名稱",
+    date: "2025/02/22-2025/02/22",
+    main: "借閱規則",
+    status: false,
+    child: "借閱相關",
   },
 ];
 
@@ -399,32 +505,27 @@ export default {
   data: () => ({
     itemsPerPage: 5,
     tableFiller: false,
+    tableFiller1: false,
+    tableFiller2: false,
     expandCard: false,
     overlay: false,
     headers: [
+      { title: "問題", key: "name", align: "start", sortable: false },
+      { title: "主分類", key: "main", align: "start", sortable: false },
+      { title: "子分類", key: "child", align: "start", sortable: false },
+      { title: "發布期限", key: "date", align: "start", sortable: true },
       {
-        title: "帳號",
+        title: "狀態",
+        key: "status",
         align: "start",
         sortable: false,
-        key: "id",
+        width: 100,
       },
-      { title: "姓名", key: "name", align: "start", sortable: false },
-      { title: "單位", key: "class", align: "start", sortable: false },
-      { title: "職稱", key: "title", align: "start", sortable: false },
-      { title: "申請時密碼", key: "password", align: "start", sortable: false },
-      { title: "狀態", key: "status", align: "start", sortable: false },
       {
         title: "動作",
         key: "iron",
         align: "start",
         sortable: true,
-        width: 100,
-      },
-      {
-        title: "功能",
-        key: "function",
-        align: "center",
-        sortable: false,
         width: 100,
       },
     ],

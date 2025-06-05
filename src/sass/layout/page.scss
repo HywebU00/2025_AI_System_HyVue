@@ -53,7 +53,7 @@
       }
       .v-input {
         width: rem(214);
-        // margin-right: 0.5rem;
+
         + .grp {
           padding-left: 0.5rem;
         }
@@ -498,7 +498,6 @@
       margin-left: 3.5rem;
       .tag {
         display: flex;
-        // cursor: pointer;
         align-items: center;
         span {
           line-height: 2rem;
@@ -525,9 +524,6 @@
     padding: 1rem;
     li {
       cursor: pointer;
-      // &:hover {
-      //   background: $primary50;
-      // }
     }
     .title {
       margin: 0.5rem 0 0 0;

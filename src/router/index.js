@@ -18,45 +18,10 @@ const routes = [
         path: "analyze",
         component: () => import("@/views/admin/analyzeComponent.vue"),
       },
-      {
-        path: "system",
-        component: () => import("@/views/admin/systemComponent.vue"),
-      },
-      {
-        path: "component",
-        component: () => import("@/views/admin/Component.vue"),
-      },
+
       {
         path: "/",
         component: () => import("@/views/admin/defaultComponent.vue"),
-      },
-      {
-        path: "from",
-        component: () => import("@/views/admin/fromComponent.vue"),
-      },
-      {
-        path: "table",
-        component: () => import("@/views/admin/tableComponent.vue"),
-      },
-      {
-        path: "card",
-        component: () => import("@/views/admin/cardComponent.vue"),
-      },
-      {
-        path: "chart",
-        component: () => import("@/views/admin/chartComponent.vue"),
-      },
-      {
-        path: "widget",
-        component: () => import("@/views/admin/widgetComponent.vue"),
-      },
-      {
-        path: "addNews",
-        component: () => import("@/views/admin/addNewsComponent.vue"),
-      },
-      {
-        path: "mediaPhoto",
-        component: () => import("@/views/admin/mediaPhotoComponent.vue"),
       },
     ],
   },

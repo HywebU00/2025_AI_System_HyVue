@@ -568,6 +568,57 @@
     }
   }
 }
+.findPanelCard {
+  width: 80%;
+  max-width: rem(960);
+
+  .v-expansion-panel-title {
+    padding: 16px 24px;
+    .title {
+      font-size: 1rem;
+    }
+  }
+
+  .v-expansion-panel-text {
+    .itemTitle {
+      margin-bottom: 0.75rem;
+    }
+    .findCard {
+      background: $neutral60;
+      border-radius: 0.5rem;
+      padding: 0.75rem;
+      display: flex;
+      align-items: center;
+      margin-bottom: 0.5rem;
+      &:last-child {
+        margin-bottom: 0;
+      }
+      > div {
+        flex-grow: 1;
+        position: relative;
+        margin-right: 0.5rem;
+        width: calc(100% - 48px);
+      }
+      .titleText {
+        margin-bottom: 0.25rem;
+        @include textOverflow;
+      }
+
+      .url {
+        font-weight: 700;
+        text-decoration: underline;
+        @include textOverflow;
+      }
+      .v-btn {
+        padding: 0;
+        min-width: rem(40);
+        .v-btn__content {
+          color: $neutral10;
+        }
+      }
+    }
+  }
+}
 .emptyCard {
   border-radius: 1rem;
   margin: 2rem 0.5rem 1rem 0.5rem;
@@ -601,7 +652,16 @@
 }
 .dialogCard {
   max-width: rem(500);
-
+  .searchGrp {
+    .v-text-field {
+      .v-field {
+        border-radius: 0.5rem;
+      }
+    }
+    .v-btn {
+      height: rem(40);
+    }
+  }
   &.largeWidth {
     width: 80%;
     max-width: rem(960);
@@ -639,7 +699,7 @@
     }
     ul {
       li {
-        height: 1.75rem;
+        min-height: 1.75rem;
       }
     }
     .inputGrp {
