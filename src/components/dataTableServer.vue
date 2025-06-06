@@ -510,7 +510,13 @@ export default {
     expandCard: false,
     overlay: false,
     headers: [
-      { title: "問題", key: "name", align: "start", sortable: false },
+      {
+        title: "問題",
+        key: "name",
+        align: "start",
+        sortable: false,
+        minWidth: 500,
+      },
       { title: "主分類", key: "main", align: "start", sortable: false },
       { title: "子分類", key: "child", align: "start", sortable: false },
       { title: "發布期限", key: "date", align: "start", sortable: true },

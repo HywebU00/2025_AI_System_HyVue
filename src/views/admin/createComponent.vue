@@ -252,7 +252,7 @@
         </template>
       </v-dialog>
       <h3 class="mt-5 mb-2">文件集</h3>
-      <v-dialog class="dialogCard">
+      <v-dialog class="dialogCard largeWidth hiddenScrollBar">
         <template v-slot:activator="{ props: activatorProps }">
           <v-btn class="default_btn" variant="flat" v-bind="activatorProps"
             >文件集</v-btn
@@ -278,20 +278,173 @@
                 <p>
                   點擊以選擇欲使用的文件檔案，如需使用已整理好的EXCEL檔案，請返回選擇資料來源使用EXCEL匯入功能。
                 </p>
-                <div class="fileCardGrp">
-                  <div class="fileCard">
-                    <div class="icon"></div>
-                    <div class="text">
-                      <div class="text-truncate">
-                        文字最多一行超過顯示...文字最多一行超文字最多一行超過顯示...文字最多一行超文字最多一行超過顯示...文字最多一行超文字最多一行超過顯示...文字最多一行超
+
+                <div class="d-flex align-center justify-end">
+                  <div class="d-flex align-center tableFillerBtnGrp">
+                    <v-select
+                      label="知識庫名稱"
+                      density="compact"
+                      single-line
+                      variant="solo"
+                      hide-details="auto"
+                      menu-icon="mdi-chevron-down"
+                      :items="['選項ㄧ', '選項二', '選項三']"
+                    ></v-select>
+                    <v-btn
+                      class="btnIcon ml-1"
+                      color="primary"
+                      variant="text"
+                      @click="expand2 = !expand2"
+                    >
+                      <span class="material-symbols-outlined"> search </span>
+                    </v-btn>
+                    <v-expand-x-transition>
+                      <div class="" v-show="expand2">
+                        <v-text-field
+                          label="請輸入關鍵字"
+                          clearable
+                          class="tableSearch"
+                          density="compact"
+                          single-line
+                          variant="underlined"
+                          hide-details="auto"
+                        ></v-text-field>
                       </div>
-                      <div class="">
-                        <span>檔案大小：3MB</span>
-                        <span>上傳日期：2025/05/14</span>
-                        <span>狀態：未使用</span>
-                      </div>
-                    </div>
+                    </v-expand-x-transition>
+                    <v-menu
+                      transition="slide-y-transition"
+                      v-model="menuPop2"
+                      :close-on-content-click="false"
+                    >
+                      <template v-slot:activator="{ props }">
+                        <v-tooltip text="篩選功能" location="top">
+                          <template v-slot:activator="{ props: tooltipProps }">
+                            <v-btn
+                              class="btnIcon ml-1"
+                              variant="text"
+                              v-bind="{ ...props, ...tooltipProps }"
+                              color="primary"
+                            >
+                              <span class="material-symbols-outlined"
+                                >filter_alt</span
+                              >
+                            </v-btn>
+                          </template>
+                        </v-tooltip>
+                      </template>
+                      <v-card class="selectTreeCard pa-1">
+                        <treeView />
+                        <div class="btnGroup d-flex justify-center">
+                          <v-btn
+                            elevation="0"
+                            color="primary"
+                            variant="outlined"
+                            class="mr-1"
+                            @click="this.menuPop2 = false"
+                            >重設</v-btn
+                          >
+                          <v-btn
+                            elevation="0"
+                            color="primary"
+                            @click="this.menuPop2 = false"
+                            >套用篩選</v-btn
+                          >
+                        </div>
+                      </v-card>
+                    </v-menu>
+
+                    <v-tooltip text="匯出檔案" location="top">
+                      <template v-slot:activator="{ props }">
+                        <v-btn
+                          v-bind="props"
+                          class="btnIcon ml-1"
+                          variant="text"
+                          color="primary"
+                        >
+                          <span class="material-symbols-outlined">
+                            export_notes
+                          </span>
+                        </v-btn>
+                      </template>
+                    </v-tooltip>
                   </div>
+                </div>
+                <div class="fileCardGrp">
+                  <v-tooltip
+                    class="fileCardTooltip"
+                    text="文字最多一行超過顯示...文字最多一行超文字最多一行超過顯示...文字最多一行超文字最多一行超過顯示...文字最多一行超文字最多一行超過顯示...文字最多一行超"
+                    location="top"
+                  >
+                    <template v-slot:activator="{ props }">
+                      <div class="fileCard" v-bind="props">
+                        <div class="icon">
+                          <span class="material-symbols-outlined">
+                            description
+                          </span>
+                        </div>
+                        <div class="text">
+                          <div class="titleContent">
+                            文字最多一行超過顯示...文字最多一行超文字最多一行超過顯示...文字最多一行超文字最多一行超過顯示...文字最多一行超文字最多一行超過顯示...文字最多一行超
+                          </div>
+                          <div class="">
+                            <span>檔案大小：3MB</span>
+                            <span>上傳日期：2025/05/14</span>
+                            <span>狀態：<span class="error">未使用</span></span>
+                          </div>
+                        </div>
+                      </div>
+                    </template>
+                  </v-tooltip>
+                  <v-tooltip
+                    class="fileCardTooltip"
+                    text="文字最多一行超過顯示...文字最多一行超文字最多一行超過顯示...文字最多一行超文字最多一行超過顯示...文字最多一行超文字最多一行超過顯示...文字最多一行超"
+                    location="top"
+                  >
+                    <template v-slot:activator="{ props }">
+                      <div class="fileCard" v-bind="props">
+                        <div class="icon">
+                          <span class="material-symbols-outlined">
+                            description
+                          </span>
+                        </div>
+                        <div class="text">
+                          <div class="titleContent">
+                            文字最多一行超過顯示...文字最多一行超文字最多一行超過顯示...文字最多一行超文字最多一行超過顯示...文字最多一行超文字最多一行超過顯示...文字最多一行超
+                          </div>
+                          <div class="">
+                            <span>檔案大小：3MB</span>
+                            <span>上傳日期：2025/05/14</span>
+                            <span>狀態：<span class="error">未使用</span></span>
+                          </div>
+                        </div>
+                      </div>
+                    </template>
+                  </v-tooltip>
+                  <v-tooltip
+                    class="fileCardTooltip"
+                    text="文字最多一行超過顯示...文字最多一行超文字最多一行超過顯示...文字最多一行超文字最多一行超過顯示...文字最多一行超文字最多一行超過顯示...文字最多一行超"
+                    location="top"
+                  >
+                    <template v-slot:activator="{ props }">
+                      <div class="fileCard active" v-bind="props">
+                        <div class="icon">
+                          <span class="material-symbols-outlined">
+                            description
+                          </span>
+                        </div>
+                        <div class="text">
+                          <div class="titleContent">
+                            文字最多一行超過顯示...文字最多一行超文字最多一行超過顯示...文字最多一行超文字最多一行超過顯示...文字最多一行超文字最多一行超過顯示...文字最多一行超
+                          </div>
+                          <div class="">
+                            <span>檔案大小：3MB</span>
+                            <span>上傳日期：2025/05/14</span>
+                            <span>狀態：<span>已使用</span></span>
+                          </div>
+                        </div>
+                      </div>
+                    </template>
+                  </v-tooltip>
                 </div>
               </v-card-text>
               <v-card-actions>
@@ -564,6 +717,8 @@ export default {
     toggle_exclusive1: 2,
     radioValue: 2,
     menuPop: false,
+    expand2: false,
+    menuPop2: false,
   }),
   methods: {},
   mounted() {},

@@ -730,6 +730,85 @@
       font-size: rem(18);
     }
   }
+  .fileCardGrp {
+    .fileCard {
+      border: 1px solid $neutral40;
+      margin-bottom: 1rem;
+      justify-content: left;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+      cursor: pointer;
+      // &:hover {
+      //   background: $primary50;
+      // }
+      &.active {
+        border: $primary30 2px solid;
+      }
+      &:last-child {
+        margin-bottom: 0;
+      }
+      .icon {
+        width: rem(32);
+        height: rem(32);
+        border-radius: 50%;
+        color: $primary30;
+        background: $primary50;
+        margin-right: 0.5rem;
+        span {
+          line-height: 32px;
+          display: block;
+          width: rem(32);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+      }
+      .text {
+        width: calc(100% - 38px);
+        .titleContent {
+          font-size: 1rem;
+          color: $primary30;
+          margin-bottom: 0.5rem;
+          font-weight: 400;
+          @include textOverflow;
+          + div {
+            color: $neutral30;
+            > span {
+              display: inline-block;
+              margin-right: 1.5rem;
+              .error {
+                color: $danger50;
+              }
+            }
+          }
+        }
+      }
+
+      &.v-btn--active:not(.v-btn--disabled) {
+        border: $primary30 2px solid;
+        > .v-btn__overlay {
+          opacity: 0;
+        }
+      }
+    }
+
+    .content {
+      padding: 1rem;
+      display: flex;
+      justify-content: flex-start;
+      > div {
+        text-align: start;
+        font-weight: 500;
+      }
+      p {
+        color: $neutral30;
+        font-weight: 500;
+      }
+    }
+  }
 }
 
 .selectSource {
@@ -790,45 +869,9 @@
         }
       }
     }
-    .fileCardGrp {
-      .fileCard {
-        border: 1px solid $neutral40;
-        margin-bottom: 1rem;
-        justify-content: left;
-        padding: 1rem;
-        border-radius: 0.5rem;
-        &:hover {
-          > .v-btn__overlay {
-            background: #0157a2;
-          }
-        }
-        &.v-btn--active:not(.v-btn--disabled) {
-          border: $primary30 2px solid;
-          > .v-btn__overlay {
-            opacity: 0;
-          }
-        }
-      }
-
-      .content {
-        padding: 1rem;
-        display: flex;
-        justify-content: flex-start;
-        > div {
-          text-align: start;
-          font-weight: 500;
-          // font-weight: 700;
-          // font-size: rem(18);
-          // margin-bottom: 0.5rem;
-        }
-        p {
-          color: $neutral30;
-          font-weight: 500;
-        }
-      }
-    }
   }
 }
+
 .albumCard {
   max-width: unset !important;
   height: 100%;
