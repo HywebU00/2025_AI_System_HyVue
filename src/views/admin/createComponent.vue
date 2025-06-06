@@ -285,7 +285,7 @@
                       label="知識庫名稱"
                       density="compact"
                       single-line
-                      variant="solo"
+                      variant="outlined"
                       hide-details="auto"
                       menu-icon="mdi-chevron-down"
                       :items="['選項ㄧ', '選項二', '選項三']"
@@ -313,7 +313,7 @@
                     </v-expand-x-transition>
                     <v-menu
                       transition="slide-y-transition"
-                      v-model="menuPop2"
+                      v-model="menuPop3"
                       :close-on-content-click="false"
                     >
                       <template v-slot:activator="{ props }">
@@ -340,33 +340,50 @@
                             color="primary"
                             variant="outlined"
                             class="mr-1"
-                            @click="this.menuPop2 = false"
+                            @click="this.menuPop3 = false"
                             >重設</v-btn
                           >
                           <v-btn
                             elevation="0"
                             color="primary"
-                            @click="this.menuPop2 = false"
+                            @click="this.menuPop3 = false"
                             >套用篩選</v-btn
                           >
                         </div>
                       </v-card>
                     </v-menu>
-
-                    <v-tooltip text="匯出檔案" location="top">
+                    <v-menu
+                      transition="slide-y-transition"
+                      v-model="menuPop2"
+                      :close-on-content-click="false"
+                    >
                       <template v-slot:activator="{ props }">
-                        <v-btn
-                          v-bind="props"
-                          class="btnIcon ml-1"
-                          variant="text"
-                          color="primary"
-                        >
-                          <span class="material-symbols-outlined">
-                            export_notes
-                          </span>
-                        </v-btn>
+                        <v-tooltip text="篩選功能" location="top">
+                          <template v-slot:activator="{ props: tooltipProps }">
+                            <v-btn
+                              class="btnIcon ml-1"
+                              variant="text"
+                              v-bind="{ ...props, ...tooltipProps }"
+                              color="primary"
+                            >
+                              <span class="material-symbols-outlined">
+                                sort
+                              </span>
+                            </v-btn>
+                          </template>
+                        </v-tooltip>
                       </template>
-                    </v-tooltip>
+                      <v-card class="selectCard pa-1">
+                        <div class="">
+                          <ul>
+                            <li class="active">上傳日期新至舊</li>
+                            <li>上傳日期舊至新</li>
+                            <li>檔案名稱A至Z</li>
+                            <li>檔案名稱Z至Ａ</li>
+                          </ul>
+                        </div>
+                      </v-card>
+                    </v-menu>
                   </div>
                 </div>
                 <div class="fileCardGrp">
@@ -614,7 +631,8 @@
                         variant="outlined"
                         hide-details="auto"
                         :items="['30', '60', '90']"
-                      ></v-select>
+                      >
+                      </v-select>
                     </v-col>
                   </v-row>
 
@@ -624,7 +642,7 @@
                         ><span>您想建立關於什麼類別的問答？</span>
                       </label>
                     </v-col>
-                    <v-col cols="12" lg="12">
+                    <v-col cols="12" lg="6">
                       <v-radio-group
                         label=""
                         hide-details="auto"
@@ -636,14 +654,7 @@
 
                         <v-row class="" v-if="radioValue === '2'">
                           <v-col cols="12">
-                            <div class="d-flex align-center tableFillerBtnGrp">
-                              <v-menu
-                                transition="slide-y-transition"
-                                v-model="menuPop"
-                                :close-on-content-click="false"
-                              >
-                                <template v-slot:activator="{ props }">
-                                  <v-text-field
+                            <!-- <v-text-field
                                     v-model="keyword"
                                     label="請輸入關鍵字"
                                     chips
@@ -652,7 +663,33 @@
                                     variant="outlined"
                                     v-bind="{ ...props }"
                                     hide-details="auto"
-                                  ></v-text-field>
+                                  ></v-text-field> -->
+                            <div class="d-flex align-center tableFillerBtnGrp">
+                              <v-menu
+                                transition="slide-y-transition"
+                                v-model="menuPop"
+                                :close-on-content-click="false"
+                              >
+                                <template v-slot:activator="{ props }">
+                                  <div class="chipsBox" v-bind="{ ...props }">
+                                    <div class="content">
+                                      <div class="chip" v-for="i in 3" :key="i">
+                                        <span class="text"> 主分類 </span>
+                                        <v-btn variant="text" class="icon">
+                                          <span
+                                            class="material-symbols-outlined"
+                                          >
+                                            close
+                                          </span></v-btn
+                                        >
+                                      </div>
+                                    </div>
+                                    <span
+                                      class="icon material-symbols-outlined"
+                                    >
+                                      arrow_drop_down
+                                    </span>
+                                  </div>
                                 </template>
                                 <v-card class="selectTreeCard pa-1">
                                   <treeView />
@@ -660,16 +697,10 @@
                                     <v-btn
                                       elevation="0"
                                       color="primary"
-                                      variant="outlined"
-                                      class="mr-1"
+                                      variant="text"
+                                      block
                                       @click="this.menuPop = false"
-                                      >重設</v-btn
-                                    >
-                                    <v-btn
-                                      elevation="0"
-                                      color="primary"
-                                      @click="this.menuPop = false"
-                                      >套用篩選</v-btn
+                                      >新增類別</v-btn
                                     >
                                   </div>
                                 </v-card>
@@ -698,6 +729,79 @@
           </v-form>
         </template>
       </v-dialog>
+      <h3 class="mt-5 mb-2">新增類別</h3>
+      <v-dialog class="dialogCard">
+        <template v-slot:activator="{ props: activatorProps }">
+          <v-btn class="default_btn" variant="flat" v-bind="activatorProps"
+            >新增類別</v-btn
+          >
+        </template>
+        <template v-slot:default="{ isActive }">
+          <v-form>
+            <v-card>
+              <v-card-title>
+                <div class="title">
+                  <span>新增類別</span>
+                  <v-btn variant="text" class="btn_icon">
+                    <span
+                      class="material-symbols-outlined"
+                      @click="isActive.value = false"
+                    >
+                      close
+                    </span></v-btn
+                  >
+                </div>
+              </v-card-title>
+              <v-card-text>
+                <div class="formContent">
+                  <v-row class="formGrp">
+                    <v-col class="pb-0" cols="12">
+                      <label class="" for="">請輸入新的類別名稱</label>
+                    </v-col>
+                    <v-col cols="12">
+                      <v-text-field
+                        v-model="keyword"
+                        label="請輸入名稱"
+                        chips
+                        density="compact"
+                        single-line
+                        variant="outlined"
+                        hide-details="auto"
+                      ></v-text-field>
+                    </v-col>
+                  </v-row>
+                  <v-row class="formGrp">
+                    <v-col cols="12">
+                      <v-checkbox
+                        hide-details="auto"
+                        label="於主分類下建立子分類"
+                      ></v-checkbox>
+                      <v-select
+                        label="請輸入名稱"
+                        density="compact"
+                        single-line
+                        variant="outlined"
+                        hide-details="auto"
+                        :items="['選項ㄧ', '選項二', '選項三']"
+                      ></v-select>
+                    </v-col>
+                  </v-row>
+                </div>
+              </v-card-text>
+              <v-card-actions>
+                <v-btn class="btn_icon bg-primary" color="#fff"> 取消 </v-btn>
+                <v-btn variant="flat" color=" disable" disabled>建立 </v-btn>
+                <!-- <v-btn
+                                    class="btn_icon bg-primary disable"
+                                    color="#fff"
+                                  >
+                                    新增
+                                  </v-btn> -->
+              </v-card-actions>
+            </v-card>
+          </v-form>
+        </template>
+      </v-dialog>
     </div>
   </v-container>
 </template>
@@ -719,6 +823,7 @@ export default {
     menuPop: false,
     expand2: false,
     menuPop2: false,
+    menuPop3: false,
   }),
   methods: {},
   mounted() {},
