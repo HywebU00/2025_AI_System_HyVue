@@ -14,6 +14,7 @@
           <v-text-field
             label="請輸入帳號"
             density="compact"
+            v-model="keyword"
             single-line
             variant="outlined"
             hide-details="auto"
@@ -27,6 +28,7 @@
             :type="visible ? 'text' : 'password'"
             density="compact"
             variant="outlined"
+            v-model="keyword2"
             single-line
             hide-details="auto"
             @click:append-inner="visible = !visible"
@@ -41,7 +43,12 @@
             ></v-checkbox>
             <a class="forgotlink">忘記密碼</a>
           </div>
-          <v-btn type="submit" block variant="flat" class="loginBtn"
+          <v-btn
+            type="submit"
+            :disabled="keyword.trim() === '' || keyword2.trim() === ''"
+            block
+            variant="flat"
+            class="loginBtn"
             >登入</v-btn
           >
         </v-form>
@@ -58,60 +65,49 @@ export default {
   data: () => ({
     visible: false,
     checkbox: false,
-    theme: "",
-    dark: false,
+    keyword: "",
+    keyword2: "",
   }),
 
   methods: {
-    cardAnimate() {
-      const th = this.$refs.loginCard;
-      gsap.fromTo(
-        th,
-        {
-          y: 50,
-          opacity: 0.5,
-        },
-        { y: 0, duration: 1, opacity: 1 }
-      );
-    },
-    readCookie(name) {
-      const value = `; ${document.cookie}`;
-      const parts = value.split(`; ${name}=`);
-      if (parts.length === 2) return parts.pop().split(";").shift();
-    },
-    createCookie(name, value, days) {
-      let _expires;
-      const _date = new Date();
-      if (days) {
-        _date.setTime(_date.getTime() + days * 24 * 60 * 60 * 1000);
-        _expires = "; expires=" + _date.toGMTString();
-      } else {
-        _expires = "";
-      }
-      document.cookie = name + "=" + value + _expires + "; path=/";
-    },
-    changeTheme(color) {
-      let th = this.$vuetify.theme.global;
-      th.name = color;
-      this.theme = color;
-      this.themeDark = false;
-      this.createCookie("Theme", `${color}`, 356);
-    },
-    themeInit() {
-      this.theme = this.readCookie("Theme") || null;
-      if (this.theme == null) {
-        this.theme = "default";
-        this.themeDark = false;
-      }
-      if (this.theme == "dark") {
-        this.themeDark = true;
-      }
-      this.changeTheme(this.theme);
-    },
+    // readCookie(name) {
+    //   const value = `; ${document.cookie}`;
+    //   const parts = value.split(`; ${name}=`);
+    //   if (parts.length === 2) return parts.pop().split(";").shift();
+    // },
+    // createCookie(name, value, days) {
+    //   let _expires;
+    //   const _date = new Date();
+    //   if (days) {
+    //     _date.setTime(_date.getTime() + days * 24 * 60 * 60 * 1000);
+    //     _expires = "; expires=" + _date.toGMTString();
+    //   } else {
+    //     _expires = "";
+    //   }
+    //   document.cookie = name + "=" + value + _expires + "; path=/";
+    // },
+    // changeTheme(color) {
+    //   let th = this.$vuetify.theme.global;
+    //   th.name = color;
+    //   this.theme = color;
+    //   this.themeDark = false;
+    //   this.createCookie("Theme", `${color}`, 356);
+    // },
+    // themeInit() {
+    //   this.theme = this.readCookie("Theme") || null;
+    //   if (this.theme == null) {
+    //     this.theme = "default";
+    //     this.themeDark = false;
+    //   }
+    //   if (this.theme == "dark") {
+    //     this.themeDark = true;
+    //   }
+    //   this.changeTheme(this.theme);
+    // },
   },
   mounted() {
     // this.cardAnimate();
-    this.themeInit();
+    // this.themeInit();
   },
 };
 </script>

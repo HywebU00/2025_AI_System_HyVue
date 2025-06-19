@@ -39,10 +39,13 @@
                 @click.stop="panelsHandle"
                 variant="text"
               >
-                <span class="material-symbols-outlined">
+                <span v-if="panel === 1" class="material-symbols-outlined">
                   keyboard_arrow_down
-                </span></v-btn
-              >
+                </span>
+                <span v-else class="material-symbols-outlined">
+                  keyboard_arrow_up
+                </span>
+              </v-btn>
             </div>
           </div>
         </div>
@@ -59,7 +62,7 @@
         </div>
         <div :class="['textArea', { show: editStatus }]">
           <div v-if="textEditor" class="editorCard">
-            <QuillEditor />
+            <editorUi />
             <v-row class="formGrp">
               <v-col cols="auto">
                 <label class="ml-0" for="">主選單</label>
@@ -104,9 +107,7 @@
 </template>
 
 <script>
-//載入 文字編輯器
-import { QuillEditor } from "@vueup/vue-quill";
-import "@vueup/vue-quill/dist/vue-quill.snow.css";
+import editorUi from "@/components/editorUi.vue";
 export default {
   name: "panelCard",
   props: {
@@ -116,7 +117,7 @@ export default {
     },
   },
   data: () => ({
-    panel: null,
+    panel: 0,
     title:
       "1.無法親自前往，是否可委託他人借還書? 案內容。勾選欲更新的項目，點擊上方「確認更新",
     text: "可以委託他人借還書，但需要提供您的借閱證或身分證明文件，以及委託書。部分圖書館可能需要事先申請或設定委託人。",
@@ -138,7 +139,7 @@ export default {
     },
   },
   components: {
-    QuillEditor,
+    editorUi,
   },
 };
 </script>

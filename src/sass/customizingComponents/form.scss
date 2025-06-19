@@ -1,9 +1,19 @@
+@use '@/sass/common/mixins/text.scss' as *;
+@use '@/sass/common/mixins/mediaquery.scss' as *;
+@use '@/sass/variables.scss' as *;
+
 .formGrp {
   label {
     font-weight: 500;
     margin: 0 0.5rem;
   }
 }
+// .v-input {
+//   .v-field__input {
+//     min-height: rem(50);
+//   }
+// }
+
 input:-internal-autofill-selected {
   background: #fff !important;
 }

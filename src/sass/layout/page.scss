@@ -195,12 +195,13 @@
 }
 .analyzePage {
   .sessionGrp {
-    .v-col > .item {
+    [class*='v-col'] > .item {
       background: #fff;
       padding: 1rem;
       height: calc(100vh - 92px);
       display: flex;
       flex-direction: column;
+      border-radius: 0.5rem;
     }
   }
   .filterTitle {
@@ -364,6 +365,12 @@
   .msgGrp {
     height: 100%;
     overflow-y: scroll;
+    //隱藏scrollbar;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE 10+ */
+    &::-webkit-scrollbar {
+      display: none; /* Chrome, Safari, and Opera */
+    }
   }
   .searchGrp {
     display: flex;

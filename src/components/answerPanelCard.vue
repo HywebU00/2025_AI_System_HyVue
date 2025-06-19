@@ -14,10 +14,13 @@
                 @click.stop="panelsHandle"
                 variant="text"
               >
-                <span class="material-symbols-outlined">
+                <span v-if="panel === 1" class="material-symbols-outlined">
                   keyboard_arrow_down
-                </span></v-btn
-              >
+                </span>
+                <span v-else class="material-symbols-outlined">
+                  keyboard_arrow_up
+                </span>
+              </v-btn>
             </div>
           </div>
         </div>
@@ -68,7 +71,7 @@
             </div>
             <div :class="['textArea', { show: editStatus }]">
               <div v-if="!textEditor" class="editorCard">
-                <QuillEditor />
+                <editorUi />
               </div>
               <div class="btnGrp">
                 <v-btn variant="text" @click="editStatus = false">取消</v-btn>
@@ -83,9 +86,7 @@
 </template>
 
 <script>
-//載入 文字編輯器
-import { QuillEditor } from "@vueup/vue-quill";
-import "@vueup/vue-quill/dist/vue-quill.snow.css";
+import editorUi from "@/components/editorUi.vue";
 export default {
   name: "answerPanelCard",
   // props: {
@@ -115,7 +116,7 @@ export default {
     },
   },
   components: {
-    QuillEditor,
+    editorUi,
   },
 };
 </script>

@@ -27,10 +27,13 @@
                 @click.stop="panelsHandle"
                 variant="text"
               >
-                <span class="material-symbols-outlined">
+                <span v-if="panel === 1" class="material-symbols-outlined">
                   keyboard_arrow_down
-                </span></v-btn
-              >
+                </span>
+                <span v-else class="material-symbols-outlined">
+                  keyboard_arrow_up
+                </span>
+              </v-btn>
             </div>
           </div>
           <v-fade-transition leave-absolute>
@@ -56,6 +59,7 @@
           ></v-textarea>
           <div v-if="textEditor" class="editorCard">
             <QuillEditor />
+            <editorUi />
           </div>
           <div class="btnGrp">
             <v-btn variant="text" @click="editStatus = false">取消</v-btn>
@@ -69,8 +73,7 @@
 
 <script>
 //載入 文字編輯器
-import { QuillEditor } from "@vueup/vue-quill";
-import "@vueup/vue-quill/dist/vue-quill.snow.css";
+import editorUi from "@/components/editorUi.vue";
 export default {
   name: "panelCard",
   props: {
@@ -84,7 +87,7 @@ export default {
     },
   },
   data: () => ({
-    panel: null,
+    panel: 1,
     text: " 這是一段很長很長的文字，希望收合時仍顯示一行，展開時顯示全部內容。內容必須是連續的不可斷行。 這是一段很長很長的文字，希望收合時仍顯示一行。",
     editStatus: false,
   }),
@@ -102,7 +105,7 @@ export default {
     },
   },
   components: {
-    QuillEditor,
+    editorUi,
   },
 };
 </script>

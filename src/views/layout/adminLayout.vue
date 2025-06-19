@@ -88,26 +88,26 @@
           </template>
           <v-list-item
             title="Grid System"
-            value="Grid System"
+            value="Grid System1"
             @click="pushLink('system')"
           >
           </v-list-item>
           <v-list-item
             title="Component"
-            value="Component"
+            value="Component2"
             @click="pushLink('component')"
           >
           </v-list-item>
-          <v-list-item title="" value="From1" @click="pushLink('from1')">
+          <v-list-item title="" value="From2" @click="pushLink('from1')">
             <v-list-item-title> <div class="">From1</div></v-list-item-title>
           </v-list-item>
-          <v-list-item title="From" value="From" @click="pushLink('from')">
+          <v-list-item title="From" value="From01" @click="pushLink('from')">
           </v-list-item>
-          <v-list-item title="Table" value="Table" @click="pushLink('table')">
+          <v-list-item title="Table" value="Table01" @click="pushLink('table')">
           </v-list-item>
-          <v-list-item title="Card" value="Card" @click="pushLink('card')">
+          <v-list-item title="Card" value="Card01" @click="pushLink('card')">
           </v-list-item>
-          <v-list-item title="Chart" value="Chart" @click="pushLink('chart')">
+          <v-list-item title="Chart" value="Chart01" @click="pushLink('chart')">
           </v-list-item>
         </v-list-group>
         <!-- 洞察分析 end -->

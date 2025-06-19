@@ -585,6 +585,7 @@
                                 </v-card-title>
                                 <v-card-text>
                                   <addPanelCard />
+
                                   <div class="d-flex justify-end">
                                     <v-btn class="" variant="text">
                                       <span class="material-symbols-outlined">

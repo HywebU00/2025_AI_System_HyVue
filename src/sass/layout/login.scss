@@ -75,6 +75,11 @@
     height: unset !important;
     border-radius: 0.5rem;
     margin: rem(20) 0 rem(28) 0;
+    &:disabled {
+      background: $neutral100 !important;
+      opacity: 0.5;
+      color: $neutral40 !important;
+    }
   }
   .forgotlink {
     cursor: pointer;

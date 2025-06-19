@@ -576,6 +576,9 @@
     padding: 16px 24px;
     .title {
       font-size: 1rem;
+      .text {
+        text-decoration: underline;
+      }
     }
   }
 
@@ -607,6 +610,7 @@
       .url {
         font-weight: 700;
         text-decoration: underline;
+        cursor: pointer;
         @include textOverflow;
       }
       .v-btn {
@@ -652,6 +656,8 @@
 }
 .dialogCard {
   max-width: rem(500);
+  box-shadow: none;
+  overflow: hidden;
   .searchGrp {
     .v-text-field {
       .v-field {
@@ -663,19 +669,27 @@
     }
   }
   &.largeWidth {
-    width: 80%;
-    max-width: rem(960);
-
-    .v-card {
-      min-height: 50vh;
-    }
+    width: 90%;
+    max-width: rem(1008);
   }
   &.largeHeight {
-    max-height: 70vh;
+    .v-overlay__content {
+      height: 100%;
+      .v-form {
+        height: 100%;
+        .v-card {
+          height: 100%;
+          max-height: rem(700);
+        }
+      }
+    }
+    height: 90vh;
+    max-height: rem(700);
   }
 
   .v-card {
     border-radius: 1rem !important;
+    box-shadow: none !important;
   }
   .v-card-title {
     padding: 1rem 1.5rem 0.5rem 1.5rem;
@@ -694,6 +708,7 @@
   }
   .v-card-text {
     padding-top: 0 !important;
+    overflow-y: scroll;
     p {
       margin-bottom: 1rem;
     }
@@ -814,15 +829,17 @@
     .v-select {
       width: rem(180);
       min-width: rem(180);
+      &.select {
+      }
     }
     .v-field__field {
       width: rem(180);
       min-width: rem(180);
     }
     .chipsBox {
-      border: 1px solid $neutral40;
+      border: 1px solid #a6a6a6;
       border-radius: 0.25rem;
-      padding: 0 1rem;
+      padding: 0 0.75rem;
 
       width: 100%;
       min-height: rem(40);
@@ -831,11 +848,17 @@
       .content {
         width: 100%;
         display: flex;
-        padding-top: 0.5rem;
+        padding-top: 0.25rem;
         flex-wrap: wrap;
+        &:has(.labelText) {
+          padding-top: 0;
+          .labelText {
+            color: #666666;
+          }
+        }
         .chip {
-          border: 1px solid $primary30;
-          margin: 0 0.25rem 0.5rem 0.25rem;
+          border: 1px solid #a6a6a6;
+          margin: 0 0.125rem 0.25rem 0.125rem;
           border-radius: 0.25rem;
           padding: 0.25rem 0.5rem;
           display: flex;
@@ -843,25 +866,39 @@
           width: fit-content;
 
           .text {
+            font-size: rem(14);
             color: $primary30;
+          }
+          .v-list {
+            border-bottom: 1px solid $primary30;
           }
           .v-btn {
             padding: 0;
             margin-left: 0.25rem;
             min-width: unset;
-            border-radius: 50% !important;
-            background: $primary30;
+
             height: rem(20);
             width: rem(20);
             display: flex;
             justify-content: center;
+
             .v-btn__content {
               color: #fff;
+              border-radius: 50% !important;
+              background: $primary30;
+              height: rem(20);
+              width: rem(20);
+              display: flex;
+              justify-content: center;
               span {
-                font-size: 1.25rem;
+                font-size: 1rem;
+                font-weight: 700;
               }
             }
           }
+        }
+        + .icon {
+          color: #868686;
         }
       }
       .box {
@@ -894,12 +931,99 @@
   }
 }
 
+.custom-select {
+  .v-list-item {
+    height: rem(44);
+    line-height: rem(44);
+    &:hover {
+      color: $primary30;
+      font-weight: 700 !important;
+      background-color: #fff !important;
+    }
+    &.active {
+      background-color: #fff !important;
+    }
+  }
+  .v-overlay {
+    opacity: 0;
+  }
+}
+
+.editorUi {
+  border: #d1d5db 1px solid;
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  min-height: rem(100);
+  ul {
+    display: flex;
+    > li {
+      margin-right: 0.25rem;
+      &:last-child {
+        margin-right: 0;
+      }
+      .v-btn {
+        padding: 0;
+        width: rem(28);
+        height: rem(28);
+        min-height: unset;
+        min-width: unset;
+        .v-btn__content {
+          width: rem(28);
+          height: rem(28);
+        }
+        &.bold {
+          .v-btn__content {
+            background: url('@/assets/images/icon_bold.svg') center center no-repeat;
+          }
+        }
+        &.italic {
+          .v-btn__content {
+            background: url('@/assets/images/icon_italic.svg') center center no-repeat;
+          }
+        }
+        &.list_bullet {
+          .v-btn__content {
+            background: url('@/assets/images/icon_list-bulleted.svg') center center no-repeat;
+          }
+        }
+        &.list_ordered {
+          .v-btn__content {
+            background: url('@/assets/images/icon_list-numbered.svg') center center no-repeat;
+          }
+        }
+        &.link {
+          .v-btn__content {
+            background: url('@/assets/images/icon_link.svg') center center no-repeat;
+          }
+        }
+        &.image {
+          .v-btn__content {
+            background: url('@/assets/images/icon_image.svg') center center no-repeat;
+          }
+        }
+        &.emoji {
+          .v-btn__content {
+            background: url('@/assets/images/icon_emo.svg') center center no-repeat;
+          }
+        }
+      }
+    }
+  }
+  .textArea {
+    margin-bottom: 0rem !important;
+    &.v-textarea .v-field {
+      box-shadow: none;
+    }
+  }
+}
+
 .selectSource {
   &.dialogCard {
     width: 90%;
     max-width: rem(960);
     .btnCardGrp {
       .v-btn-group {
+        padding: 0 0.5rem;
         width: 100%;
         display: flex;
         flex-flow: wrap;
@@ -1161,9 +1285,15 @@
       color: $neutral10 !important;
     }
   }
-
+  .content {
+    border-bottom: 1px solid $neutral60;
+    margin-bottom: 0.5rem;
+  }
   .btnGroup {
     margin-bottom: 0.5rem;
+    .v-btn {
+      min-width: rem(96);
+    }
   }
 }
 .filePanelCard {
@@ -1354,13 +1484,18 @@
   .selectCard {
     &.v-card {
       padding: 0.75rem !important;
+      min-width: rem(200);
       ul {
         li {
           display: block;
-          min-height: 2rem;
+          min-height: rem(44);
           min-width: rem(120);
-          line-height: 2rem;
+          line-height: rem(44);
           cursor: pointer;
+          &:hover {
+            color: $primary30;
+            font-weight: 700;
+          }
           &.active {
             font-weight: 700;
             color: $primary30;

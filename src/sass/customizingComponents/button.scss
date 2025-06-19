@@ -20,6 +20,18 @@
     height: rem(40);
     padding: 0;
   }
+  .icon_img_up {
+    width: rem(24);
+    height: rem(24);
+    background: url('@/assets/images/icon_filter_up.svg') no-repeat center center;
+    background-size: cover;
+  }
+  .icon_img_down {
+    width: rem(24);
+    height: rem(24);
+    background: url('@/assets/images/icon_filter_down.svg') no-repeat center center;
+    background-size: cover;
+  }
 }
 .btnContainer {
   padding: rem(14) !important;

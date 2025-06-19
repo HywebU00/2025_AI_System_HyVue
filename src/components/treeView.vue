@@ -7,13 +7,15 @@
   >
     <!-- 自訂 Checkbox slot -->
     <template #prepend="{ item }">
-      <v-checkbox
-        :model-value="selected.includes(item.id)"
-        @update:model-value="(val) => toggleItem(item.id, val)"
-        density="compact"
-        color="primary"
-        hide-details
-      ></v-checkbox>
+      <div class="" @click.stop>
+        <v-checkbox
+          :model-value="selected.includes(item.id)"
+          @update:model-value="(val) => toggleItem(item.id, val)"
+          density="compact"
+          color="primary"
+          hide-details
+        ></v-checkbox>
+      </div>
     </template>
   </v-treeview>
 </template>

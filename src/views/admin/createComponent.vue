@@ -72,7 +72,7 @@
         </template>
       </v-dialog>
       <h3 class="mt-5 mb-2">選擇資料來源</h3>
-      <v-dialog class="dialogCard selectSource">
+      <v-dialog class="dialogCard selectSource largeHeight">
         <template v-slot:activator="{ props: activatorProps }">
           <v-btn class="default_btn" variant="flat" v-bind="activatorProps"
             >選擇資料來源</v-btn
@@ -140,7 +140,7 @@
         </template>
       </v-dialog>
       <h3 class="mt-5 mb-2">上傳文件( Vuetify元件 )</h3>
-      <v-dialog class="dialogCard largeWidth hiddenScrollBar">
+      <v-dialog class="dialogCard largeWidth hiddenScrollBar largeHeight">
         <template v-slot:activator="{ props: activatorProps }">
           <v-btn class="default_btn" variant="flat" v-bind="activatorProps"
             >上傳文件</v-btn
@@ -181,7 +181,7 @@
         </template>
       </v-dialog>
       <h3 class="mt-5 mb-2">上傳文件( 手刻UI )</h3>
-      <v-dialog class="dialogCard largeWidth hiddenScrollBar">
+      <v-dialog class="dialogCard largeWidth largeHeight hiddenScrollBar">
         <template v-slot:activator="{ props: activatorProps }">
           <v-btn class="default_btn" variant="flat" v-bind="activatorProps"
             >上傳文件</v-btn
@@ -252,7 +252,7 @@
         </template>
       </v-dialog>
       <h3 class="mt-5 mb-2">文件集</h3>
-      <v-dialog class="dialogCard largeWidth hiddenScrollBar">
+      <v-dialog class="dialogCard largeWidth largeHeight hiddenScrollBar">
         <template v-slot:activator="{ props: activatorProps }">
           <v-btn class="default_btn" variant="flat" v-bind="activatorProps"
             >文件集</v-btn
@@ -282,13 +282,15 @@
                 <div class="d-flex align-center justify-end">
                   <div class="d-flex align-center tableFillerBtnGrp">
                     <v-select
+                      class="select"
                       label="知識庫名稱"
                       density="compact"
                       single-line
                       variant="outlined"
                       hide-details="auto"
                       menu-icon="mdi-chevron-down"
-                      :items="['選項ㄧ', '選項二', '選項三']"
+                      :menu-props="{ contentClass: 'custom-select' }"
+                      :items="['所有狀態', '已使用', '未使用']"
                     ></v-select>
                     <v-btn
                       class="btnIcon ml-1"
@@ -366,9 +368,10 @@
                               v-bind="{ ...props, ...tooltipProps }"
                               color="primary"
                             >
-                              <span class="material-symbols-outlined">
-                                sort
-                              </span>
+                              <!-- 更換升降冪icon start-->
+                              <span class="icon_img_down"> </span>
+                              <!-- <span class="icon_img_up"> </span> -->
+                              <!-- 更換升降冪icon end-->
                             </v-btn>
                           </template>
                         </v-tooltip>
@@ -473,7 +476,7 @@
         </template>
       </v-dialog>
       <h3 class="mt-5 mb-2">爬取網址</h3>
-      <v-dialog class="dialogCard largeWidth hiddenScrollBar">
+      <v-dialog class="dialogCard largeWidth largeHeight hiddenScrollBar">
         <template v-slot:activator="{ props: activatorProps }">
           <v-btn class="default_btn" variant="flat" v-bind="activatorProps"
             >爬取網址</v-btn
@@ -631,6 +634,7 @@
                         variant="outlined"
                         hide-details="auto"
                         :items="['30', '60', '90']"
+                        :menu-props="{ contentClass: 'custom-select' }"
                       >
                       </v-select>
                     </v-col>
@@ -654,16 +658,18 @@
 
                         <v-row class="" v-if="radioValue === '2'">
                           <v-col cols="12">
-                            <!-- <v-text-field
-                                    v-model="keyword"
-                                    label="請輸入關鍵字"
-                                    chips
-                                    density="compact"
-                                    single-line
-                                    variant="outlined"
-                                    v-bind="{ ...props }"
-                                    hide-details="auto"
-                                  ></v-text-field> -->
+                            <!-- input空值 style start -->
+                            <!-- <div class="d-flex align-center tableFillerBtnGrp">
+                              <div class="chipsBox">
+                                <div class="content">
+                                  <span class="labelText">請選擇類別</span>
+                                </div>
+                                <span class="icon material-symbols-outlined">
+                                  arrow_drop_down
+                                </span>
+                              </div>
+                            </div> -->
+                            <!-- input空值 style end -->
                             <div class="d-flex align-center tableFillerBtnGrp">
                               <v-menu
                                 transition="slide-y-transition"
@@ -692,7 +698,9 @@
                                   </div>
                                 </template>
                                 <v-card class="selectTreeCard pa-1">
-                                  <treeView />
+                                  <div class="content">
+                                    <treeView />
+                                  </div>
                                   <div class="btnGroup d-flex justify-center">
                                     <v-btn
                                       elevation="0"
@@ -777,11 +785,13 @@
                         label="於主分類下建立子分類"
                       ></v-checkbox>
                       <v-select
-                        label="請輸入名稱"
+                        label="請選擇主分類"
+                        class="select"
                         density="compact"
                         single-line
                         variant="outlined"
                         hide-details="auto"
+                        :menu-props="{ contentClass: 'custom-select' }"
                         :items="['選項ㄧ', '選項二', '選項三']"
                       ></v-select>
                     </v-col>
@@ -819,6 +829,7 @@ export default {
     selection: 1,
     toggle_exclusive: 2,
     toggle_exclusive1: 2,
+    keyword: "",
     radioValue: 2,
     menuPop: false,
     expand2: false,
@@ -830,5 +841,3 @@ export default {
   components: { findPanelCard, addPanelCard, treeView },
 };
 </script>
-
-<style scoped></style>

@@ -17,10 +17,13 @@
                 @click.stop="panelsHandle"
                 variant="text"
               >
-                <span class="material-symbols-outlined">
+                <span v-if="panel === 1" class="material-symbols-outlined">
                   keyboard_arrow_down
-                </span></v-btn
-              >
+                </span>
+                <span v-else class="material-symbols-outlined">
+                  keyboard_arrow_up
+                </span>
+              </v-btn>
             </div>
           </div>
         </div>
@@ -62,7 +65,7 @@
 <script>
 export default {
   data: () => ({
-    panel: null,
+    panel: 0,
   }),
   methods: {
     editHandle() {
