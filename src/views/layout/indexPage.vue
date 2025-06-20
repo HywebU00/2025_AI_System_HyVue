@@ -112,7 +112,7 @@ export default {
         {
           num: "4.3 ",
           name: "文件集＿編輯",
-          link: "https://hywebu00.github.io/2025_AI_System_HyVue/edit",
+          link: "https://hywebu00.github.io/2025_AI_System_HyVue/#/edit",
           note: " 📌 點擊 【編輯】 按鈕，側邊有區塊展開 ",
         },
         {
