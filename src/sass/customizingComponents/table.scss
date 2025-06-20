@@ -98,4 +98,12 @@ table {
   }
 }
 .dataTable {
+  .memo {
+    color: $primary30;
+    font-weight: 700;
+    margin-left: rem(25);
+    a {
+      color: $primary30;
+    }
+  }
 }

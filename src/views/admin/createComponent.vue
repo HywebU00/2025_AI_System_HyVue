@@ -900,7 +900,9 @@
                         <template #item.status="{ item }">
                           <div v-if="item.status" class="">
                             <span class="text-danger"> {{ item.status }}</span>
-                            <span class="memo"> 查看詳情 </span>
+                            <span class="memo">
+                              <router-link> 查看詳情 </router-link>
+                            </span>
                           </div>
                           <div v-else class="">未使用</div>
                         </template>
@@ -949,8 +951,14 @@ export default {
         align: "start",
         sortable: false,
         key: "name",
+        width: "60%",
       },
-      { title: "職稱", key: "status", align: "start", sortable: false },
+      {
+        title: "職稱",
+        key: "status",
+        align: "start",
+        sortable: false,
+      },
     ],
     items: [
       { name: "檔案名稱", status: "3筆關聯問答" },
