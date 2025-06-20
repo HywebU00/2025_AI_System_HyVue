@@ -619,7 +619,9 @@
               </v-card-title>
               <v-card-text>
                 <div class="">
-                  輸入網址後點擊爬取，將為您爬取該網域下所有頁面，不包含檔案及圖表。
+                  <p>
+                    輸入網址後點擊爬取，將為您爬取該網域下所有頁面，不包含檔案及圖表。
+                  </p>
                 </div>
                 <div class="formContent">
                   <v-row class="formGrp">
@@ -812,11 +814,117 @@
           </v-form>
         </template>
       </v-dialog>
+      <h3 class="mt-5 mb-2">關聯問答詳情</h3>
+      <v-dialog class="dialogCard largeWidth largeHeight hiddenScrollBar">
+        <template v-slot:activator="{ props: activatorProps }">
+          <v-btn class="default_btn" variant="flat" v-bind="activatorProps"
+            >關聯問答詳情</v-btn
+          >
+        </template>
+        <template v-slot:default="{ isActive }">
+          <v-form>
+            <v-card>
+              <v-card-title>
+                <div class="title">
+                  <span>關聯問答詳情</span>
+                  <v-btn variant="text" class="btn_icon">
+                    <span
+                      class="material-symbols-outlined"
+                      @click="isActive.value = false"
+                    >
+                      close
+                    </span></v-btn
+                  >
+                </div>
+              </v-card-title>
+              <v-card-text>
+                <p>共3筆相關聯問答</p>
+                <div class="fileCardGrp">
+                  <relevantPanelCard class="relevantPanelCard" />
+                </div>
+              </v-card-text>
+              <v-card-actions>
+                <v-btn class="btn_icon elevation-0"> 取消選取 </v-btn>
+                <v-btn class="btn_icon bg-primary" color="#fff"> 返回 </v-btn>
+              </v-card-actions>
+            </v-card>
+          </v-form>
+        </template>
+      </v-dialog>
+      <h3 class="mt-5 mb-2">確認刪除所選文件</h3>
+      <v-dialog class="dialogCard largeWidth largeHeight hiddenScrollBar">
+        <template v-slot:activator="{ props: activatorProps }">
+          <v-btn class="default_btn" variant="flat" v-bind="activatorProps"
+            >確認刪除所選文件</v-btn
+          >
+        </template>
+        <template v-slot:default="{ isActive }">
+          <v-form>
+            <v-card class="">
+              <v-card-title>
+                <div class="title">
+                  <span>確認刪除所選文件？</span>
+                  <v-btn variant="text" class="btn_icon">
+                    <span
+                      class="material-symbols-outlined"
+                      @click="isActive.value = false"
+                    >
+                      close
+                    </span></v-btn
+                  >
+                </div>
+              </v-card-title>
+              <v-card-text>
+                <div class="">
+                  <p>
+                    您選擇的檔案中，部分曾被使用於生成問答。<br />
+                    刪除檔案後，問答將會保留，您也可以選擇一併刪除關聯問答。
+                  </p>
+                </div>
+                <div class="formContent">
+                  <v-row class="formGrp">
+                    <v-col class="pb-0" cols="12">
+                      <v-checkbox
+                        label="一併刪除關聯問答"
+                        hide-details="auto"
+                      ></v-checkbox>
+                    </v-col>
+                    <v-col cols="12">
+                      <v-data-table
+                        class="dataTable"
+                        :headers="headers"
+                        :items="items"
+                        hide-default-footer
+                      >
+                        <!-- 客製化 "狀態" 欄 -->
+                        <template #item.status="{ item }">
+                          <div v-if="item.status" class="">
+                            <span class="text-danger"> {{ item.status }}</span>
+                            <span class="memo"> 查看詳情 </span>
+                          </div>
+                          <div v-else class="">未使用</div>
+                        </template>
+                      </v-data-table>
+                    </v-col>
+                  </v-row>
+                </div>
+              </v-card-text>
+              <v-card-actions>
+                <v-btn class="btn_icon elevation-0">取消 </v-btn>
+                <v-btn class="btn_icon bg-primary" color="#fff">
+                  確認刪除
+                </v-btn>
+              </v-card-actions>
+            </v-card>
+          </v-form>
+        </template>
+      </v-dialog>
     </div>
   </v-container>
 </template>
 
 <script>
+import relevantPanelCard from "@/components/relevantPanelCard.vue";
 import findPanelCard from "@/components/panelCard_find.vue";
 import addPanelCard from "@/components/panelCard_add.vue";
 import treeView from "@/components/treeView.vue";
@@ -835,9 +943,23 @@ export default {
     expand2: false,
     menuPop2: false,
     menuPop3: false,
+    headers: [
+      {
+        title: "帳號",
+        align: "start",
+        sortable: false,
+        key: "name",
+      },
+      { title: "職稱", key: "status", align: "start", sortable: false },
+    ],
+    items: [
+      { name: "檔案名稱", status: "3筆關聯問答" },
+      { name: "檔案名稱", status: "" },
+      { name: "檔案名稱", status: "" },
+    ],
   }),
   methods: {},
   mounted() {},
-  components: { findPanelCard, addPanelCard, treeView },
+  components: { findPanelCard, addPanelCard, treeView, relevantPanelCard },
 };
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <v-expansion-panels class="panelCard" v-model="panel">
+  <v-expansion-panels class="AiPanelCard" v-model="panel">
     <v-expansion-panel>
       <v-expansion-panel-title
         v-slot="{ expanded }"
@@ -9,18 +9,10 @@
         <div class="">
           <div class="title">
             <div class="">
-              <span class="material-symbols-outlined icon"> comment </span>
-              <span v-if="textArea" class="text">問題</span>
-              <span v-else class="text">回答</span>
+              <span class="icon icon_ai"> </span>
+              <span class="text">AI摘要</span>
             </div>
             <div class="">
-              <v-btn
-                variant="text"
-                :class="['icon', { hide: editStatus }]"
-                @click.stop="editHandle"
-              >
-                <span class="material-symbols-outlined"> edit </span>
-              </v-btn>
               <v-btn
                 class="icon"
                 :disabled="editStatus"
@@ -48,23 +40,6 @@
         <p :class="[{ hide: editStatus }]">
           {{ this.text }}
         </p>
-        <div :class="['textArea', { show: editStatus }]">
-          <v-textarea
-            v-if="textArea"
-            single-line
-            label=""
-            variant="outlined"
-            hide-details="auto"
-            :value="this.text"
-          ></v-textarea>
-          <div v-if="textEditor" class="editorCard">
-            <editorUi />
-          </div>
-          <div class="btnGrp">
-            <v-btn variant="text" @click="editStatus = false">取消</v-btn>
-            <v-btn class="elevation-0">儲存</v-btn>
-          </div>
-        </div>
       </v-expansion-panel-text>
     </v-expansion-panel>
   </v-expansion-panels>
@@ -75,19 +50,10 @@
 import editorUi from "@/components/editorUi.vue";
 export default {
   name: "panelCard",
-  props: {
-    textArea: {
-      type: Boolean,
-      default: false,
-    },
-    textEditor: {
-      type: Boolean,
-      default: false,
-    },
-  },
+
   data: () => ({
     panel: 1,
-    text: " 這是一段很長很長的文字，希望收合時仍顯示一行，展開時顯示全部內容。內容必須是連續的不可斷行。 這是一段很長很長的文字，希望收合時仍顯示一行。",
+    text: " 這是一段很長很長的文字，希望收合時仍顯示一行，展開時顯示全部內容。內容必須是連續的不可斷行。 這是一段很長很長的文字，希望收合時仍顯示一行。這是一段很長很長的文字，希望收合時仍顯示一行，展開時顯示全部內容。內容必須是連續的不可斷行。 這是一段很長很長的文字，希望收合時仍顯示一行。",
     editStatus: false,
   }),
   methods: {

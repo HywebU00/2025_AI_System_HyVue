@@ -110,6 +110,10 @@
         width: 100%;
         align-items: center;
         justify-content: space-between;
+        .title {
+          font-weight: 700;
+          font-size: rem(23);
+        }
         + .btnGrp {
           display: flex;
           justify-content: flex-end;
@@ -168,6 +172,24 @@
           }
         }
       }
+      .infoContent {
+        padding: 1rem 0.5rem;
+        label {
+          display: flex;
+          align-items: center;
+          font-size: 1rem;
+        }
+        .formGrp {
+          > div {
+            padding-left: 0;
+            .link {
+              font-weight: 700;
+              color: $primary30;
+              text-decoration: underline;
+            }
+          }
+        }
+      }
     }
     .tabContent {
       .tagInfo {
@@ -193,6 +215,10 @@
           margin-bottom: 0.5rem;
           font-size: 1rem;
         }
+      }
+      .infoTitle {
+        font-size: rem(18);
+        font-weight: 700;
       }
     }
     .v-card-actions {
@@ -356,7 +382,10 @@
 
 .panelCard,
 .answerPanelCard,
-.resultPanelCard {
+.resultPanelCard,
+.fileInfoPanelCard,
+.relevantPanelCard,
+.AiPanelCard {
   margin-bottom: 1rem;
   .v-expansion-panel__shadow {
     display: none;
@@ -394,6 +423,9 @@
           display: none;
         }
       }
+      .text {
+        font-weight: 700;
+      }
       > div {
         display: flex;
         align-items: center;
@@ -428,6 +460,7 @@
       }
     }
     .v-expansion-panel-text__wrapper {
+      padding: 8px 16px 16px;
       padding-top: 0;
     }
     .textArea {
@@ -452,12 +485,15 @@
     }
   }
 }
-.resultPanelCard {
+
+.resultPanelCard,
+.relevantPanelCard {
   .v-expansion-panel-title {
     .title {
       font-weight: 700;
       color: $neutral10;
       line-height: 1.25rem;
+      font-size: 1rem;
       height: unset;
     }
     .titleInput {
@@ -476,6 +512,9 @@
         text-align: center;
         display: block;
       }
+    }
+    .v-input.textArea {
+      display: block;
     }
     ul {
       margin-top: 0.5rem;
@@ -551,7 +590,7 @@
   width: 80%;
   max-width: rem(960);
   .v-expansion-panel-title {
-    padding: 16px 24px;
+    padding: 16px 16px;
     .title {
       font-size: 1rem;
     }
@@ -620,6 +659,44 @@
           color: $neutral10;
         }
       }
+    }
+  }
+}
+.AiPanelCard {
+  .v-expansion-panel-title {
+    background: $primary70;
+    .title {
+      .text {
+        font-weight: 700;
+      }
+    }
+    &:hover {
+      background: $primary70;
+    }
+
+    .subtitle {
+      @include textLine(2, 30px);
+      white-space: normal;
+      line-height: 24px;
+    }
+    .icon_ai {
+      width: rem(24);
+      height: rem(24);
+      background: url('@/assets/images/icon_developer_guide.svg') center center;
+      background-size: contain;
+    }
+  }
+  .v-expansion-panel-text {
+    background: $primary70;
+  }
+}
+.fileInfoPanelCard {
+  .v-expansion-panel-title {
+    .icon_folder {
+      width: rem(24);
+      height: rem(24);
+      background: url('@/assets/images/icon_folder.svg') center center;
+      background-size: contain;
     }
   }
 }
@@ -746,7 +823,8 @@
     }
   }
   .fileCardGrp {
-    .fileCard {
+    .fileCard,
+    .chooseFileCard {
       border: 1px solid $neutral40;
       margin-bottom: 1rem;
       justify-content: left;
@@ -809,7 +887,41 @@
         }
       }
     }
-
+    .chooseFileCard {
+      .text {
+        width: calc(100% - 76px);
+      }
+      .icon_cancel {
+        margin-left: 1rem;
+        span {
+          color: $neutral40;
+        }
+        &:hover {
+          span {
+            color: $primary30;
+          }
+        }
+      }
+      &.error {
+        border: 1px solid $danger50;
+        .text {
+          width: calc(100% - 38px);
+          .titleContent {
+            color: $danger50;
+            + div {
+              span {
+                color: $danger50;
+              }
+            }
+          }
+        }
+        .icon_cancel {
+          span {
+            color: $danger50;
+          }
+        }
+      }
+    }
     .content {
       padding: 1rem;
       display: flex;
@@ -948,7 +1060,24 @@
     opacity: 0;
   }
 }
-
+.addFile {
+  .v-card {
+    padding: 1rem;
+    .v-row {
+      padding: 0.25rem;
+    }
+    .v-col {
+      border-bottom: 1px solid #ccc;
+      cursor: pointer;
+      &:hover {
+        color: $primary30;
+      }
+      &:last-child {
+        border-bottom: 0;
+      }
+    }
+  }
+}
 .editorUi {
   border: #d1d5db 1px solid;
   border-radius: 0.5rem;
@@ -1011,6 +1140,10 @@
   }
   .textArea {
     margin-bottom: 0rem !important;
+
+    &.v-textarea {
+      display: block;
+    }
     &.v-textarea .v-field {
       box-shadow: none;
     }

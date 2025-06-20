@@ -23,6 +23,10 @@ const routes = [
         path: "/",
         component: () => import("@/views/admin/defaultComponent.vue"),
       },
+      {
+        path: "edit",
+        component: () => import("@/views/admin/editComponent.vue"),
+      },
     ],
   },
   {

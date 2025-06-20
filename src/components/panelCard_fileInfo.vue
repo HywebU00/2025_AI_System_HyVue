@@ -1,5 +1,5 @@
 <template>
-  <v-expansion-panels class="panelCard" v-model="panel">
+  <v-expansion-panels class="fileInfoPanelCard" v-model="panel">
     <v-expansion-panel>
       <v-expansion-panel-title
         v-slot="{ expanded }"
@@ -9,9 +9,10 @@
         <div class="">
           <div class="title">
             <div class="">
-              <span class="material-symbols-outlined icon"> comment </span>
-              <span v-if="textArea" class="text">問題</span>
-              <span v-else class="text">回答</span>
+              <!-- <span class="material-symbols-outlined icon"> comment </span> -->
+              <span class="icon icon_folder"></span>
+              <span v-if="textArea" class="text">文件名稱</span>
+              <span v-else class="text">文件說明</span>
             </div>
             <div class="">
               <v-btn
