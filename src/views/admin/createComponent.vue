@@ -321,8 +321,9 @@
                       <template v-slot:activator="{ props }">
                         <v-tooltip text="篩選功能" location="top">
                           <template v-slot:activator="{ props: tooltipProps }">
+                            <!-- 有篩選條件則新增 active classname -->
                             <v-btn
-                              class="btnIcon ml-1"
+                              class="btnIcon ml-1 active"
                               variant="text"
                               v-bind="{ ...props, ...tooltipProps }"
                               color="primary"

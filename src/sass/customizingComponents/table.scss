@@ -46,6 +46,13 @@ table {
       span {
         color: $neutral30;
       }
+      &.active {
+        .v-btn__content {
+          span {
+            color: $primary30;
+          }
+        }
+      }
     }
   }
 }
