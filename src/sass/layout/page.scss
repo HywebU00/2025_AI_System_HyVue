@@ -76,6 +76,14 @@
       }
     }
   }
+  .container.v-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    .v-card {
+      height: 100%;
+    }
+  }
 }
 
 .explainPage {
@@ -203,8 +211,18 @@
       flex-direction: column;
       border-radius: 0.5rem;
     }
+    .v-col-md-8 > .item {
+      padding: 0;
+      .searchGrp {
+        > div {
+          margin-bottom: 1rem;
+        }
+      }
+    }
   }
   .filterTitle {
+    padding: 1rem 1rem 0rem 1rem;
+    border-bottom: 1px solid $neutral60;
     .title {
       margin-left: 0;
       font-weight: 700;
@@ -274,7 +292,12 @@
       }
     }
   }
+
   .selectCard {
+    container-type: inline-size;
+    display: block;
+    width: 100%;
+
     .v-input {
       border: $neutral60;
       margin-bottom: 1rem;
@@ -299,6 +322,27 @@
         .title {
           padding: 0.5rem;
           border-bottom: 1px solid $neutral60;
+        }
+      }
+    }
+    .infoBox {
+      background: #e4e7ea;
+      border-radius: 0.5rem;
+      text-align: center;
+      padding: 0.25rem 0;
+      margin-bottom: 1rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1rem;
+      .date {
+      }
+      .v-btn {
+        min-width: unset;
+        padding: 0.25rem;
+        margin-left: 0.5rem;
+        span {
+          color: $neutral20;
         }
       }
     }
@@ -361,15 +405,38 @@
     + .msgGrp {
       margin-top: 0;
     }
+    @container (max-width: 240px) {
+      .date {
+        padding: 0 0.25rem;
+        overflow-y: scroll;
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* IE 10+ */
+        ::-webkit-scrollbar {
+          display: none; /* Chrome, Safari, Opera */
+        }
+      }
+    }
   }
   .msgGrp {
     height: 100%;
     overflow-y: scroll;
+    padding: 0 1rem;
     //隱藏scrollbar;
     scrollbar-width: none; /* Firefox */
     -ms-overflow-style: none; /* IE 10+ */
     &::-webkit-scrollbar {
       display: none; /* Chrome, Safari, and Opera */
+    }
+    .empty {
+      display: flex;
+      width: 100%;
+      justify-content: center;
+      align-items: center;
+    }
+    .emptyText {
+      color: $neutral20;
+      font-size: 1rem;
+      text-align: center;
     }
   }
   .searchGrp {
@@ -548,6 +615,20 @@
         color: $neutral0;
         font-weight: 500;
       }
+    }
+    overflow-y: scroll;
+    &::-webkit-scrollbar-track {
+      background-color: #f5f5f500;
+    }
+
+    &::-webkit-scrollbar {
+      width: 6px;
+      background-color: #f5f5f500;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      border-radius: 10px;
+      background-color: $neutral60;
     }
   }
 }

@@ -274,7 +274,7 @@
                   </v-col>
                   <v-col cols="12" lg="6">
                     <div class="pl-2">
-                      <router-link class="link">10筆</router-link>
+                      <div class="link">10筆</div>
                     </div>
                   </v-col>
                 </v-row>

@@ -43,8 +43,8 @@
               hide-details="auto"
             ></v-text-field>
             <div class="my-1 ml-auto grp">
-              <v-btn class="mr-2 default_btn">搜尋</v-btn>
-              <v-btn class="mr-3 default_btn">重設</v-btn>
+              <v-btn class="mr-2 default_btn elevation-0">搜尋</v-btn>
+              <v-btn class="mr-3 default_btn elevation-0">重設</v-btn>
               <v-btn
                 variant="outlined"
                 class="bg-white default_btn"
@@ -156,63 +156,70 @@
                     </div>
                     <div class="btnGrp">
                       <!-- 更多按鈕 start -->
-                      <v-menu
-                        v-model="moreMenu"
-                        :close-on-content-click="false"
-                        location="bottom"
-                      >
-                        <template v-slot:activator="{ props }">
-                          <v-btn
-                            v-bind="props"
-                            class="icon more"
-                            variant="text"
-                            size="sm"
-                          >
-                            <span class="material-symbols-outlined">
-                              more_horiz
-                            </span></v-btn
-                          >
-                        </template>
-                        <v-card min-width="100" class="btnContainer">
-                          <ul class="">
-                            <li>
-                              <a href="#">
-                                <div>
-                                  <span class="">編輯</span>
-                                </div>
-                              </a>
-                            </li>
-                            <li>
-                              <a href="#">
-                                <div>
-                                  <span class="">新增子分類</span>
-                                </div>
-                              </a>
-                            </li>
-                          </ul>
-                        </v-card>
-                      </v-menu>
+                      <div class="">
+                        <v-menu
+                          v-model="moreMenu"
+                          :close-on-content-click="false"
+                          location="bottom"
+                          activator="parent"
+                        >
+                          <template v-slot:activator="{ props }">
+                            <v-btn
+                              v-bind="props"
+                              class="icon more"
+                              variant="text"
+                              size="sm"
+                            >
+                              <span class="material-symbols-outlined">
+                                more_horiz
+                              </span></v-btn
+                            >
+                          </template>
+                          <v-card class="btnContainer">
+                            <ul class="">
+                              <li>
+                                <a href="#">
+                                  <div>
+                                    <span class="">編輯</span>
+                                  </div>
+                                </a>
+                              </li>
+                              <li>
+                                <a href="#">
+                                  <div>
+                                    <span class="">新增子分類</span>
+                                  </div>
+                                </a>
+                              </li>
+                            </ul>
+                          </v-card>
+                        </v-menu>
+                      </div>
                       <!-- 更多按鈕 end -->
                       <v-btn class="icon delete" variant="text" size="sm">
-                        <span class="material-symbols-outlined">
-                          delete
-                        </span></v-btn
-                      >
+                        <span class="material-symbols-outlined"> delete </span>
+                      </v-btn>
                       <v-btn
                         class="icon"
                         @click.stop="panelsHandle"
                         variant="text"
                         size="sm"
                       >
-                        <span class="material-symbols-outlined">
+                        <span
+                          v-if="panel === 1"
+                          class="material-symbols-outlined"
+                        >
                           keyboard_arrow_down
-                        </span></v-btn
-                      >
+                        </span>
+                        <span v-else class="material-symbols-outlined">
+                          keyboard_arrow_up
+                        </span>
+                      </v-btn>
                     </div>
                   </v-expansion-panel-title>
                   <v-expansion-panel-text>
                     <ul>
-                      <li class="item">
+                      <li class="item" :class="{ active: moreMenu1 }">
                         <div class="title">
                           <span class="material-symbols-outlined icon">
                             description
@@ -221,36 +228,38 @@
                         </div>
                         <div class="btnGrp">
                           <!-- 更多按鈕 start -->
-
-                          <v-menu
-                            v-model="moreMenu1"
-                            location="bottom"
-                            :close-on-content-click="false"
-                          >
-                            <template v-slot:activator="{ props }">
-                              <v-btn
-                                v-bind="props"
-                                class="icon more"
-                                variant="text"
-                                size="sm"
-                              >
-                                <span class="material-symbols-outlined">
-                                  more_horiz
-                                </span></v-btn
-                              >
-                            </template>
-                            <v-card min-width="100" class="btnContainer">
-                              <ul class="">
-                                <li>
-                                  <a href="#">
-                                    <div>
-                                      <span class="">編輯</span>
-                                    </div>
-                                  </a>
-                                </li>
-                              </ul>
-                            </v-card>
-                          </v-menu>
+                          <div class="">
+                            <v-menu
+                              v-model="moreMenu1"
+                              location="bottom"
+                              activator="parent"
+                              :close-on-content-click="false"
+                            >
+                              <template v-slot:activator="{ props }">
+                                <v-btn
+                                  v-bind="props"
+                                  class="icon more"
+                                  variant="text"
+                                  size="sm"
+                                >
+                                  <span class="material-symbols-outlined">
+                                    more_horiz
+                                  </span></v-btn
+                                >
+                              </template>
+                              <v-card min-width="100" class="btnContainer">
+                                <ul class="">
+                                  <li>
+                                    <a href="#">
+                                      <div>
+                                        <span class="">編輯</span>
+                                      </div>
+                                    </a>
+                                  </li>
+                                </ul>
+                              </v-card>
+                            </v-menu>
+                          </div>
                           <!-- 更多按鈕 end -->
                           <v-btn class="icon delete" variant="text" size="sm">
                             <span class="material-symbols-outlined">
@@ -259,7 +268,7 @@
                           >
                         </div>
                       </li>
-                      <li class="item">
+                      <li class="item" :class="{ active: moreMenu2 }">
                         <div class="title">
                           <span class="material-symbols-outlined icon">
                             description
@@ -269,35 +278,38 @@
                         <div class="btnGrp">
                           <!-- 更多按鈕 start -->
                           <!--  -->
-                          <v-menu
-                            v-model="moreMenu2"
-                            location="bottom"
-                            :close-on-content-click="false"
-                          >
-                            <template v-slot:activator="{ props }">
-                              <v-btn
-                                v-bind="props"
-                                class="icon more"
-                                variant="text"
-                                size="sm"
-                              >
-                                <span class="material-symbols-outlined">
-                                  more_horiz
-                                </span></v-btn
-                              >
-                            </template>
-                            <v-card min-width="100" class="btnContainer">
-                              <ul class="">
-                                <li>
-                                  <a href="#">
-                                    <div>
-                                      <span class="">編輯</span>
-                                    </div>
-                                  </a>
-                                </li>
-                              </ul>
-                            </v-card>
-                          </v-menu>
+                          <div class="">
+                            <v-menu
+                              v-model="moreMenu2"
+                              location="bottom"
+                              activator="parent"
+                              :close-on-content-click="false"
+                            >
+                              <template v-slot:activator="{ props }">
+                                <v-btn
+                                  v-bind="props"
+                                  class="icon more"
+                                  variant="text"
+                                  size="sm"
+                                >
+                                  <span class="material-symbols-outlined">
+                                    more_horiz
+                                  </span></v-btn
+                                >
+                              </template>
+                              <v-card min-width="100" class="btnContainer">
+                                <ul class="">
+                                  <li>
+                                    <a href="#">
+                                      <div>
+                                        <span class="">編輯</span>
+                                      </div>
+                                    </a>
+                                  </li>
+                                </ul>
+                              </v-card>
+                            </v-menu>
+                          </div>
                           <!-- 更多按鈕 end -->
                           <v-btn class="icon delete" variant="text" size="sm">
                             <span class="material-symbols-outlined">
@@ -325,7 +337,20 @@
   <!-- overlay start -->
   <v-overlay v-model="overlay" :persistent="true"></v-overlay>
   <!-- overlay end -->
+  <!-- scrollToTop btn start -->
+  <v-btn
+    v-show="showScrollTop"
+    class="scroll-to-top"
+    @click="scrollToTop"
+    icon
+    elevation="4"
+    color="primary"
+  >
+    <span class="material-symbols-outlined"> stat_1 </span>
+  </v-btn>
+  <!-- scrollToTop btn end -->
 </template>
+
 <script>
 import resultPanelCard from "@/components/resultPanelCard.vue";
 import answerPanelCard from "@/components/answerPanelCard.vue";
@@ -339,7 +364,11 @@ export default {
     moreMenu2: false,
     panel: null,
     page: 1,
+    showScrollTop: false,
   }),
+  beforeUnmount() {
+    window.removeEventListener("scroll", this.checkScroll);
+  },
   methods: {
     handleScroll() {
       this.isElevated = window.scrollY > 0;
@@ -351,9 +380,17 @@ export default {
         this.panel = 0;
       }
     },
+    //scroll
+    checkScroll() {
+      this.showScrollTop = window.scrollY > 50; // 滾超過 50px 才顯示
+    },
+    scrollToTop() {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    },
   },
+
   mounted() {
-    window.addEventListener("scroll", this.handleScroll);
+    window.addEventListener("scroll", this.checkScroll);
   },
   components: {
     resultPanelCard,

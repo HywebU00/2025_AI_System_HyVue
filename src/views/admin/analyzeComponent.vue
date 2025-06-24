@@ -4,6 +4,19 @@
       <v-col cols="12" md="4">
         <div class="item">
           <div class="selectCard">
+            <div class="infoBox">
+              <div class="date">
+                <span>2024/03/03</span>~<span>2024/04/06</span>
+              </div>
+              <v-btn variant="text" class="btn_icon">
+                <span
+                  class="material-symbols-outlined"
+                  @click="isActive.value = false"
+                >
+                  close
+                </span></v-btn
+              >
+            </div>
             <div class="selectBox">
               <div class="inputComponent">
                 <div class="inputSelect" v-click-outside="onClickOutside2">
@@ -98,6 +111,7 @@
                 </v-expand-transition>
               </div>
             </div>
+
             <div class="searchBox">
               <v-btn
                 v-if="isActive"
@@ -200,9 +214,28 @@
             </div>
           </div>
           <div class="cardGrp msgGrp">
+            <!-- 空值樣式 tart -->
+            <div class="empty h-100">
+              <span class="emptyText"> 找不到相符的資料 </span>
+            </div>
+            <!-- 空值樣式 end -->
+            <!-- 搜尋結果卡片 start -->
+            <div
+              :class="['msgCard', { active: activeIndex1 === index }]"
+              v-for="(index, item) in 3"
+              :key="item"
+              @click="activeIndex1 = index"
+            >
+              <div class="title">
+                <div class="name">林曉民</div>
+                <div class="date">2025/01/10</div>
+              </div>
+              <div class="text">2則相符的訊息</div>
+            </div>
+            <!-- 搜尋結果卡片 end -->
             <div
               :class="['msgCard', { active: activeIndex === index }]"
-              v-for="(index, item) in 10"
+              v-for="(index, item) in 3"
               :key="item"
               @click="activeIndex = index"
             >
@@ -731,6 +764,7 @@ export default {
   data: () => ({
     selectedValue: "",
     activeIndex: 1,
+    activeIndex1: 1,
     expand: null,
     fillerContent: false,
     dateFilter: false,
