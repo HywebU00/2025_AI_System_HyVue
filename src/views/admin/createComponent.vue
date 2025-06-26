@@ -694,9 +694,16 @@
                                       </div>
                                     </div>
                                     <span
+                                      v-if="!menuPop"
                                       class="icon material-symbols-outlined"
                                     >
                                       arrow_drop_down
+                                    </span>
+                                    <span
+                                      v-else
+                                      class="icon material-symbols-outlined"
+                                    >
+                                      arrow_drop_up
                                     </span>
                                   </div>
                                 </template>
