@@ -1,5 +1,6 @@
 @use '@/sass/common/mixins/text.scss' as *;
 @use '@/sass/common/mixins/mediaquery.scss' as *;
+@use '@/sass/common/mixins/scrollbar.scss' as *;
 @use '@/sass/variables.scss' as *;
 
 .navigation {
@@ -104,6 +105,7 @@
     overflow-y: scroll;
     max-height: rem(300);
     margin: 1rem;
+    @include scrollbar;
   }
   li {
     display: flex;

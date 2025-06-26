@@ -3,7 +3,7 @@
 @use 'variables.scss';
 @use '@/sass/common/mixins/_mediaquery.scss';
 @use '@/sass/common/mixins/_text.scss';
-
+@use '@/sass/common/mixins/_scrollbar.scss';
 //customizingComponents
 @use '@/sass/customizingComponents/sideBar.scss';
 @use '@/sass/customizingComponents/folderMenu.scss';

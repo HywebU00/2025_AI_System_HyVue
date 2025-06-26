@@ -1,5 +1,6 @@
 @use '@/sass/common/mixins/text.scss' as *;
 @use '@/sass/common/mixins/mediaquery.scss' as *;
+@use '@/sass/common/mixins/scrollbar.scss' as *;
 @use '@/sass/variables.scss' as *;
 .cardGrp {
   display: flex;
@@ -143,7 +144,7 @@
     .v-card-text {
       flex-grow: 1;
       overflow-y: scroll;
-
+      @include scrollbar;
       .v-btn {
         &.refresh {
           display: flex;

@@ -1,0 +1,16 @@
+@use '@/sass/variables.scss' as *;
+@mixin scrollbar {
+  &::-webkit-scrollbar-track {
+    background-color: #f5f5f500;
+  }
+
+  &::-webkit-scrollbar {
+    width: 6px;
+    background-color: #f5f5f500;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: $neutral60;
+  }
+}
